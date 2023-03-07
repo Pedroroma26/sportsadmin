@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_123639) do
   end
 
   create_table "reports_instances", force: :cascade do |t|
-    t.string "type"
+    t.string "category"
     t.integer "minute"
     t.text "motive"
     t.bigint "report_id", null: false

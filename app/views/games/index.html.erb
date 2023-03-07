@@ -1,0 +1,9 @@
+<h2>Games:</h2>
+
+<% @games.each do |game| %>
+  <p><%= game.competition.name %></p>
+  <p><%= game.club_home.name %></p>
+  <p><%= game.club_away.name %></p>
+  <p><%= game.referee.first_name %> <%= game.referee.last_name %></p>
+  <p><%= game.date.strftime('%d-%m-%Y') %></p>
+<% end %>

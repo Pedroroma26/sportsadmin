@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_07_113239) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_123639) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_113239) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.boolean "referee_validation"
+    t.boolean "referee_validation", default: false
     t.bigint "game_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_113239) do
   end
 
   create_table "reports_instances", force: :cascade do |t|
-    t.string "name"
+    t.string "type"
     t.integer "minute"
     t.text "motive"
     t.bigint "report_id", null: false

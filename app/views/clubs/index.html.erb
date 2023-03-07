@@ -1,0 +1,28 @@
+ <h2>CLUBS INDEX</h2>
+
+ <table class="table">
+
+    <thead>
+      <tr class="table_headers" id ="clubs_index">
+        <th scope="">Abbreviation</th>
+        <th scope="">Name</th>
+        <th scope="">Adress</th>
+        <th scope="">Email</th>
+        <th scope="">Contact</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @clubs.each do |club| %>
+
+      <tr>
+        <td><%= club.abreviation %></td>
+        <td><%= club.name %></td>
+        <td><%= club.address %></td>
+        <td><%= club.email %></td>
+        <td><%= club.phone_number %></td>
+      </tr>
+
+      <% end %>
+    </tbody>
+  </table>

@@ -5,6 +5,6 @@ class AddColumnsToUsers < ActiveRecord::Migration[7.0]
     add_column :users, :birth_date, :date
     add_column :users, :city, :string
     add_column :users, :phone_number, :string
-    add_column :users, :role, :string
+    add_column :users, :role, :integer
   end
 end

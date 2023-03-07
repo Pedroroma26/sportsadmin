@@ -10,5 +10,9 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
   validates :email, presence: true, uniqueness: true, confirmation: true # serve para confirmar o email
   validates :phone_number, length: { maximum: 15 }
-  validates :role, presence: true,inclusion: { in: %w[Organizer Referee] }
+
+  enum :role, {
+    organizer: 0,
+    referee: 1
+  }
 end

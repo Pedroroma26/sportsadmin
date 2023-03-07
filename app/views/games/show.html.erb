@@ -1,0 +1,8 @@
+
+  <p>Home Team: <%= @game.club_home.name %></p>
+  <p>Away Team: <%= @game.club_away.name %></p>
+  <p>Referee: <%= @game.referee.full_name %></p>
+  <p>Date: <%= @game.game_date.strftime('%d-%m-%Y') %></p>
+  <p>Game Hour: <%= @game.game_date.strftime('%H:%M') %></p>
+  <p>Location: <%= @game.club_home.address %></p>
+  <p class= "btn btn-primary">Game Report</p>

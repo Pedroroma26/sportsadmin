@@ -5,12 +5,12 @@ class ClubsController < ApplicationController
   end
 
   def show
-    @clubs = Club.find(params[:id])
+    @club = Club.find(params[:id])
   end
 
   private
 
-  def clubs_params
-    params.require(:clubs).permit(:name, :abreviation, :address, :email, :phone_number)
+  def club_params
+    params.require(:club).permit(:name, :abreviation, :address, :email, :phone_number)
   end
 end

@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_123639) do
 
   create_table "clubs", force: :cascade do |t|
     t.string "name"
-    t.string "abreviation"
+    t.string "abbreviation"
     t.string "address"
     t.string "email"
     t.string "phone_number"
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_123639) do
   create_table "players", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.integer "player_number"
     t.date "birth_date"
     t.string "gender"
     t.bigint "club_id", null: false

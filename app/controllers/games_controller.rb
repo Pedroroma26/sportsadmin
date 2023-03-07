@@ -1,26 +1,20 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
-  before_action :game_params, only: [:new, :create]
 
   def index
     @games = Game.all
   end
 
   def show
-    @home_club = @game.club_home
-    @away_club = @game.club_away
-    @referee = @game.referee
-    @reports = @game.reports
   end
 
   def new
     @game = Game.new
-    @clubs = Club.all
     @referees = User.where(role: "referee")
   end
 
   def create
-    @game.competition = @competition
+    @game = Game.new(game_params)
     if @game.save
       redirect_to games_path, notice: "Game created"
     else

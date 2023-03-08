@@ -1,0 +1,12 @@
+<div class="teams">
+  <% @reports.each do |report| %>
+    <%= link_to game_report_path(report.game, report) do %>
+      <div>
+        <p><%= report.game.club_home.name %></p>
+        vs
+        <p><%= report.game.club_away.name %></p>
+        <p><%= report.game.game_date %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>

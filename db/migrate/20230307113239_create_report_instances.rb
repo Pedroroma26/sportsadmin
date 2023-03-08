@@ -1,6 +1,6 @@
-class CreateReportsInstances < ActiveRecord::Migration[7.0]
+class CreateReportInstances < ActiveRecord::Migration[7.0]
   def change
-    create_table :reports_instances do |t|
+    create_table :report_instances do |t|
       t.string :category
       t.integer :minute
       t.text :motive

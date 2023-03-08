@@ -1,12 +1,96 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+nav {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  width: 90px;
+  overflow: hidden;
+  transition: width 0.2s linear;
+  background-color: #00032c;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+nav i{
+  color: white;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+nav:hover{
+  width: 300px;
+  transition: all 0.5s ease;
+}
+
+nav span{
+  color: white;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.logo{
+  text-align: center;
+  display: flex;
+  margin-bottom: 17px;
+  transition: all 0.5 ease;
+  text-decoration: none;
+  white-space: pre;
+}
+
+.logo i {
+  font-size: 50px;
+  line-height: 22px;
+}
+
+.logo span {
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.logo .nav-item {
+  display: flex;
+}
+
+.nav-item {
+  position: relative;
+  color: gray;
+  font-size: 14px;
+  display: flex;
+  width: 300px;
+  padding: 10px;
+}
+
+.nav-item:hover{
+  background: #0E43C9;
+}
+
+.nav-item a {
+  text-decoration: none;
+}
+
+.nav-item-text {
+  position: relative;
+  top: 12px;
+  margin-left: 10px;
+  color: white;
+}
+
+.nav-item-icon {
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 15px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.logout{
+  position: absolute;
+  bottom: 0;
 }

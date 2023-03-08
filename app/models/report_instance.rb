@@ -1,4 +1,4 @@
-class ReportsInstance < ApplicationRecord
+class ReportInstance < ApplicationRecord
   belongs_to :report
   belongs_to :player
 

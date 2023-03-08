@@ -1,0 +1,102 @@
+<div class="teams-report-container" data-submit-form-reports-target="report">
+  <div class="team-report">
+    <%= game.club_home.abbreviation %>
+    <table class="teams-table border-right-table-team w-100">
+      <tr>
+        <% game.club_home.players.each do |player| %>
+          <td class="border-right-table-row"><%= player.player_number %></td>
+          <td><%= player.first_name %> <%= player.last_name %></td>
+          <td class="instances">
+            <% player.report_instances.where(report: report).order(minute: :asc).each do |report_instance| %>
+              <p class="m-0"><%#= report_instance.category %></p>
+              <% case %>
+                <% when report_instance.category == "Own-Goal" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-regular fa-futbol" style="color: red;"></i></p>
+                <% when report_instance.category == "Goal" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-regular fa-futbol" style="color: green;"></i></p>
+                <% when report_instance.category == "Green-Card" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-play" style="color: green; transform: rotate(31deg); padding-top: 7px; padding-left: 3px;"></i></p>
+                <% when report_instance.category == "Yellow-Card" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-square" style="color: #ffed00;"></i></p>
+                <% when report_instance.category == "Red-Card" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-circle" style="color: #E73632;"></i></p>
+                <% when report_instance.category == "Sub-In" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-rotate" style="color: green;"></i></p>
+                <% when report_instance.category == "Sub-Out" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-rotate" style="color: #E73632;"></i></p>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="<%= "d-none" if report.referee_validation %>">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPlayer-<%= player.id %>">
+              <i class="fa-regular fa-circle-pause"></i>
+            </button>
+            <%= render "shared/form_report_player_instance", report: report, report_instance: report_instance, player: player, game: game  %>
+          </td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+
+  <div class="team-report">
+    <table class="teams-table border-right-table-team w-100">
+      <%= game.club_away.abbreviation %>
+      <tr>
+        <% game.club_away.players.each do |player| %>
+          <td class="border-right-table-row"><%= player.player_number %></td>
+          <td class="border-right-table-row"><%= player.first_name %> <%= player.last_name %></td>
+          <td class="instances">
+            <% player.report_instances.where(report: report).order(minute: :asc).each do |report_instance| %>
+              <p class="m-0"><%#= report_instance.category %></p>
+              <% case %>
+                <% when report_instance.category == "Own-Goal" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-regular fa-futbol" style="color: red;"></i></p>
+                <% when report_instance.category == "Goal" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-regular fa-futbol" style="color: green;"></i></p>
+                <% when report_instance.category == "Green-Card" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-play" style="color: green; transform: rotate(31deg); padding-top: 7px; padding-left: 3px;"></i></p>
+                <% when report_instance.category == "Yellow-Card" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-square" style="color: #ffed00;"></i></p>
+                <% when report_instance.category == "Red-Card" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-circle" style="color: #E73632;"></i></p>
+                <% when report_instance.category == "Sub-In" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-rotate" style="color: green;"></i></p>
+                <% when report_instance.category == "Sub-Out" %>
+                <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-rotate" style="color: #E73632;"></i></p>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="<%= "d-none" if report.referee_validation %>">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPlayer-<%= player.id %>">
+              <i class="fa-regular fa-circle-pause"></i>
+            </button>
+            <%= render "shared/form_report_player_instance", report: report, report_instance: report_instance, player: player, game: game  %>
+          </td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="report-infos-container">
+  <p>Match report</p>
+  <% report.report_instances.where(category: "Other").each do |instance| %>
+    <p><%= instance.motive %></p>
+  <% end %>
+  <%= simple_form_for [report, report_instance],
+                      data: { submit_form_reports_target: "instanceForm" },
+                      html: { class: ("d-none" if report.referee_validation) } do |f| %>
+    <%= f.input :category, as: :hidden, input_html: { value: "Other" } %>
+    <%= f.input :motive %>
+  <% end %>
+
+  <%= simple_form_for [game, report],
+                      data: {
+                        submit_form_reports_target: "reportForm",
+                        action: "submit->submit-form-reports#submitForms"
+                      },
+                      html: { class: ("d-none" if report.referee_validation) } do |f| %>
+    <%= f.input :referee_validation %>
+    <span class="d-display justify-content-centered"><%= f.submit "Generate Report", class:"btn btn-success rounded-4 col-12 mx-1" %></span>
+  <% end %>
+</div>

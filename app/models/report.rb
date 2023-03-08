@@ -3,5 +3,5 @@ class Report < ApplicationRecord
   has_many :report_instances
   has_many :players, through: :report_instances
 
-  validates :referee_validation, presence: true
+  # validates :referee_validation, presence: true
 end

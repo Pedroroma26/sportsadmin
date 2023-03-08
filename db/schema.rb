@@ -85,15 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_150739) do
     t.index ["club_id"], name: "index_players_on_club_id"
   end
 
-  create_table "reports", force: :cascade do |t|
-    t.boolean "referee_validation", default: false
-    t.bigint "game_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_reports_on_game_id"
-  end
-
-  create_table "reports_instances", force: :cascade do |t|
+  create_table "report_instances", force: :cascade do |t|
     t.string "category"
     t.integer "minute"
     t.text "motive"
@@ -101,8 +93,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_150739) do
     t.bigint "player_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_reports_instances_on_player_id"
-    t.index ["report_id"], name: "index_reports_instances_on_report_id"
+    t.index ["player_id"], name: "index_report_instances_on_player_id"
+    t.index ["report_id"], name: "index_report_instances_on_report_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.boolean "referee_validation", default: false
+    t.bigint "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_reports_on_game_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -130,7 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_150739) do
   add_foreign_key "games", "competitions"
   add_foreign_key "games", "users", column: "referee_id"
   add_foreign_key "players", "clubs"
+  add_foreign_key "report_instances", "players"
+  add_foreign_key "report_instances", "reports"
   add_foreign_key "reports", "games"
-  add_foreign_key "reports_instances", "players"
-  add_foreign_key "reports_instances", "reports"
 end

@@ -123,7 +123,9 @@ competition1 = Competition.create!(name: "Campeonato Nacional de Hóquei em Camp
 puts "Competition created"
 
 game1 = Game.create!(competition: competition1, club_home: club1, club_away: club2, referee: user1, game_date: DateTime.now)
-game2 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: DateTime.now + 1)
+game2 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "09/03/2024")
+game3 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "09/03/2023")
+game4 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "07/03/2023")
 puts "Games created"
 
 report1 = Report.create!(game: game1, referee_validation: true)
@@ -138,4 +140,5 @@ report_instance1_1 = ReportsInstance.create!(category: "Goal", minute: 8, motive
 # report_instance1_7 = ReportsInstance.create!(category: "Sub-Out", minute: 9, motive: "", report: report1, player: player1)
 # report_instance1_8 = ReportsInstance.create!(category: "Other", minute: 45, motive: "", report: report1, player: player1)
 # report_instance1_9 = ReportsInstance.create!(category: "Other", minute: "", motive: "Claques andaram à porrada", report: report1, player: player1)
+
 puts "Instances created"

@@ -1,5 +1,6 @@
 class Club < ApplicationRecord
   has_many :players, dependent: :destroy
+  has_one_attached :photo
 
   validates :name, presence: true, uniqueness: true
   validates :abbreviation, presence: true, length: { maximum: 5 }

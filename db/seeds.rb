@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-
 ReportInstance.destroy_all
 puts "All users destroyed"
 
@@ -47,7 +46,9 @@ competition1 = Competition.create!(name: "Liga NOS")
 puts "Competitions created"
 
 game1 = Game.create!(competition: competition1, club_home: club1, club_away: club2, referee: user1, game_date: DateTime.now)
-game2 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: DateTime.now + 1)
+game2 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "09/03/2024")
+game3 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "09/03/2023")
+game4 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "07/03/2023")
 puts "Games created"
 
 report1 = Report.create!(game: game1, referee_validation: true)

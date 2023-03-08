@@ -49,9 +49,8 @@
       </a>
     </li>
     <li class="nav-item logout">
-      <a href="#">
         <i class="fa-solid fa-right-from-bracket nav-item-icon"></i>
-        <span class="nav-item-text">Log Out</span>
+        <span class="nav-item-text"><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %></span>
       </a>
     </li>
   </ul>

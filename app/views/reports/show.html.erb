@@ -1,0 +1,10 @@
+<div class="teams">
+  <div class="team-names">
+    <%= @game.club_home.abbreviation %>
+    vs
+    <%= @game.club_away.abbreviation %>
+  </div>
+  <div class="report-container" data-controller="submit-form-reports">
+    <%= render "shared/final_report", game: @game, report: @report, report_instance: @report_instance %>
+  </div>
+</div>

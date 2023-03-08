@@ -6,9 +6,11 @@ Rails.application.routes.draw do
     resources :players, only: [:new, :create]
   end
   resources :games do
-    resources :reports, only: [:new, :show, :create]
+    resources :reports, only: [:show, :create, :update]
   end
-  resources :reports, only: [:index]
+  resources :reports, only: [:index] do
+    resources :report_instances, only: [:create, :destroy]
+  end
   resources :competitions, only: [:index, :show]
   resources :referees, only: [:index, :edit, :update]
 end

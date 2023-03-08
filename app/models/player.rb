@@ -1,5 +1,6 @@
 class Player < ApplicationRecord
   belongs_to :club
+  has_many :report_instances
 
   validates :first_name, presence: true
   validates :last_name, presence: true

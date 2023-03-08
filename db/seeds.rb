@@ -61,5 +61,5 @@ report_instance1_5 = ReportInstance.create!(category: "Red-Card", minute: 40, mo
 report_instance1_6 = ReportInstance.create!(category: "Sub-In", minute: 10, motive: "", report: report1, player: player1)
 report_instance1_7 = ReportInstance.create!(category: "Sub-Out", minute: 9, motive: "", report: report1, player: player1)
 report_instance1_8 = ReportInstance.create!(category: "Other", minute: 45, motive: "", report: report1, player: player1)
-report_instance1_9 = ReportInstance.create!(category: "Other", minute: "", motive: "Claques andaram à porrada", report: report1, player: player1)
+report_instance1_9 = ReportInstance.create!(category: "Other", minute: "", motive: "Claques andaram à porrada", report: report1)
 puts "Instances created"

@@ -1,11 +1,18 @@
 class ReportsController < ApplicationController
+
   def index
     @reports = Report.all
   end
 
-  def new
+  def show
     @game = Game.find(params[:game_id])
-    @report = Report.new
+    @report = @game.report
+
+    if @report.blank?
+      @report = Report.create(game: @game, referee_validation: false)
+    end
+
+    @report_instance = ReportInstance.new
   end
 
   def create
@@ -25,9 +32,15 @@ class ReportsController < ApplicationController
   def update
     @report = Report.find(params[:id])
     if @report.update(report_params)
-      redirect_to reports_path
+      respond_to do |format|
+        format.html { redirect_to reports_path }
+        format.text { render partial: "shared/final_report", locals: { report: @report, game: @report.game, report_instance: ReportInstance.new }, formats: [:html] }
+      end
     else
-      render :edit, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :edit, status: :unprocessable_entity }
+        format.text { render partial: "shared/final_report", locals: { report: @report, game: @report.game, report_instance: ReportInstance.new }, formats: [:html] }
+      end
     end
   end
 
@@ -40,6 +53,6 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:start_time, :end_time, :pitch_id)
+    params.require(:report).permit(:start_time, :end_time, :pitch_id, :referee_validation)
   end
 end

@@ -77,5 +77,8 @@ group :test do
   gem "webdrivers"
 end
 
+# We don’t want to share those secret keys on GitHub.
+# We can use the dotenv gem for security:
 gem "dotenv-rails", groups: [:development, :test]
 
+gem "cloudinary"

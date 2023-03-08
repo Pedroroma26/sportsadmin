@@ -1,3 +1,5 @@
+<div class="container">
+
 <h2>Games:</h2>
 
 <% @games.each do |game| %>
@@ -7,3 +9,5 @@
   <p><%= game.referee.first_name %> <%= game.referee.last_name %></p>
   <p><%= game.game_date.strftime('%d-%m-%Y') %></p>
 <% end %>
+
+</div>

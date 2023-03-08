@@ -1,0 +1,7 @@
+<%= simple_form_for [@club, @player] do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :birth_date %>
+  <%= f.input :gender, collection: %w[male female other] %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

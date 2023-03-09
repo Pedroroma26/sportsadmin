@@ -1,0 +1,22 @@
+ <h2>Competititon INDEX</h2>
+
+  <table class="table">
+
+    <thead>
+      <tr class="table_headers" id ="clubs_index">
+        <th scope="">Name</th>
+        <th scope="">Creation Date</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @competitions.each do |competititon| %>
+
+      <tr>
+        <td><%= competititon.name %></td>
+        <td><%= competititon.created_at.strftime('%d-%m-%Y') %></td>
+      </tr>
+
+      <% end %>
+    </tbody>
+  </table>

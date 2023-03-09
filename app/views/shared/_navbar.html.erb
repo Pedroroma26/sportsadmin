@@ -1,45 +1,51 @@
 <nav>
   <ul class="nav-list">
-    <a href="#" class="logo">
       <li class="nav-item">
-        <i class="fa-solid fa-futbol nav-item-icon"></i>
-        <span class="nav-item-text">sports admin</span>
+        <%= link_to root_path do %>
+          <i class="fa-solid fa-futbol nav-item-icon"></i>
+          <span class="nav-item-text">Sports Admin</span>
+        <% end %>
       </li>
     </a>
     <li class="nav-item">
-      <a href="#">
+      <%= link_to root_path do %>
         <i class="fa-solid fa-house nav-item-icon"></i>
         <span class="nav-item-text">Home</span>
+      <% end %>
       </a>
     </li>
     <li class="nav-item">
-      <a href="#">
+      <%= link_to games_path do %>
         <i class="fa-solid fa-calendar nav-item-icon"></i>
         <span class="nav-item-text">Calendar</span>
-      </a>
+      <% end %>
     </li>
     <li class="nav-item">
-      <a href="#">
+      <%= link_to referees_path do %>
         <i class="fa-solid fa-user nav-item-icon"></i>
         <span class="nav-item-text">Referee</span>
+      <% end %>
       </a>
     </li>
     <li class="nav-item">
-      <a href="#">
+      <%= link_to competitions_path do %>
         <i class="fa-solid fa-trophy nav-item-icon"></i>
         <span class="nav-item-text">Competitions</span>
+      <% end %>
       </a>
     </li>
     <li class="nav-item">
-      <a href="#">
+      <%= link_to clubs_path do %>
         <i class="fa-solid fa-people-group nav-item-icon"></i>
-        <span class="nav-item-text">Teams</span>
+        <span class="nav-item-text">Clubs</span>
+        <% end %>
       </a>
     </li>
     <li class="nav-item">
-      <a href="#">
+      <%= link_to reports_path do %>
         <i class="fa-solid fa-clipboard-list nav-item-icon"></i>
         <span class="nav-item-text">Reports</span>
+      <% end %>
       </a>
     </li>
     <li class="nav-item">
@@ -49,8 +55,10 @@
       </a>
     </li>
     <li class="nav-item logout">
+      <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
         <i class="fa-solid fa-right-from-bracket nav-item-icon"></i>
-        <span class="nav-item-text"><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %></span>
+        <span class="nav-item-text"> Log out</span>
+      <% end %>
       </a>
     </li>
   </ul>

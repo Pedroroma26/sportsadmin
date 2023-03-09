@@ -1,14 +1,7 @@
 <div class="teams">
   <% @reports.each do |report| %>
-    <%= link_to game_report_path(report.game, report) do %>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><%= report.game.club_home.name %></h5>
-          <h6 class="card-subtitle mb-1">vs</h6>
-          <h5 class="card-title"><%= report.game.club_away.name %></h5>
-          <p><%= report.game.game_date %></p>
-        </div>
-      </div>
+    <%= link_to game_report_path(report.game, report), class: "text-decoration-none" do %>
+      <p style="color: white;"><%= report.game.club_home.name %>|<%= report.game.game_date.strftime("%-d %b, %k:%M") %>|<%= report.game.club_away.name %></p>
     <% end %>
   <% end %>
 </div>

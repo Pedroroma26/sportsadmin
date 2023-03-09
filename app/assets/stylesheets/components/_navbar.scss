@@ -7,9 +7,9 @@ nav {
   left: 0;
   width: 90px;
   overflow: hidden;
-  transition: width 0.2s linear;
+  transition: width 0.5s ease-in-out;
   background-color: #00032c;
-  
+
 }
 
 nav i{
@@ -18,7 +18,7 @@ nav i{
 
 nav:hover{
   width: 300px;
-  transition: all 0.5s ease;
+  transition: all 0.5s ease-in-out;
 }
 
 nav span{

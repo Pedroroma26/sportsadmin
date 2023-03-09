@@ -11,6 +11,10 @@
 @import "components/index";
 @import "pages/index";
 
+html {
+  background-color: #081484;
+}
+
 body{
 
   // background-color: #00032c;  ORIGINAL BACKGROUND
@@ -32,6 +36,6 @@ body{
 	100% {
 		background-position: 0% 50%;
 	}
-  background-color: #242fc9;
-  //color: white;
+  // background-color: #242fc9;
+  // color: white;
 }

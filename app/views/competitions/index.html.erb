@@ -13,12 +13,12 @@
       <% @competitions.each do |competititon| %>
 
       <tr>
-        <td><%= competititon.name %></td>
+        <td><%= link_to competititon.name, competition_path(competititon) %></td>
         <td><%= competititon.created_at.strftime('%d-%m-%Y') %></td>
       </tr>
 
       <% end %>
     </tbody>
   </table>
-  
+
 </div>

@@ -12,6 +12,7 @@
 @import "pages/index";
 
 body{
+
   // background-color: #00032c;  ORIGINAL BACKGROUND
 
   background: linear-gradient(-45deg, #040d28,#1316CA,#081484, #0008ff, #00032e);
@@ -31,4 +32,6 @@ body{
 	100% {
 		background-position: 0% 50%;
 	}
+  background-color: #242fc9;
+  //color: white;
 }

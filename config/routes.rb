@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     resources :report_instances, only: [:create, :destroy]
   end
   resources :competitions, only: [:index, :show]
-  resources :referees, only: [:index, :edit, :update]
+  resources :referees
 end

@@ -1,9 +1,20 @@
-<h2>Games:</h2>
-
-<% @games.each do |game| %>
-  <p><%= game.competition.name %></p>
-  <p><%= game.club_home.name %></p>
-  <p><%= game.club_away.name %></p>
-  <p><%= game.referee.first_name %> <%= game.referee.last_name %></p>
-  <p><%= game.game_date.strftime('%d-%m-%Y') %></p>
-<% end %>
+<div class="main-container">
+  <div class="title-matches">
+    <h1>Matches</h1>
+  </div>
+  <div class="games-container">
+    <% @games.each do |game| %>
+      <%= link_to game_path(game), class: "text-decoration-none" do %>
+        <div class="games-card py-2 my-2">
+          <p><%= game.competition.name %></p>
+          <div class="d-flex justify-content-between position-relative mx-5">
+            <p><%= game.club_home.name %></p>
+            <p class="game-date"><%= game.game_date.strftime("%-d %b, %k:%M") %></p>
+            <p><%= game.club_away.name %></p>
+          </div>
+          <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

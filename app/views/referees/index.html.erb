@@ -1,0 +1,25 @@
+<h1>Referees</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @referees.each do |referee| %>
+      <tr>
+        <td><%= link_to referee.full_name, referees_path(@referee) %></td>
+        <td><%= referee.email %></td>
+        <td><%= referee.phone_number %></td>
+        <td>
+          <%= link_to "Edit", edit_referee_path(referee) %>
+          <%= button_to "Delete", referee_path(referee), method: :delete, data: { confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "Add Referee", new_referee_path %>

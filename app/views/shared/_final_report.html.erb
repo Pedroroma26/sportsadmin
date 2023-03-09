@@ -3,10 +3,10 @@
     <%= game.club_home.abbreviation %>
     <table class="teams-table border-right-table-team w-100">
       <% game.club_home.players.each do |player| %>
-        <tr>
+        <tr class="">
           <td class="border-right-table-row"><%= player.player_number %></td>
-          <td><%= player.first_name %> <%= player.last_name %></td>
-          <td class="instances">
+          <td class="text-start px-2 player-names"><%= player.first_name %> <%= player.last_name %></td>
+          <td class="instances text-start">
             <% player.report_instances.where(report: report).order(minute: :asc).each do |report_instance| %>
               <p class="m-0"><%#= report_instance.category %></p>
               <% case %>
@@ -27,9 +27,9 @@
               <% end %>
             <% end %>
           </td>
-          <td class="<%= "d-none" if report.referee_validation %>">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPlayer-<%= player.id %>">
-              <i class="fa-regular fa-circle-pause"></i>
+          <td class="add-intances-buttons <%= "d-none" if report.referee_validation %>">
+            <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#modalPlayer-<%= player.id %>">
+              <i class="fa-solid fa-circle-plus"></i>
             </button>
             <%= render "shared/form_report_player_instance", report: report, report_instance: report_instance, player: player, game: game  %>
           </td>
@@ -42,10 +42,10 @@
     <table class="teams-table w-100">
       <%= game.club_away.abbreviation %>
       <% game.club_away.players.each do |player| %>
-        <tr>
+        <tr class="">
           <td class="border-right-table-row"><%= player.player_number %></td>
-          <td class="border-right-table-row"><%= player.first_name %> <%= player.last_name %></td>
-          <td class="instances">
+          <td class="text-start px-2 player-names"><%= player.first_name %> <%= player.last_name %></td>
+          <td class="instances text-start">
             <% player.report_instances.where(report: report).order(minute: :asc).each do |report_instance| %>
               <p class="m-0"><%#= report_instance.category %></p>
               <% case %>
@@ -66,9 +66,9 @@
               <% end %>
             <% end %>
           </td>
-          <td class="<%= "d-none" if report.referee_validation %>">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPlayer-<%= player.id %>">
-              <i class="fa-regular fa-circle-pause"></i>
+          <td class="add-intances-buttons <%= "d-none" if report.referee_validation %>">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalPlayer-<%= player.id %>">
+              <i class="fa-solid fa-circle-plus"></i>
             </button>
             <%= render "shared/form_report_player_instance", report: report, report_instance: report_instance, player: player, game: game  %>
           </td>
@@ -78,7 +78,7 @@
   </div>
 </div>
 
-<div class="report-infos-container border-left-table-team">
+<div class="report-infos-container">
   <p>Match report</p>
   <% report.report_instances.where(category: "Other").each do |instance| %>
     <p><%= instance.motive %></p>

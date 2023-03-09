@@ -128,7 +128,7 @@ game3 = Game.create!(competition: competition1, club_home: club3, club_away: clu
 game4 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "07/03/2023")
 puts "Games created"
 
-report1 = Report.create!(game: game1, referee_validation: true)
+report1 = Report.create!(game: game1, referee_validation: false)
 puts "Report1 created"
 
 report_instance1_1 = ReportInstance.create!(category: "Goal", minute: 8, motive: "", report: report1, player: game1.club_home.players.last)

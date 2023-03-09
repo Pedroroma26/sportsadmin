@@ -21,7 +21,7 @@
 
   <div class="mt-5">
     <span class="title-matches"><h1>Today's Matches</h1></span>
-    <div class="games-container">
+    <div class="games-container border-highlight">
       <% @games.where(game_date: DateTime.now.all_day).each do |game| %>
         <%= link_to game_path(game), class: "text-decoration-none" do %>
           <div class="games-card py-2 my-2">

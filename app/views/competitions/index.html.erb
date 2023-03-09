@@ -1,6 +1,6 @@
- <h2>Competititon INDEX</h2>
+ <div class="container">
 
-  <table class="table">
+   <table class="table">
 
     <thead>
       <tr class="table_headers" id ="clubs_index">
@@ -13,10 +13,12 @@
       <% @competitions.each do |competititon| %>
 
       <tr>
-        <td><%= competititon.name %></td>
+        <td><%= link_to competititon.name, competition_path(competititon) %></td>
         <td><%= competititon.created_at.strftime('%d-%m-%Y') %></td>
       </tr>
 
       <% end %>
     </tbody>
   </table>
+
+</div>

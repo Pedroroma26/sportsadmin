@@ -122,23 +122,35 @@ puts 'Fake players better than Bernardo were created.'
 competition1 = Competition.create!(name: "Campeonato Nacional de Hóquei em Campo")
 puts "Competition created"
 
-game1 = Game.create!(competition: competition1, club_home: club1, club_away: club2, referee: user1, game_date: DateTime.now)
+game1 = Game.create!(competition: competition1, club_home: club1, club_away: club2, referee: user1, game_date: "09/03/2023")
 game2 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "09/03/2024")
 game3 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "09/03/2023")
 game4 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "07/03/2023")
+game5 = Game.create!(competition: competition1, club_home: club3, club_away: club1, referee: user1, game_date: "11/03/2023")
 puts "Games created"
 
-report1 = Report.create!(game: game1, referee_validation: false)
+report1 = Report.create!(game: game1, referee_validation: true)
 puts "Report1 created"
+report2 = Report.create!(game: game2, referee_validation: false)
+puts "Report2 created"
+report3 = Report.create!(game: game3, referee_validation: false)
+puts "Report3 created"
+report4 = Report.create!(game: game4, referee_validation: true)
+puts "Report4 created"
+
+report_instance4_1 = ReportInstance.create!(category: "Own-Goal", minute: 15, motive: "", report: report4, player: player1)
+report_instance4_2 = ReportInstance.create!(category: "Green-Card", minute: 17, motive: "", report: report4, player: player1)
+report_instance4_3 = ReportInstance.create!(category: "Yellow-Card", minute: 32, motive: "", report: report4, player: player1)
+report_instance4_4 = ReportInstance.create!(category: "Red-Card", minute: 40, motive: "", report: report4, player: player1)
+report_instance4_5 = ReportInstance.create!(category: "Sub-In", minute: 10, motive: "", report: report4, player: player1)
+report_instance4_6 = ReportInstance.create!(category: "Sub-Out", minute: 9, motive: "", report: report4, player: player1)
+report_instance4_7 = ReportInstance.create!(category: "Other", minute: 45, motive: "", report: report4, player: player1)
+report_instance4_8 = ReportInstance.create!(category: "Other", minute: "", motive: "Claques andaram à porrada", report: report1, player: player1)
+
+report5 = Report.create!(game: game5, referee_validation: false)
+puts "Report5 created"
 
 report_instance1_1 = ReportInstance.create!(category: "Goal", minute: 8, motive: "", report: report1, player: game1.club_home.players.last)
-# report_instance1_2 = ReportInstance.create!(category: "Own-Goal", minute: 15, motive: "", report: report1, player: player1)
-# report_instance1_3 = ReportInstance.create!(category: "Green-Card", minute: 17, motive: "", report: report1, player: player1)
-# report_instance1_4 = ReportInstance.create!(category: "Yellow-Card", minute: 32, motive: "", report: report1, player: player1)
-# report_instance1_5 = ReportInstance.create!(category: "Red-Card", minute: 40, motive: "", report: report1, player: player1)
-# report_instance1_6 = ReportInstance.create!(category: "Sub-In", minute: 10, motive: "", report: report1, player: player1)
-# report_instance1_7 = ReportInstance.create!(category: "Sub-Out", minute: 9, motive: "", report: report1, player: player1)
-# report_instance1_8 = ReportInstance.create!(category: "Other", minute: 45, motive: "", report: report1, player: player1)
-# report_instance1_9 = ReportInstance.create!(category: "Other", minute: "", motive: "Claques andaram à porrada", report: report1, player: player1)
+
 
 puts "Instances created"

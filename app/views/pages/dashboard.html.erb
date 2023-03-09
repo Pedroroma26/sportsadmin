@@ -2,9 +2,11 @@
 
   <div class="games">
     <h2 class="heading">Today's Games:</h2>
+
     <div class="card-deck">
       <% @games.where(game_date: DateTime.now.all_day).each do |game| %>
         <div class="card">
+
           <div class="card-body">
             <h5 class="card-title"><%= game.competition.name %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= game.club_home.name %> : <%= game.club_away.name %></h6>
@@ -12,8 +14,10 @@
             <p class="card-text"><strong>Referee:</strong> <%= game.referee.first_name %> <%= game.referee.last_name %></p>
             <button class="btn btn-primary">Report</button>
           </div>
+
         </div>
       <% end %>
+
     </div>
   </div>
 
@@ -50,8 +54,7 @@
       <% end %>
     </div>
   </div>
-
 </div>
 
-
  <%#= button_to "Report", game_report_path, class: "button" %>
+

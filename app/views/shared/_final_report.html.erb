@@ -6,6 +6,7 @@
         <tr class="">
           <td class="border-right-table-row"><%= player.player_number %></td>
           <td class="text-start px-2 player-names"><%= player.first_name %> <%= player.last_name %></td>
+          <td> <%= check_box_tag "selected_players[]", player.id %> </td>
           <td class="instances text-start">
             <% player.report_instances.where(report: report).order(minute: :asc).each do |report_instance| %>
               <p class="m-0"><%#= report_instance.category %></p>
@@ -45,6 +46,7 @@
         <tr class="">
           <td class="border-right-table-row"><%= player.player_number %></td>
           <td class="text-start px-2 player-names"><%= player.first_name %> <%= player.last_name %></td>
+          <td> <%= check_box_tag "selected_players[]", player.id %> </td>
           <td class="instances text-start">
             <% player.report_instances.where(report: report).order(minute: :asc).each do |report_instance| %>
               <p class="m-0"><%#= report_instance.category %></p>

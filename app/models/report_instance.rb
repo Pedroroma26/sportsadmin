@@ -4,5 +4,5 @@ class ReportInstance < ApplicationRecord
 
   validates :category, inclusion: { in: %w[Goal Own-Goal Green-Card Yellow-Card Red-Card Sub-In Sub-Out Other] }
 
-  REPORT_INSTANCES_CATEGORIES = %w[Goal Own-Goal Green-Card Yellow-Card Red-Card Sub-In Sub-Out Other]
+  REPORT_INSTANCES_CATEGORIES = %w[Goal Own-Goal Green-Card Yellow-Card Red-Card Sub-In Sub-Out ]
 end

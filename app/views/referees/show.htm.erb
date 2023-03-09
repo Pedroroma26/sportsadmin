@@ -1,0 +1,6 @@
+<h1><%= @referee.full_name %></h1>
+<p><strong>Email:</strong> <%= @referee.email %></p>
+<p><strong>Phone:</strong> <%= @referee.phone_number %></p>
+<%= link_to "Edit", edit_referee_path(@referee) %> |
+<%= button_to "Delete", referee_path(@referee), method: :delete, data: { confirm: "Are you sure?" } %> |
+<%= link_to "Back", referees_path %>

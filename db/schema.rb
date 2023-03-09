@@ -90,7 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_150739) do
     t.integer "minute"
     t.text "motive"
     t.bigint "report_id", null: false
-    t.bigint "player_id", null: false
+    t.bigint "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_report_instances_on_player_id"

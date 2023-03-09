@@ -2,8 +2,8 @@
   <div class="team-report">
     <%= game.club_home.abbreviation %>
     <table class="teams-table border-right-table-team w-100">
-      <tr>
-        <% game.club_home.players.each do |player| %>
+      <% game.club_home.players.each do |player| %>
+        <tr>
           <td class="border-right-table-row"><%= player.player_number %></td>
           <td><%= player.first_name %> <%= player.last_name %></td>
           <td class="instances">
@@ -33,16 +33,16 @@
             </button>
             <%= render "shared/form_report_player_instance", report: report, report_instance: report_instance, player: player, game: game  %>
           </td>
-        <% end %>
-      </tr>
+        </tr>
+      <% end %>
     </table>
   </div>
 
   <div class="team-report">
-    <table class="teams-table border-right-table-team w-100">
+    <table class="teams-table w-100">
       <%= game.club_away.abbreviation %>
-      <tr>
-        <% game.club_away.players.each do |player| %>
+      <% game.club_away.players.each do |player| %>
+        <tr>
           <td class="border-right-table-row"><%= player.player_number %></td>
           <td class="border-right-table-row"><%= player.first_name %> <%= player.last_name %></td>
           <td class="instances">
@@ -72,13 +72,13 @@
             </button>
             <%= render "shared/form_report_player_instance", report: report, report_instance: report_instance, player: player, game: game  %>
           </td>
-        <% end %>
-      </tr>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>
 
-<div class="report-infos-container">
+<div class="report-infos-container border-left-table-team">
   <p>Match report</p>
   <% report.report_instances.where(category: "Other").each do |instance| %>
     <p><%= instance.motive %></p>

@@ -12,7 +12,7 @@
             <h6 class="card-subtitle mb-2 text-muted"><%= game.club_home.name %> : <%= game.club_away.name %></h6>
             <p class="card-text"><strong>Date:</strong> <%= game.game_date.strftime('%d-%m-%Y') %> <strong>Hour:</strong> <%= game.game_date.strftime('%H:%M') %></p>
             <p class="card-text"><strong>Referee:</strong> <%= game.referee.first_name %> <%= game.referee.last_name %></p>
-            <button class="btn btn-primary">Report</button>
+            <%= link_to "Report", game_report_path(game, game.report), class: "btn btn-primary" %>
           </div>
 
         </div>
@@ -31,7 +31,6 @@
             <h6 class="card-subtitle mb-2 text-muted"><%= game.club_home.name %> : <%= game.club_away.name %></h6>
             <p class="card-text"><strong>Date:</strong> <%= game.game_date.strftime('%d-%m-%Y') %> <strong>Hour:</strong> <%= game.game_date.strftime('%H:%M') %></p>
             <p class="card-text"><strong>Referee:</strong> <%= game.referee.first_name %> <%= game.referee.last_name %></p>
-            <button class="btn btn-primary">Report</button>
           </div>
         </div>
       <% end %>
@@ -48,13 +47,10 @@
             <h6 class="card-subtitle mb-2 text-muted"><%= game.club_home.name %> : <%= game.club_away.name %></h6>
             <p class="card-text"><strong>Date:</strong> <%= game.game_date.strftime('%d-%m-%Y') %> <strong>Hour:</strong> <%= game.game_date.strftime('%H:%M') %></p>
             <p class="card-text"><strong>Referee:</strong> <%= game.referee.first_name %> <%= game.referee.last_name %></p>
-            <button class="btn btn-primary">Report</button>
+            <%= link_to "Report", game_report_path(game, game.report), class: "btn btn-primary" %>
           </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-
- <%#= button_to "Report", game_report_path, class: "button" %>
-

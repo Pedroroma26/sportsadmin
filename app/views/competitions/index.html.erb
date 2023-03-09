@@ -1,24 +1,17 @@
- <div class="container">
+ <div class="main-container">
 
-   <table class="table">
+  <div class="games-container">
+    <div class="games-card py-4 mb-2 mt-3">
+      <div class="d-flex justify-content-between position-relative mx-5">
 
-    <thead>
-      <tr class="table_headers" id ="clubs_index">
-        <th scope="">Name</th>
-        <th scope="">Creation Date</th>
-      </tr>
-    </thead>
-    <tbody>
+        <% @competitions.each do |competititon| %>
 
-      <% @competitions.each do |competititon| %>
+        <h3><%= link_to competititon.name, competition_path(competititon)%></h3>
+        <p><%= competititon.created_at.strftime('%d-%m-%Y')%></p>
 
-      <tr>
-        <td><%= link_to competititon.name, competition_path(competititon) %></td>
-        <td><%= competititon.created_at.strftime('%d-%m-%Y') %></td>
-      </tr>
+        <% end %>
 
-      <% end %>
-    </tbody>
-  </table>
-
+      </div>
+    </div>
+  </div>
 </div>

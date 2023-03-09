@@ -14,7 +14,7 @@
             <h6 style="decoration-none"><%= link_to referee.full_name, referee_path(referee) %></h6>
             <p><%= referee.email %> | <%= referee.phone_number %></p>
             <p><%= link_to "Edit", edit_referee_path(referee) %></p>
-            <p class="btn btn-outline-ghost rounded-4"><%= link_to "Delete", referee_path(referee), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+            <p class="btn btn-outline-primary rounded-4"><%= link_to "Delete", referee_path(referee), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
 
           </div>
       </div>

@@ -1,24 +1,20 @@
 <div class="main-container">
-
   <div class="mt-5">
     <span class="title-matches"><h1>Today's Matches</h1></span>
     <div class="games-container">
-
       <% @games.where(game_date: DateTime.now.all_day).each do |game| %>
-        <%= link_to game_path(game), class: "text-decoration-none" do %>
-          <div class="games-card py-2 my-2">
-            <p><%= game.competition.name %></p>
-            <div class="d-flex justify-content-between position-relative mx-5">
-              <p><%= game.club_home.name %></p>
-              <p class="game-date">
-                <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %> <%= game.game_date.strftime("%-d %b, %k:%M") %> <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
-              </p>
-              <p><%= game.club_away.name %></p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+        <div class="games-card py-3 mt-4">
+          <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: <%= game.referee.first_name %> <%= game.referee.last_name %> </p></span>
+          <div class="d-flex justify-content-center align-bottom position-relative px-5 my-3 gap-3 position-relative">
+            <div class="rounded-top-4 left-club-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></div>
+            <h3 class="mb-0"><%= game.club_home.abbreviation %></h3>
 
+            <%= link_to "Match Report", report_game_path(game), class: "btn btn-success rounded-5" %>
+            <div class="rounded-top-4 right-club-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></div>
+            <h3 class="mb-0"><%= game.club_away.abbreviation %></h3>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 
@@ -26,19 +22,17 @@
     <span class="title-matches"><h1>Upcoming Matches</h1></span>
     <div class="games-container">
       <% @games.where("game_date >= ?", (DateTime.now + 1.day).all_day).each do |game| %>
-        <%= link_to game_path(game), class: "text-decoration-none" do %>
-          <div class="games-card py-2 my-2">
-            <p><%= game.competition.name %></p>
-            <div class="d-flex justify-content-between position-relative mx-5">
-              <p><%= game.club_home.name %></p>
-              <p class="game-date">
-                <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %> <%= game.game_date.strftime("%-d %b, %k:%M") %> <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
-              </p>
-              <p><%= game.club_away.name %></p>
-            </div>
-            <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
+        <div class="games-card py-3 mt-4">
+          <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: <%= game.referee.first_name %> <%= game.referee.last_name %> </p></span>
+          <div class="d-flex justify-content-center align-bottom position-relative px-5 my-3 gap-3 position-relative">
+            <div class="rounded-top-4 left-club-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></div>
+            <h3 class="mb-0"><%= game.club_home.abbreviation %></h3>
+
+            <%= link_to "Match Report", report_game_path(game), class: "btn btn-success rounded-5" %>
+            <div class="rounded-top-4 right-club-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></div>
+            <h3 class="mb-0"><%= game.club_away.abbreviation %></h3>
           </div>
-        <% end %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -48,20 +42,17 @@
     <span class="title-matches"><h1>Last Matches</h1></span>
     <div class="games-container">
       <% @games.where("game_date < ?", DateTime.now.all_day).each do |game| %>
-        <%= link_to game_path(game), class: "text-decoration-none", style: "color: white;" do %>
-          <div class="games-card py-2 my-2">
-            <p><%= game.competition.name %></p>
-            <div class="d-flex justify-content-between position-relative mx-5">
-              <p><%= game.club_home.name %></p>
-              <p class="game-date">
-                <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %> <%= game.game_date.strftime("%-d %b, %k:%M") %> <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
-              </p>
-              <p><%= game.club_away.name %></p>
-            </div>
-            <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
-          <%= link_to "Report", report_game_path(game), class: "btn btn-primary my-1" %>
+        <div class="games-card py-3 mt-4">
+          <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: <%= game.referee.first_name %> <%= game.referee.last_name %> </p></span>
+          <div class="d-flex justify-content-center align-bottom position-relative px-5 my-3 gap-3 position-relative">
+            <div class="rounded-top-4 left-club-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></div>
+            <h3 class="mb-0"><%= game.club_home.abbreviation %></h3>
+
+            <%= link_to "Match Report", report_game_path(game), class: "btn btn-success rounded-5" %>
+            <div class="rounded-top-4 right-club-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></div>
+            <h3 class="mb-0"><%= game.club_away.abbreviation %></h3>
           </div>
-        <% end %>
+        </div>
       <% end %>
     </div>
   </div>

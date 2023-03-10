@@ -1,56 +1,62 @@
-<div class="container">
+<div class="main-container">
 
-  <div class="games">
-    <h2 class="heading">Today's Games:</h2>
-
-    <div class="card-deck">
-      <% @games.where(game_date: DateTime.now.all_day).each do |game| %>
-        <div class="card">
-
-          <div class="card-body">
-            <h5 class="card-title"><%= game.competition.name %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= game.club_home.name %> : <%= game.club_away.name %></h6>
-            <p class="card-text"><strong>Date:</strong> <%= game.game_date.strftime('%d-%m-%Y') %> <strong>Hour:</strong> <%= game.game_date.strftime('%H:%M') %></p>
-            <p class="card-text"><strong>Referee:</strong> <%= game.referee.first_name %> <%= game.referee.last_name %></p>
-            <%= link_to "Report", game_report_path(game, game.report), class: "btn btn-primary" %>
-          </div>
-
-        </div>
-      <% end %>
-
-    </div>
-  </div>
-
-  <div class="games">
-    <h2 class="heading">Next Games:</h2>
-    <div class="card-deck">
+  <div class="mt-5">
+    <span class="title-matches"><h1>Upcoming Matches</h1></span>
+    <div class="games-container">
       <% @games.where("game_date >= ?", (DateTime.now + 1.day).all_day).each do |game| %>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title"><%= game.competition.name %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= game.club_home.name %> : <%= game.club_away.name %></h6>
-            <p class="card-text"><strong>Date:</strong> <%= game.game_date.strftime('%d-%m-%Y') %> <strong>Hour:</strong> <%= game.game_date.strftime('%H:%M') %></p>
-            <p class="card-text"><strong>Referee:</strong> <%= game.referee.first_name %> <%= game.referee.last_name %></p>
+        <%= link_to game_path(game), class: "text-decoration-none" do %>
+          <div class="games-card py-2 my-2">
+            <p><%= game.competition.name %></p>
+            <div class="d-flex justify-content-between position-relative mx-5">
+              <p><%= game.club_home.name %></p>
+              <p class="game-date"><%= game.game_date.strftime("%-d %b, %k:%M") %></p>
+              <p><%= game.club_away.name %></p>
+            </div>
+            <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
+            <%= link_to "Report", game_report_path(game, game.report), class: "btn btn-primary" %>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>
 
-  <div class="games">
-    <h2 class="heading">Last Games:</h2>
-    <div class="card-deck">
-      <% @games.where("game_date < ?", DateTime.now.all_day).each do |game| %>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title"><%= game.competition.name %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= game.club_home.name %> : <%= game.club_away.name %></h6>
-            <p class="card-text"><strong>Date:</strong> <%= game.game_date.strftime('%d-%m-%Y') %> <strong>Hour:</strong> <%= game.game_date.strftime('%H:%M') %></p>
-            <p class="card-text"><strong>Referee:</strong> <%= game.referee.first_name %> <%= game.referee.last_name %></p>
-            <%= link_to "Report", game_report_path(game, game.report), class: "btn btn-primary" %>
+  <div class="mt-5">
+    <span class="title-matches"><h1>Today's Matches</h1></span>
+    <div class="games-container border-highlight">
+      <% @games.where(game_date: DateTime.now.all_day).each do |game| %>
+        <%= link_to game_path(game), class: "text-decoration-none" do %>
+          <div class="games-card py-2 my-2">
+            <p><%= game.competition.name %></p>
+            <div class="d-flex justify-content-between position-relative mx-5">
+              <p><%= game.club_home.name %></p>
+              <p class="game-date"><%= game.game_date.strftime("%-d %b, %k:%M") %></p>
+              <p><%= game.club_away.name %></p>
+            </div>
+            <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>
+
+  <div class="mt-5">
+    <span class="title-matches"><h1>Last Matches</h1></span>
+    <div class="games-container">
+      <% @games.where("game_date < ?", DateTime.now.all_day).each do |game| %>
+        <%= link_to game_path(game), class: "text-decoration-none" do %>
+          <div class="games-card py-2 my-2">
+            <p><%= game.competition.name %></p>
+            <div class="d-flex justify-content-between position-relative mx-5">
+              <p><%= game.club_home.name %></p>
+              <p class="game-date"><%= game.game_date.strftime("%-d %b, %k:%M") %></p>
+              <p><%= game.club_away.name %></p>
+            </div>
+            <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
+          <%= link_to "Report", game_report_path(game, game.report), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
 </div>

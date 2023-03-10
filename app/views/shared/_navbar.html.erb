@@ -1,11 +1,13 @@
 <nav>
   <ul class="nav-list">
       <li class="nav-item">
+        <%= link_to root_path do %>
         <div class="logo">
           <%= image_tag "sportsadmin-whitelogo.svg", class: "nav-item-icon" %>
           <span class="nav-item-text">Sports Admin</span>
         </div>
       </li>
+      <% end %>
     </a>
     <li class="nav-item">
       <%= link_to root_path do %>

@@ -101,7 +101,7 @@ clubs = Club.all
 
 # loop through each club and create 15 players
 clubs.each do |club|
-  15.times do
+  11.times do
     # generate player data using Faker
     firstname = Faker::Name.first_name
     lastname = Faker::Name.last_name
@@ -135,7 +135,7 @@ report2 = Report.create!(game: game2, referee_validation: false)
 puts "Report2 created"
 report3 = Report.create!(game: game3, referee_validation: false)
 puts "Report3 created"
-report4 = Report.create!(game: game4, referee_validation: true)
+report4 = Report.create!(game: game4, referee_validation: false)
 puts "Report4 created"
 
 # report_instance4_1 = ReportInstance.create!(category: "Own-Goal", minute: 15, motive: "", report: report4, player: player1)

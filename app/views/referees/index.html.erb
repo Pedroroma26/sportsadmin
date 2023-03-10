@@ -6,7 +6,7 @@
   <% @referees.each do |referee| %>
 
     <div class="games-card py-3 mb-2 mt-3">
-      <div class="d-flex justify-content-between align-itmes-center mx-5">
+      <div class="d-flex justify-content-between align-items-center mx-5">
         <h6 class="text-decoration-none mb-0"><%= link_to referee.full_name, referee_path(referee), class: "referee-name"  %></h6>
         <div>
           <%= link_to "Edit", edit_referee_path(referee), class: "text-decoration-none btn btn-primary btn-sm rounded-4 mr-2" %>

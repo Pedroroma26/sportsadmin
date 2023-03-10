@@ -8,10 +8,10 @@
           <div class="games-card py-2 my-2">
             <p><%= game.competition.name %></p>
             <div class="d-flex justify-content-between position-relative mx-5">
-              <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
               <p><%= game.club_home.name %></p>
-              <p class="game-date"><%= game.game_date.strftime("%-d %b, %k:%M") %></p>
-              <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
+              <p class="game-date">
+                <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %> <%= game.game_date.strftime("%-d %b, %k:%M") %> <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
+              </p>
               <p><%= game.club_away.name %></p>
             </div>
             <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
@@ -30,10 +30,10 @@
           <div class="games-card py-2 my-2">
             <p><%= game.competition.name %></p>
             <div class="d-flex justify-content-between position-relative mx-5">
-              <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
               <p><%= game.club_home.name %></p>
-              <p class="game-date"><%= game.game_date.strftime("%-d %b, %k:%M") %></p>
-              <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
+              <p class="game-date">
+                <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %> <%= game.game_date.strftime("%-d %b, %k:%M") %> <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
+              </p>
               <p><%= game.club_away.name %></p>
             </div>
             <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
@@ -48,18 +48,18 @@
     <span class="title-matches"><h1>Last Matches</h1></span>
     <div class="games-container">
       <% @games.where("game_date < ?", DateTime.now.all_day).each do |game| %>
-        <%= link_to game_path(game), class: "text-decoration-none" do %>
+        <%= link_to game_path(game), class: "text-decoration-none", style: "color: white;" do %>
           <div class="games-card py-2 my-2">
             <p><%= game.competition.name %></p>
             <div class="d-flex justify-content-between position-relative mx-5">
-              <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
               <p><%= game.club_home.name %></p>
-              <p class="game-date"><%= game.game_date.strftime("%-d %b, %k:%M") %></p>
-              <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
+              <p class="game-date">
+                <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %> <%= game.game_date.strftime("%-d %b, %k:%M") %> <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
+              </p>
               <p><%= game.club_away.name %></p>
             </div>
             <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
-          <%= link_to "Report", report_game_path(game), class: "btn btn-primary" %>
+          <%= link_to "Report", report_game_path(game), class: "btn btn-primary my-1" %>
           </div>
         <% end %>
       <% end %>

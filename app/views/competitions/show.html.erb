@@ -2,5 +2,5 @@
   <%=  @competition.name %>
   <%=  @competition.created_at.strftime('%d-%m-%Y') %>
 
-  <%= link_to "Create a Match", new_game_path, class: "btn btn-primary" %>
+  <%= link_to "Create a Match", new_competition_game_path(@competition), class: "btn btn-primary" %>
 </div>

@@ -1,8 +1,20 @@
-
-  <p>Home Team: <%= @game.club_home.name %> (<%= @game.club_home.abbreviation %>)</p>
-  <p>Away Team: <%= @game.club_away.name %> (<%= @game.club_away.abbreviation %>)</p>
-  <p>Referee: <%= @game.referee.full_name %></p>
-  <p>Date: <%= @game.game_date.strftime('%d-%m-%Y') %></p>
-  <p>Game Hour: <%= @game.game_date.strftime('%H:%M') %></p>
-  <p>Location: <%= @game.club_home.address %></p>
-  <p class= "btn btn-primary">Game Report</p>
+<div class="show-container">
+  <div class="show-games">
+    <div class="game-teams">
+      <p><strong><%= @game.club_home.name %> (<%= @game.club_home.abbreviation %>)</strong></p>
+      <p class="vs-text">vs</p>
+      <p><strong><%= @game.club_away.name %> (<%= @game.club_away.abbreviation %>)</strong></p>
+    </div>
+    <p>Location: <%= @game.club_home.address %></p>
+    <%# ----------------trocar para geocode------------------ %>
+    <img class="geocode-field" src="https://alumniandfriends.tufts.edu/sites/default/files/2020-01/CAM_01_FIELDS_ZOOM%20%28FH%29.jpg" alt="">
+    <div class="lower-div">
+      <div>
+        <p>Date: <%= @game.game_date.strftime('%d-%m-%Y') %> | <%= @game.game_date.strftime('%H:%M') %></p>
+        <p>Referee: <%= @game.referee.full_name %></p>
+      </div>
+      <%# <p class= "btn btn-primary button-report">Game Report</p> %>
+      <%= link_to "Report", report_game_path(@game), class: "btn btn-primary button-report" %>
+    </div>
+  </div>
+</div>

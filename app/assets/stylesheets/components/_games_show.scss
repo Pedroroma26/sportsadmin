@@ -1,0 +1,49 @@
+.show-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  margin: 20px 0 0 90px;
+  padding: 0;
+}
+
+.show-games{
+  border-radius: 7px;
+  background-color: #00074569;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+  width: 80%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 50px 0 50px;
+}
+
+.game-teams{
+  display: flex;
+  justify-content: space-between;
+}
+
+.vs-text{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.geocode-field{
+height: 500px;
+border-radius: 7px;
+box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+margin: 20px 0 30px 0;
+}
+
+.lower-div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-report{
+  width: 195px;
+  height: 40px;
+}

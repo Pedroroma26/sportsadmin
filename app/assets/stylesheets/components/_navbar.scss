@@ -8,8 +8,7 @@ nav {
   width: 90px;
   overflow: hidden;
   transition: width 0.5s ease-in-out;
-  background-color: #00032c;
-
+  background-color: #0007458c;
 }
 
 nav i{
@@ -17,7 +16,7 @@ nav i{
 }
 
 nav:hover{
-  width: 300px;
+  width: 280px;
   transition: all 0.5s ease-in-out;
 }
 
@@ -35,7 +34,6 @@ nav span{
 }
 
 .logo{
-  text-align: center;
   display: flex;
   margin-bottom: 17px;
   transition: all 0.5 ease;
@@ -51,8 +49,10 @@ nav span{
 .logo span {
   font-weight: bold;
   padding-left: 15px;
-  font-size: 20px;
+  font-size: 17px;
   text-transform: uppercase;
+  margin-left: 0;
+  margin-top: 10px;
 }
 .logo .nav-item {
   display: flex;
@@ -61,14 +61,12 @@ nav span{
 .nav-item {
   position: relative;
   color: gray;
-  font-size: 14px;
   display: flex;
   width: 300px;
   padding: 10px;
 }
 
 .nav-item:hover{
-  color: #5af7dc;
 }
 
 .nav-item a {

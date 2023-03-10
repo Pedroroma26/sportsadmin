@@ -6,12 +6,16 @@
 
       <% @games.where(game_date: DateTime.now.all_day).each do |game| %>
         <%= link_to game_path(game), class: "text-decoration-none" do %>
+
           <div class="games-card py-3">
             <p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: <%= game.referee.first_name %> <%= game.referee.last_name %> </p>
             <div class="d-flex justify-content-between align-bottom position-relative mx-5 my-3">
-              <h3><%= game.club_home.name %></h3>
+            <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
+              <h3><%= game.club_home.abbreviation %></h3>
               <%= link_to "Match Report", report_game_path(game), class: "btn btn-success rounded-5 my-2" %>
-              <h3><%= game.club_away.name %></h3>
+              <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
+              <h3><%= game.club_away.abbreviation %></h3>
+
             </div>
           </div>
         <% end %>
@@ -28,9 +32,13 @@
           <div class="games-card py-2 my-2">
             <p><%= game.competition.name %></p>
             <div class="d-flex justify-content-between position-relative mx-5">
+
+              <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
               <h3><%= game.club_home.abbreviation %></h3>
               <p class="game-date"><%= game.game_date.strftime("%-d %b, %k:%M") %></p>
+              <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
               <h3><%= game.club_away.abbreviation %></h3>
+
             </div>
             <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
           </div>
@@ -48,9 +56,13 @@
           <div class="games-card py-2 my-2">
             <p><%= game.competition.name %></p>
             <div class="d-flex justify-content-between position-relative mx-5">
+
+              <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
               <h3><%= game.club_home.abbreviation %></h3>
               <p class="game-date"><%= game.game_date.strftime("%-d %b, %k:%M") %></p>
+              <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
               <h3><%= game.club_away.abbreviation %></h3>
+
             </div>
             <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
           <%= link_to "Report", report_game_path(game), class: "btn btn-primary" %>

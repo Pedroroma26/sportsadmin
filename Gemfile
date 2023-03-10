@@ -84,5 +84,3 @@ gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
 
 gem 'faker'
-
-gem 'ruby-vips'

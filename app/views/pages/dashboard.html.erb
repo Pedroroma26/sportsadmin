@@ -1,26 +1,6 @@
 <div class="main-container">
 
   <div class="mt-5">
-    <span class="title-matches"><h1>Upcoming Matches</h1></span>
-    <div class="games-container">
-      <% @games.where("game_date >= ?", (DateTime.now + 1.day).all_day).each do |game| %>
-        <%= link_to game_path(game), class: "text-decoration-none" do %>
-          <div class="games-card py-2 my-2">
-            <p><%= game.competition.name %></p>
-            <div class="d-flex justify-content-between position-relative mx-5">
-              <p><%= game.club_home.name %></p>
-              <p class="game-date"><%= game.game_date.strftime("%-d %b, %k:%M") %></p>
-              <p><%= game.club_away.name %></p>
-            </div>
-            <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
-            <%= link_to "Report", game_report_path(game, game.report), class: "btn btn-primary" %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="mt-5">
     <span class="title-matches"><h1>Today's Matches</h1></span>
     <div class="games-container border-highlight">
       <% @games.where(game_date: DateTime.now.all_day).each do |game| %>
@@ -33,11 +13,32 @@
               <p><%= game.club_away.name %></p>
             </div>
             <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
+            <%= link_to "Report", report_game_path(game), class: "btn btn-primary" %>
           </div>
         <% end %>
       <% end %>
     </div>
   </div>
+
+  <div class="mt-5">
+    <span class="title-matches"><h1>Upcoming Matches</h1></span>
+    <div class="games-container">
+      <% @games.where("game_date >= ?", (DateTime.now + 1.day).all_day).each do |game| %>
+        <%= link_to game_path(game), class: "text-decoration-none" do %>
+          <div class="games-card py-2 my-2">
+            <p><%= game.competition.name %></p>
+            <div class="d-flex justify-content-between position-relative mx-5">
+              <p><%= game.club_home.name %></p>
+              <p class="game-date"><%= game.game_date.strftime("%-d %b, %k:%M") %></p>
+              <p><%= game.club_away.name %></p>
+            </div>
+            <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
 
   <div class="mt-5">
     <span class="title-matches"><h1>Last Matches</h1></span>
@@ -52,7 +53,7 @@
               <p><%= game.club_away.name %></p>
             </div>
             <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
-          <%= link_to "Report", game_report_path(game, game.report), class: "btn btn-primary" %>
+          <%= link_to "Report", report_game_path(game), class: "btn btn-primary" %>
           </div>
         <% end %>
       <% end %>

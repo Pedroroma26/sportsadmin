@@ -14,7 +14,7 @@
         <p>Referee: <%= @game.referee.full_name %></p>
       </div>
       <%# <p class= "btn btn-primary button-report">Game Report</p> %>
-      <%= link_to "Report", game_report_path(@report.game, @report), class: "btn btn-primary button-report" %>
+      <%= link_to "Report", report_game_path(@game), class: "btn btn-primary button-report" %>
     </div>
   </div>
 </div>

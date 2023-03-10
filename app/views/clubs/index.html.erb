@@ -1,16 +1,19 @@
 
-<div class="games-container">
+<div class="main-container">
 
+  <div class="games-container">
+  <span class="title-matches"><h1>Clubs List</h1></span>
 
-      <% @clubs.each do |club| %>
+    <% @clubs.each do |club| %>
 
-        <div class="games-card py-4 mb-2 mt-3">
+      <div class="games-card py-3 mb-2 mt-3">
+        <div class="d-flex justify-content-between align-itmes-center position-relative mx-5">
 
-          <h3><%= club.name %></h3>
-          <p><%= club.address %> | <%= club.email %> | <%= club.phone_number %></p>
-        
+          <h6 style="margin-bottom: 0"><%= club.name %></h6>
+          <p style="margin-bottom: 0"><%= club.address %> | <%= club.email %> | <%= club.phone_number %></p>
+
         </div>
-
+      </div>
       <% end %>
 
   </div>

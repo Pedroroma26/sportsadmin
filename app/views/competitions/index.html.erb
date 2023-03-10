@@ -1,16 +1,17 @@
  <div class="main-container">
 
   <div class="games-container">
-    <div class="games-card py-4 mb-2 mt-3">
-      <div class="d-flex justify-content-between position-relative mx-5">
+    <span class="title-matches"><h1>Competitions List</h1></span>
+
+    <div class="games-card py-3 mb-2 mt-3">
+      <div class="d-flex justify-content-between align-itmes-center position-relative mx-5">
 
         <% @competitions.each do |competititon| %>
 
-        <h3><%= link_to competititon.name, competition_path(competititon)%></h3>
-        <p><%= competititon.created_at.strftime('%d-%m-%Y')%></p>
+        <h6 style="margin-bottom: 0;"><%= link_to competititon.name, competition_path(competititon), class: "referee-name" %></h6>
+        <p style="margin-bottom: 0;"><%= competititon.created_at.strftime('%d-%m-%Y')%></p>
 
         <% end %>
-
       </div>
     </div>
   </div>

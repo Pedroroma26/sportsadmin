@@ -1,0 +1,16 @@
+<div class="modal fade" id="modalMatch" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog model-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" style="color: black;" id="exampleModalLabel">Create Match</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body"  style= "color: black;">
+        <%= competition.name %>
+        <%= competition.created_at.strftime('%d-%m-%Y') %>
+
+        <%= link_to "Create a Match", new_competition_game_path(competition), class: "btn btn-primary mt-3" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,6 @@
   <div class="container">
 
-  <%= simple_form_for @game do |f| %>
-      <%= f.association :competition %>
+  <%= simple_form_for [@competition, @game] do |f| %>
       <%= f.association :club_home %>
       <%= f.association :club_away %>
       <%= f.association :referee, collection: User.where(role: "referee"), label_method: :full_name %>

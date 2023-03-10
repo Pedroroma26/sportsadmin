@@ -64,9 +64,12 @@ nav span{
   display: flex;
   width: 300px;
   padding: 10px;
-}
 
-.nav-item:hover{
+  &:hover {
+    .nav-item-text, .nav-item-icon {
+      color: $green;
+    }
+  }
 }
 
 .nav-item a {

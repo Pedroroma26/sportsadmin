@@ -38,7 +38,7 @@ puts "Users created"
 # clubs seeds #################################################################
 
 #adlousada
-club1 = Club.new(name: "Associação Desportiva de Lousada", abbreviation: "ADL", address: "Estádio Municipal de Lousada", email: "email@email.lw", phone_number:"123456789")
+club1 = Club.new(name: "Associação Desportiva de Lousada", abbreviation: "AD Lousada", address: "Estádio Municipal de Lousada", email: "email@email.lw", phone_number:"123456789")
 #adlousada image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678274596/Sports%20Admin/adlousada_rnkmnx.png")
 club1.photo.attach(io: file, filename: "adlousada.png", content_type: "image/png")
@@ -46,7 +46,7 @@ club1.save!
 puts "club1 created"
 
 # acasapia
-club2 = Club.new(name: "Casa Pia Atlético Clube", abbreviation: "CPAC", address: "Estádio Pina Manique", email: "emaiadl@email.lw", phone_number:"828282928")
+club2 = Club.new(name: "Casa Pia Atlético Clube", abbreviation: "Casa Pia AC", address: "Estádio Pina Manique", email: "emaiadl@email.lw", phone_number:"828282928")
 # acasapia image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678273993/Sports%20Admin/casapiaac_eadqir.png")
 club2.photo.attach(io: file, filename: "casapiaac.png", content_type: "image/png")
@@ -54,7 +54,7 @@ club2.save
 puts "club2 created"
 
 # cfbenfica
-club3 = Club.new(name: "Clube Futebol Benfica", abbreviation: "CFB", address: "Estádio Francisco Lázaro", email: "emaiaaal@email.lw", phone_number: "928292829")
+club3 = Club.new(name: "Clube Futebol Benfica", abbreviation: "CF Benfica", address: "Estádio Francisco Lázaro", email: "emaiaaal@email.lw", phone_number: "928292829")
 # cfbenfica image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678273994/Sports%20Admin/clubefutebolbenfica.svg_oe6s4v.png")
 club3.photo.attach(io: file, filename: "clubefutebolbenfica.svg.png", content_type: "image/png")
@@ -62,7 +62,7 @@ club3.save
 puts "club3 created"
 
 # cfuniaodelamas
-club4 = Club.new(name: "Clube Futebol União de Lamas", abbreviation: "CFUL", address: "Estádio Comendador Henrique Amorim", email: "emaaaasdil@email.lw", phone_number: "928292890")
+club4 = Club.new(name: "Clube Futebol União de Lamas", abbreviation: "CFU Lamas", address: "Estádio Comendador Henrique Amorim", email: "emaaaasdil@email.lw", phone_number: "928292890")
 # cfuniaodelamas image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678280744/Sports%20Admin/clubefuteboluniaodelamas_qljgcl.png")
 club4.photo.attach(io: file, filename: "clubefuteboluniaodelamas.png", content_type: "image/png")
@@ -70,7 +70,7 @@ club4.save
 puts "club4 created"
 
 # gdviso
-club5 = Club.new(name: "Grupo Desportivo do Viso", abbreviation: "GDV", address: "Pavilhão Grupo Desportivo Viso", email: "emafsafil@email.lw", phone_number: "123456789")
+club5 = Club.new(name: "Grupo Desportivo do Viso", abbreviation: "GD Viso", address: "Pavilhão Grupo Desportivo Viso", email: "emafsafil@email.lw", phone_number: "123456789")
 # gdviso image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678273994/Sports%20Admin/grupodesportivodoviso_hprmsh.png")
 club5.photo.attach(io: file, filename: "grupodesportivodoviso.png", content_type: "image/png")
@@ -78,7 +78,7 @@ club5.save
 puts "club5 created"
 
 # juventudehoqueiclube
-club6 = Club.new(name: "Juventude Hóquei Clube", abbreviation: "JHC", address: "Estádio Municipal de Hóquei em Campo", email: "emasfasfail@email.lw", phone_number: "123456789")
+club6 = Club.new(name: "Juventude Hóquei Clube", abbreviation: "Juventude HC", address: "Estádio Municipal de Hóquei em Campo", email: "emasfasfail@email.lw", phone_number: "123456789")
 #juventudehoqueiclube image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678273994/Sports%20Admin/juventudehoqueiclube_tsneqp.png")
 club6.photo.attach(io: file, filename: "juventudehoqueiclube.png", content_type: "image/png")
@@ -86,7 +86,7 @@ club6.save
 puts "club6 created"
 
 # lisboncasuals
-club7 = Club.new(name: "Lisbon Casuals Hockey Club", abbreviation: "LCHC", address: "Centro Desportivo Nacional do Jamor", email: "emasfafaail@email.lw", phone_number: "123456789")
+club7 = Club.new(name: "Lisbon Casuals Hockey Club", abbreviation: "Lisbon Casuals HC", address: "Centro Desportivo Nacional do Jamor", email: "emasfafaail@email.lw", phone_number: "123456789")
 # lisboncasuals image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678273994/Sports%20Admin/juventudehoqueiclube_tsneqp.png")
 club7.photo.attach(io: file, filename: "lisboncasuals.png", content_type: "image/png")
@@ -125,7 +125,7 @@ puts "Competition created"
 game1 = Game.create!(competition: competition1, club_home: club1, club_away: club2, referee: user1, game_date: "09/03/2023")
 game2 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "09/03/2024")
 game3 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "09/03/2023")
-game4 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "07/03/2023")
+game4 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "10/03/2023")
 game5 = Game.create!(competition: competition1, club_home: club3, club_away: club1, referee: user1, game_date: "11/03/2023")
 puts "Games created"
 

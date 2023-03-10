@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :clubs, only: [:index, :show] do
     resources :players, only: [:new, :create]
   end
-  resources :games do
+  resources :games, except: [:new, :create] do
     resources :reports, only: [:create, :update]
 
     member do
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :reports, only: [:index] do
     resources :report_instances, only: [:create, :destroy]
   end
-  resources :competitions, only: [:index, :show]
+  resources :competitions, only: [:index, :show] do
+    resources :games, only: [:new, :create]
+  end
   resources :referees
 end

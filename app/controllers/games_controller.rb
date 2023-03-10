@@ -9,12 +9,15 @@ class GamesController < ApplicationController
   end
 
   def new
+    @competition = Competition.find(params[:competition_id])
     @game = Game.new
     @referees = User.where(role: "referee")
   end
 
   def create
+    @competition = Competition.find(params[:competition_id])
     @game = Game.new(game_params)
+    @game.competition = @competition
     if @game.save
       redirect_to games_path, notice: "Game created"
     else
@@ -43,7 +46,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:competition_id, :club_home_id, :club_away_id, :referee_id, :game_date)
+    params.require(:game).permit(:club_home_id, :club_away_id, :referee_id, :game_date)
   end
 
   def set_game

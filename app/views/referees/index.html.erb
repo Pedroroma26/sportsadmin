@@ -15,12 +15,13 @@
             <p><%= referee.email %> | <%= referee.phone_number %></p>
             <p><%= link_to "Edit", edit_referee_path(referee) %></p>
             <p class="btn btn-outline-primary rounded-4"><%= link_to "Delete", referee_path(referee), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
-            <p class="btn btn-outline-primary rounded-4"><%= link_to "Add Referee", new_referee_path %></p>
 
           </div>
       </div>
     </div>
 
   <% end %>
+  
+  <p class="btn btn-outline-primary rounded-4"><%= link_to "Add Referee", new_referee_path %></p>
 
 </div>

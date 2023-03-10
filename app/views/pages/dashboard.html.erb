@@ -13,6 +13,7 @@
               <p><%= game.club_away.name %></p>
             </div>
             <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
+            <%= link_to "Report", game_report_path(game, game.report), class: "btn btn-primary" %>
           </div>
         <% end %>
       <% end %>
@@ -51,6 +52,7 @@
               <p><%= game.club_away.name %></p>
             </div>
             <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
+          <%= link_to "Report", game_report_path(game, game.report), class: "btn btn-primary" %>
           </div>
         <% end %>
       <% end %>

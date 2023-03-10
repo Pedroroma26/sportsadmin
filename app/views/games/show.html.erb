@@ -1,4 +1,4 @@
-
+<div class="show-games">
   <p>Home Team: <%= @game.club_home.name %> (<%= @game.club_home.abbreviation %>)</p>
   <p>Away Team: <%= @game.club_away.name %> (<%= @game.club_away.abbreviation %>)</p>
   <p>Referee: <%= @game.referee.full_name %></p>
@@ -6,3 +6,4 @@
   <p>Game Hour: <%= @game.game_date.strftime('%H:%M') %></p>
   <p>Location: <%= @game.club_home.address %></p>
   <p class= "btn btn-primary">Game Report</p>
+</div>

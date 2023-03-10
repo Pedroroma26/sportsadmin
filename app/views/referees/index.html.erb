@@ -1,29 +1,26 @@
-<div class="container-index">
 
-  <h1>Referees</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @referees.each do |referee| %>
-        <tr>
-          <td><%= link_to referee.full_name, referee_path(referee) %></td>
-          <td><%= referee.email %></td>
-          <td><%= referee.phone_number %></td>
-          <td>
-            <%= link_to "Edit", edit_referee_path(referee) %>
-            <%= link_to "Delete", referee_path(referee), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= link_to "Add Referee", new_referee_path %>
+
+<div class="main-container">
+
+<div class="mt-5">
+
+  <span class="title-matches"><h1>Referees</h1></span>
+  <% @referees.each do |referee| %>
+
+    <div class="games-container">
+      <div class="games-card py-2 my-2">
+          <div class="d-flex justify-content-between position-relative mx-5">
+
+            <h6 style="decoration-none"><%= link_to referee.full_name, referee_path(referee) %></h6>
+            <p><%= referee.email %> | <%= referee.phone_number %></p>
+            <p><%= link_to "Edit", edit_referee_path(referee) %></p>
+            <p class="btn btn-outline-primary rounded-4"><%= link_to "Delete", referee_path(referee), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+            <p class="btn btn-outline-primary rounded-4"><%= link_to "Add Referee", new_referee_path %></p>
+
+          </div>
+      </div>
+    </div>
+
+  <% end %>
 
 </div>

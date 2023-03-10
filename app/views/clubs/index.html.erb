@@ -1,28 +1,17 @@
- <h2>CLUBS INDEX</h2>
 
- <table class="table">
+<div class="games-container">
 
-    <thead>
-      <tr class="table_headers" id ="clubs_index">
-        <th scope="">Abbreviation</th>
-        <th scope="">Name</th>
-        <th scope="">Adress</th>
-        <th scope="">Email</th>
-        <th scope="">Contact</th>
-      </tr>
-    </thead>
-    <tbody>
 
       <% @clubs.each do |club| %>
 
-      <tr>
-        <td><%= club.abbreviation %></td>
-        <td><%= club.name %></td>
-        <td><%= club.address %></td>
-        <td><%= club.email %></td>
-        <td><%= club.phone_number %></td>
-      </tr>
+        <div class="games-card py-4 mb-2 mt-3">
+
+          <h3><%= club.name %></h3>
+          <p><%= club.address %> | <%= club.email %> | <%= club.phone_number %></p>
+        
+        </div>
 
       <% end %>
-    </tbody>
-  </table>
+
+  </div>
+</div>

@@ -7,7 +7,7 @@ class ReportInstancesController < ApplicationController
 
     if @report_instance.save
       respond_to do |format|
-        format.html { redirect_to game_report_path(@report.game, @report) }
+        format.html { redirect_to report_game_path(@report.game) }
         format.json { render json: @report_instance }
       end
     else

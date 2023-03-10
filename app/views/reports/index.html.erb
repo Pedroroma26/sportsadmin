@@ -1,6 +1,6 @@
 <div class="teams">
   <% @reports.each do |report| %>
-    <%= link_to game_report_path(report.game, report), class: "text-decoration-none" do %>
+    <%= link_to report_game_path(report.game), class: "text-decoration-none" do %>
       <p style="color: white;"><%= report.game.club_home.name %>|<%= report.game.game_date.strftime("%-d %b, %k:%M") %>|<%= report.game.club_away.name %></p>
     <% end %>
   <% end %>

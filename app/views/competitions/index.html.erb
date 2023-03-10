@@ -9,7 +9,7 @@
 
         <% @competitions.each do |competition| %>
           <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#modalMatch">
-          <h6 style="margin-bottom: 0;" class="referee-name"><%= competition.name %></h6>
+          <h6 style="margin-bottom: 0; color: white;" class="referee-name"><%= competition.name %></h6>
           </button>
           <%= render "shared/form_modal_match", competition: competition  %>
           <p style="margin-bottom: 0;"><%= competition.created_at.strftime('%d-%m-%Y')%></p>

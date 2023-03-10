@@ -1,14 +1,16 @@
  <div class="main-container">
 
   <div class="games-container">
-    <div class="games-card py-4 mb-2 mt-3">
-      <div class="d-flex justify-content-between position-relative mx-5">
-        <% @competitions.each do |competition| %>
-          <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#modalMatch">
-            <h3><%= competition.name %></h3>
-          </button>
-          <%= render "shared/form_modal_match", competition: competition  %>
-          <p><%= competition.created_at.strftime('%d-%m-%Y')%></p>
+    <span class="title-matches"><h1>Competitions List</h1></span>
+
+    <div class="games-card py-3 mb-2 mt-3">
+      <div class="d-flex justify-content-between align-itmes-center position-relative mx-5">
+
+        <% @competitions.each do |competititon| %>
+
+        <h6 style="margin-bottom: 0;"><%= link_to competititon.name, competition_path(competititon), class: "referee-name" %></h6>
+        <p style="margin-bottom: 0;"><%= competititon.created_at.strftime('%d-%m-%Y')%></p>
+
         <% end %>
       </div>
     </div>

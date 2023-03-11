@@ -1,6 +1,7 @@
 class CompetitionsController < ApplicationController
+
   def index
-    @competitions = Competition.all
+    @competitions = Competition.order(created_at: :desc)
   end
 
   def new
@@ -15,6 +16,27 @@ class CompetitionsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @competition = Competition.find(params[:id])
+  end
+
+  def update
+    @competition = Competition.find(params[:id])
+
+    if @competition.update(competition_params)
+      redirect_to competitions_path, notice: "Competition updated successfully"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @competition = Competition.find(params[:id])
+    @competition.destroy
+
+    redirect_to competitions_path, notice: "Competition deleted successfully"
   end
 
   private

@@ -4,9 +4,12 @@ class GamesController < ApplicationController
   def index
     @competitions = Competition.all
     if params[:competition_id]
-      @games = Game.where(competition_id: params[:competition_id])
+      @competition = Competition.find(params[:competition_id])
+      @games = @competition.games.order(game_date: :desc)
+      @new_game = @competition.games.build
+      @referees = User.where(role: "referee")
     else
-      @games = Game.all
+      @games = Game.order(game_date: :desc)
     end
   end
 
@@ -24,8 +27,9 @@ class GamesController < ApplicationController
     @game = @competition.games.new(game_params)
 
     if @game.save
-      redirect_to games_path, notice: "Game created"
+      redirect_to games_path(competition_id: @competition.id), notice: "Game created"
     else
+      @referees = User.where(role: "referee")
       render :new, status: :unprocessable_entity
     end
   end

@@ -2,7 +2,12 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
   def index
-    @games = Game.all
+    @competitions = Competition.all
+    if params[:competition_id]
+      @games = Game.where(competition_id: params[:competition_id])
+    else
+      @games = Game.all
+    end
   end
 
   def show
@@ -10,14 +15,14 @@ class GamesController < ApplicationController
 
   def new
     @competition = Competition.find(params[:competition_id])
-    @game = Game.new
+    @game = @competition.games.build
     @referees = User.where(role: "referee")
   end
 
   def create
     @competition = Competition.find(params[:competition_id])
-    @game = Game.new(game_params)
-    @game.competition = @competition
+    @game = @competition.games.new(game_params)
+
     if @game.save
       redirect_to games_path, notice: "Game created"
     else

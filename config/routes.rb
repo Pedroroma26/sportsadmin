@@ -12,11 +12,14 @@ Rails.application.routes.draw do
       get :report, to: "reports#show"
     end
   end
+
   resources :reports, only: [:index] do
     resources :report_instances, only: [:create, :destroy]
   end
-  resources :competitions, only: [:index, :show] do
+
+  resources :competitions do
     resources :games, only: [:new, :create]
   end
+
   resources :referees
 end

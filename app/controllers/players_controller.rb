@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
-  before_action :set_club
+  before_action :set_club, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+  before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   def new
     @player = Player.new
@@ -16,11 +17,10 @@ class PlayersController < ApplicationController
   end
 
   def index
-    @players = @club.players
+    @players = @club.players || []
   end
 
   def show
-    @player = Player.find(params[:id])
   end
 
   def edit
@@ -28,7 +28,7 @@ class PlayersController < ApplicationController
 
   def update
     if @player.update(player_params)
-      redirect_to club_player _path(@club, @player), notice: 'Player updated'
+      redirect_to club_player_path(@club, @player), notice: 'Player updated'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,6 +43,10 @@ class PlayersController < ApplicationController
 
   def set_club
     @club = Club.find(params[:club_id])
+  end
+
+  def set_player
+    @player = Player.find(params[:id])
   end
 
   def player_params

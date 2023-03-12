@@ -1,9 +1,15 @@
 <div class="show-container">
   <div class="show-games">
     <div class="game-teams">
-      <p><strong><%= @game.club_home.name %> (<%= @game.club_home.abbreviation %>)</strong></p>
+      <p>
+        <%= cl_image_tag @game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 me-2 mr-1", style: "background-color: white;" %>
+        <strong><%= @game.club_home.name %> (<%= @game.club_home.abbreviation %>)</strong>
+      </p>
       <p class="vs-text">vs</p>
-      <p><strong><%= @game.club_away.name %> (<%= @game.club_away.abbreviation %>)</strong></p>
+      <p>
+        <strong><%= @game.club_away.name %> (<%= @game.club_away.abbreviation %>)</strong>
+        <%= cl_image_tag @game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 me-2 mr-1", style: "background-color: white;" %>
+      </p>
     </div>
     <p>Location: <%= @game.club_home.address %></p>
     <%# ----------------trocar para geocode------------------ %>

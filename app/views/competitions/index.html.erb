@@ -12,8 +12,9 @@
                   <%= competition.created_at.strftime('%d-%m-%Y') %>
                 </h6>
                 <div class="d-flex">
-                  <%= link_to "Edit",  edit_competition_path(competition), class: "text-decoration-none btn btn-primary btn-sm rounded-4 mr-2" %>
-                  <%= link_to "Delete", competition_path(competition), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none btn btn-outline-danger btn-sm rounded-4 mr-2" %>
+                  <%= link_to "+ info", competition_path(competition), class: "btn btn-success rounded-4" %>
+                  <%#= link_to "Edit",  edit_competition_path(competition), class: "text-decoration-none btn btn-primary btn-sm rounded-4 mr-2" %>
+                  <%#= link_to "Delete", competition_path(competition), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none btn btn-outline-danger btn-sm rounded-4 mr-2" %>
                 </div>
               </div>
             </div>

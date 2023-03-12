@@ -1,6 +1,8 @@
 <div class="container">
-  <%=  @competition.name %>
-  <%=  @competition.created_at.strftime('%d-%m-%Y') %>
+  <%= @competition.name %>
+  <%= @competition.created_at.strftime('%d-%m-%Y') %>
 
-  <%= link_to "Create a Match", new_competition_game_path(@competition), class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_competition_path(@competition) %> |
+  <%= button_to "Delete", competition_path(@competition), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %> |
+  <%= link_to "Back", competitions_path %>
 </div>

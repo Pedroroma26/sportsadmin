@@ -1,0 +1,23 @@
+ <div class="main-container">
+      <div class="games-container">
+      <span class="title-matches"><h1>Players List</h1></span>
+
+        <% @players.each do |player| %>
+
+            <div class="games-card py-3 mb-2 mt-3">
+              <div class="d-flex justify-content-between align-items-center mx-5">
+                <h6 class="referee-name mb-0">
+                  <%= player.full_name %>
+                </h6>
+                <div class="d-flex">
+                  <%= link_to "+ info", club_player_path(@club, player), class: "btn btn-success rounded-4" %>
+                  <%#= link_to "Edit",  edit_competition_path(competition), class: "text-decoration-none btn btn-primary btn-sm rounded-4 mr-2" %>
+                  <%#= link_to "Delete", competition_path(competition), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none btn btn-outline-danger btn-sm rounded-4 mr-2" %>
+                </div>
+              </div>
+            </div>
+
+        <% end %>
+      </div>
+      <p class="mt-4"><%= link_to "Add Player", new_club_player_path(@club), class: "btn btn-success rounded-4" %></p>
+</div>

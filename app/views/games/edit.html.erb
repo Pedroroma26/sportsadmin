@@ -1,8 +1,10 @@
-  <%= simple_form_for @game do |f| %>
-      <%= f.association :competition %>
-      <%= f.association :club_home %>
-      <%= f.association :club_away %>
-      <%= f.association :referee, collection: User.where(role: "referee"), label_method: :full_name %>
-      <%= f.input :game_date, as: :datetime, html5: true %>
-      <%= f.submit class: "btn btn-success rounded-4" %></p>
+<div class="container">
+
+  <%= simple_form_for [@competition, @game] do |f| %>
+    <%= f.association :referee, collection: User.where(role: "referee"), label_method: :full_name %>
+    <%= f.input :game_date, as: :datetime, html5: true %>
+    <%= f.submit 'Edit Match', class: "btn btn-success rounded-4" %></p>
   <% end %>
+
+    <%= link_to "Back", game_path(@game), class: "btn btn-secondary mt-3" %>
+</div>

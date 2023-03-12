@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root to: "pages#dashboard"
 
   resources :clubs do
-    resources :players, only: [:new, :create]
+    resources :players
   end
+  
   resources :games, except: [:new, :create] do
     resources :reports, only: [:create, :update]
 

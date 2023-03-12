@@ -36,7 +36,6 @@ class ClubsController < ApplicationController
     end
   end
 
-
   def destroy
     @club = Club.find(params[:id])
     @club.destroy

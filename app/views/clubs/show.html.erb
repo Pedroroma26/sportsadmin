@@ -4,8 +4,8 @@
   <p><strong>Adress:</strong> <%= @club.address %></p>
   <p><strong>Email:</strong> <%= @club.email %></p>
   <p><strong>Phone:</strong> <%= @club.phone_number %></p>
-  <%#= link_to "Edit", edit_referee_path(@referee) %> |
-  <%#= button_to "Delete", referee_path(@referee), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %> |
+  <%= link_to "Edit", edit_club_path(@club) %> |
+  <%= button_to "Delete", club_path(@club), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %> |
   <%= link_to "Back", clubs_path %>
 
 </div>

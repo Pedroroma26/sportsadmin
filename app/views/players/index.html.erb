@@ -1,6 +1,6 @@
  <div class="main-container">
       <div class="games-container">
-      <span class="title-matches"><h1>Players List</h1></span>
+      <span class="title-matches"><h1>Players List  - <%= cl_image_tag @club.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 me-2 mr-1", style: "background-color: white;" %><%= @club.name %></h1></span>
 
         <% @players.each do |player| %>
 

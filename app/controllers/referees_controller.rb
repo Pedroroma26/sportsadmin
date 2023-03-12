@@ -27,7 +27,7 @@
 
     def update
       if @referee.update(referee_params)
-        redirect_to referee_path(@referee), notice: "Referee was successfully updated."
+        redirect_to referees_path, notice: "Referee was successfully updated."
       else
         render :edit
       end

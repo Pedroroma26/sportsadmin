@@ -1,0 +1,12 @@
+<div class="container">
+
+  <h1><%= @player.full_name %></h1>
+  <p><strong>Player Numnber:</strong> <%= @player.player_number %></p>
+  <p><strong>Birth Date:</strong> <%= @player.birth_date %></p>
+  <p><strong>Gender</strong> <%= @player.gender %></p>
+
+  <%= link_to "Edit", edit_club_player_path(@club, @player) %> |
+  <%= button_to "Delete", club_player_path(@club, @player), method: :delete, data: {turbo_confirm: "Are you sure?"} %>
+  <%= link_to 'Back', club_players_path, class: "btn btn-secondary mt-3" %>
+
+</div>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :clubs do
     resources :players
   end
-  
+
   resources :games, except: [:new, :create] do
     resources :reports, only: [:create, :update]
 

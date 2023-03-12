@@ -20,6 +20,7 @@ class PlayersController < ApplicationController
   end
 
   def show
+    @player = Player.find(params[:id])
   end
 
   def edit
@@ -27,7 +28,7 @@ class PlayersController < ApplicationController
 
   def update
     if @player.update(player_params)
-      redirect_to club_player_path(@club, @player), notice: 'Player updated'
+      redirect_to club_player _path(@club, @player), notice: 'Player updated'
     else
       render :edit, status: :unprocessable_entity
     end

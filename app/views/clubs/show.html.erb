@@ -1,6 +1,7 @@
 <div class="container">
 
   <h5><%= @club.name %> (<%= @club.abbreviation %>)</h5>
+  <%= cl_image_tag @club.photo.key, height: 100, width: 100, crop: :fill, class: "rounded-top-4 me-2 mr-1" %>
   <p><strong>Adress:</strong> <%= @club.address %></p>
   <p><strong>Email:</strong> <%= @club.email %></p>
   <p><strong>Phone:</strong> <%= @club.phone_number %></p>

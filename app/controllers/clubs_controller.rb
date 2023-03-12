@@ -26,6 +26,17 @@ class ClubsController < ApplicationController
     @club = Club.find(params[:id])
   end
 
+  def update
+    @club = Club.find(params[:id])
+
+    if @club.update(club_params)
+      redirect_to club_path(@club), notice: "Club updated successfully"
+    else
+      render :edit
+    end
+  end
+
+
   def destroy
     @club = Club.find(params[:id])
     @club.destroy
@@ -33,10 +44,10 @@ class ClubsController < ApplicationController
     redirect_to clubs_path, notice: "Club deleted successfully"
   end
 
-
   private
 
   def club_params
-    params.require(:club).permit(:name, :abreviation, :address, :email, :phone_number, :photo)
+    params.require(:club).permit(:name, :abbreviation, :address, :email, :phone_number, :photo)
   end
+
 end

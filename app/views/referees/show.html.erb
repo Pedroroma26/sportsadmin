@@ -16,20 +16,31 @@
       <span class="btn btn-danger mt-3 rounded-4 col-12"><%= link_to "Delete", referee_path(@referee), method: :delete, data: {turbo_confirm: "Are you sure?"} %></span>
     </div>
 
-    <div class="simple-card d-flex align-items-start justify-content-start m-0 p-3 col-5">
-      <div class="list-group rounded-4 col-12">
+    <div class="simple-list d-flex align-items-start justify-content-start m-0 p-0 col-5">
 
-        <button type="button" class="list-group-item list-group-item-action active" aria-current="true"><%= @referee.full_name %>'s Reports</button>
-
-        <% @reports.each do |report| %>
-          <button type="button" class="list-group-item list-group-item-action text-decoration-none">
-            <%= link_to report_game_path(report.game) do %> <p><%= report.game.club_home.name %>|<%= report.game.game_date.strftime("%-d %b, %k:%M") %>|<%= report.game.club_away.name %></p>
-            <% end %>
-          </button>
+      <div class="list-group rounded-4 col-12 mb-4">
+        <button type="button" class="list-group-item list-group-item-action active" aria-current="true"><%= @referee.full_name %>'s Upcoming Matches</button>
+        <% @games.where("game_date >= ?", (DateTime.now + 1.day).all_day).each do |report| %>
+          <%= link_to link_to game_path(game), class: "list-group-item list-group-item-action" do %>
+            <%= "#{report.club_home.abbreviation} vs #{report.club_away.abbreviation} Report" %>
+          <% end %>
         <% end %>
-
       </div>
+
+      <div class="list-group rounded-4 col-12">
+        <button type="button" class="list-group-item list-group-item-action active" aria-current="true"><%= @referee.full_name %>'s Reports</button>
+        <% @games.where("game_date < ?", DateTime.now.all_day).each do |report| %>
+          <%= link_to report_game_path(report), class: "list-group-item list-group-item-action" do %>
+            <%= "#{report.club_home.abbreviation} vs #{report.club_away.abbreviation} Report" %>
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
+
+
+
+
 
 
   </div>

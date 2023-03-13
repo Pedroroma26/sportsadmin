@@ -90,6 +90,13 @@ a.text-decoration-none > h3{
   flex-direction: column;
 }
 
+.simple-list {
+  color:white;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
 .title-card {
   margin-top: 16vh;
   color: white;

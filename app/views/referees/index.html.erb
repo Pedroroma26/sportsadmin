@@ -4,7 +4,7 @@
   <span class="title-matches"><h1>Referees List</h1></span>
 
   <% @referees.each do |referee| %>
-      <div class="games-card py-3 mb-2 mt-3">
+      <div class="games-card py-3 mb-2 mt-3 col-9">
         <div class="d-flex justify-content-between align-items-center mx-5">
           <h6 class="text-decoration-none mb-0"><%= referee.full_name %></h6>
           <div>
@@ -17,6 +17,7 @@
   <% end %>
   </div>
 
-  <p class="mt-4"><%= link_to "Add Referee", new_referee_path, class: "btn btn-success rounded-4" %></p>
+
+  <p class="mt-4 col-9"><%= link_to "Add Referee", new_referee_path, class: "btn btn-success rounded-4 col-12" %></p>
 
 </div>

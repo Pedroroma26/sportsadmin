@@ -1,7 +1,7 @@
 class Player < ApplicationRecord
   acts_as_paranoid
 
-  belongs_to :club, with_deleted: true
+  belongs_to :club
   has_many :report_instances
 
   validates :first_name, presence: true

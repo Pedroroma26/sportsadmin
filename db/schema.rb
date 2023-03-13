@@ -112,8 +112,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_134847) do
     t.bigint "game_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_reports_on_deleted_at"
     t.index ["game_id"], name: "index_reports_on_game_id"
   end
 

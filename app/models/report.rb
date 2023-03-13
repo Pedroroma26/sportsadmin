@@ -1,5 +1,4 @@
 class Report < ApplicationRecord
-  acts_as_paranoid
   
   belongs_to :game
   has_many :report_instances

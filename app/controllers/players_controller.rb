@@ -36,7 +36,7 @@ class PlayersController < ApplicationController
 
   def destroy
     @player.destroy
-    redirect_to club_path(@club), notice: 'Player deleted'
+    redirect_to club_players_path(@club), notice: 'Player deleted'
   end
 
   private

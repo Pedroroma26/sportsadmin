@@ -2,7 +2,7 @@
   <div class="team-report">
     <%= game.club_home.abbreviation %>
     <table class="teams-table border-right-table-team w-100">
-      <% game.club_home.players.each do |player| %>
+      <% game.club_home.players_including_deleted.each do |player| %>
         <tr class="">
           <td class="border-right-table-row w-60px"><%= player.player_number %></td>
           <td class="text-start px-2 player-names"><%= player.first_name %> <%= player.last_name %></td>
@@ -42,7 +42,7 @@
   <div class="team-report">
     <table class="teams-table w-100">
       <%= game.club_away.abbreviation %>
-      <% game.club_away.players.each do |player| %>
+      <% game.club_away.players_including_deleted.each do |player| %>
         <tr class="">
           <td class="border-right-table-row w-60px"><%= player.player_number %></td>
           <td class="text-start px-2 player-names"><%= player.first_name %> <%= player.last_name %></td>

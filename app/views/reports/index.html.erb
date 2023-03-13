@@ -1,17 +1,17 @@
- <div class="main-container">
+<div class="main-container">
 
   <div class="games-container">
     <span class="title-matches"><h1>Reports List</h1></span>
 
-      <% @reports.each do |report| %>
+    <% @reports.each do |report| %>
+      <%= link_to report_game_path(report.game), class: "text-decoration-none" do %>
         <div class="games-card py-3 mb-2 mt-3">
           <div class="d-flex justify-content-between align-itmes-center position-relative mx-5">
-          <%= link_to report_game_path(report.game), class: "text-decoration-none" do %>
-          <p style="color: white; margin-bottom:0;"><%= report.game.club_home.name %>|<%= report.game.game_date.strftime("%-d %b, %k:%M") %>|<%= report.game.club_away.name %></p>
-          <% end %>
+            <p style="color: white; margin-bottom:0;"><%= report.game.club_home.name %>|<%= report.game.game_date.strftime("%-d %b, %k:%M") %>|<%= report.game.club_away.name %></p>
           </div>
         </div>
       <% end %>
+    <% end %>
 
   </div>
 </div>

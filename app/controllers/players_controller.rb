@@ -1,19 +1,42 @@
 class PlayersController < ApplicationController
-  before_action :set_club
+  before_action :set_club, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+  before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   def new
     @player = Player.new
   end
 
   def create
-    @player = Player.new(player_params)
-    @player.club = @club
+    @player = @club.players.build(player_params)
 
     if @player.save
-      redirect_to club_path(@club), notice: 'player created'
+      redirect_to club_players_path, notice: 'Player created'
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def index
+    @players = @club.players || []
+  end
+
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @player.update(player_params)
+      redirect_to club_player_path(@club, @player), notice: 'Player updated'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @player.destroy
+    redirect_to club_players_path(@club), notice: 'Player deleted'
   end
 
   private
@@ -22,7 +45,11 @@ class PlayersController < ApplicationController
     @club = Club.find(params[:club_id])
   end
 
+  def set_player
+    @player = Player.find(params[:id])
+  end
+
   def player_params
-    params.require(:player).permit(:first_name, :last_name, :birth_date, :gender)
+    params.require(:player).permit(:first_name, :last_name, :birth_date, :gender, :player_number)
   end
 end

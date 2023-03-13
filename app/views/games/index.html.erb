@@ -1,22 +1,48 @@
 <div class="main-container">
-  <div class="title-matches">
-    <h1>Matches</h1>
+  <div class="title-matches"><h1>Calendar - <%#= @competition.name %></h1></div>
+
+  <div class="competitions-container">
+    <table class="table", style="color:white">
+      <thead>
+        <tr>
+          <th style="color: white">Competition</th>
+          <th></th>
+        </tr>
+      </thead>
+        <tbody>
+          <% @competitions.each do |competition| %>
+            <tr>
+              <td class="text-decoration-none mb-0"><%= link_to competition.name, games_path(competition_id: competition.id), class: "referee-name" %></td>
+              <td>
+                <button type="button" class="text-decoration-none btn btn-success rounded-4" data-bs-toggle="modal" data-bs-target="#modalMatch<%= competition.id %>">Add Match</button>
+                <%= render "shared/form_modal_match", competition: competition, modal_id: "modalMatch#{competition.id}" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
   </div>
-  <div class="games-container">
-    <% @games.each do |game| %>
-      <%= link_to game_path(game), class: "text-decoration-none" do %>
-        <div class="games-card py-2 my-2">
-          <p><%= game.competition.name %></p>
-          <div class="d-flex justify-content-between position-relative mx-5">
-            <p><%= game.club_home.name %></p>
-            <p class="game-date"><%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %>
-            <%= game.game_date.strftime("%-d %b, %k:%M") %><%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4", style: "position: relative; background-color: white;" %> 
-            </p>
-            <p><%= game.club_away.name %></p>
-          </div>
-          <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
+
+<div class="games-container">
+  <% @games.each do |game| %>
+    <%= link_to game_path(game), class: "text-decoration-none" do %>
+      <div class="games-card py-2 my-2">
+        <p><%= game.competition.name %></p>
+        <div class="d-flex justify-content-between position-relative mx-5">
+          <p class="d-flex align-items-center">
+            <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 me-2 mr-1", style: "background-color: white;" %>
+            <%= game.club_home.name %>
+          </p>
+          <p class="game-date d-flex align-items-center">
+            <%= game.game_date.strftime("%-d %b, %k:%M") %>
+          </p>
+          <p class="d-flex align-items-center">
+            <%= game.club_away.name %>
+            <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 ms-2 mr-1", style: "background-color: white;" %>
+          </p>
         </div>
-      <% end %>
+        <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
+      </div>
     <% end %>
-  </div>
+  <% end %>
 </div>

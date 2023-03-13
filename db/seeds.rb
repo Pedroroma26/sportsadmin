@@ -88,7 +88,7 @@ puts "club6 created"
 # lisboncasuals
 club7 = Club.new(name: "Lisbon Casuals Hockey Club", abbreviation: "Lisbon Casuals HC", address: "Centro Desportivo Nacional do Jamor", email: "emasfafaail@email.lw", phone_number: "123456789")
 # lisboncasuals image
-file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678273994/Sports%20Admin/juventudehoqueiclube_tsneqp.png")
+file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678273994/Sports%20Admin/lisboncasuals_awq9sh.png")
 club7.photo.attach(io: file, filename: "lisboncasuals.png", content_type: "image/png")
 club7.save
 puts "club7 created"
@@ -127,6 +127,7 @@ game2 = Game.create!(competition: competition1, club_home: club3, club_away: clu
 game3 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "09/03/2023")
 game4 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "10/03/2023")
 game5 = Game.create!(competition: competition1, club_home: club3, club_away: club1, referee: user1, game_date: "11/03/2023")
+game6 = Game.create!(competition: competition1, club_home: club7, club_away: club4, referee: user1, game_date: DateTime.now)
 puts "Games created"
 
 report1 = Report.create!(game: game1, referee_validation: true)
@@ -149,6 +150,9 @@ puts "Report4 created"
 
 report5 = Report.create!(game: game5, referee_validation: false)
 puts "Report5 created"
+
+report6 = Report.create!(game: game6, referee_validation: false)
+puts "Report6 created"
 
 report_instance1_1 = ReportInstance.create!(category: "Goal", minute: 8, motive: "", report: report1, player: game1.club_home.players.last)
 

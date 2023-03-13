@@ -1,0 +1,8 @@
+<div class="container">
+  <%= simple_form_for @competition do |f| %>
+    <%= f.input :name %>
+    <%= f.submit class: "btn btn-success rounded-4" %>
+  <% end %>
+
+  <%= link_to "Back", competitions_path, class: "btn btn-secondary mt-3" %>
+</div>

@@ -7,4 +7,8 @@ class Player < ApplicationRecord
   validates :birth_date, presence: true
   validates :player_number, presence: true, length: { in: 0..99 }
   validates :gender, presence: true, inclusion: { in: %w[male female other] }
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#dashboard"
 
-  resources :clubs, only: [:index, :show] do
-    resources :players, only: [:new, :create]
+  resources :clubs do
+    resources :players
   end
+
   resources :games, except: [:new, :create] do
     resources :reports, only: [:create, :update]
 
@@ -12,11 +13,14 @@ Rails.application.routes.draw do
       get :report, to: "reports#show"
     end
   end
+
   resources :reports, only: [:index] do
     resources :report_instances, only: [:create, :destroy]
   end
-  resources :competitions, only: [:index, :show] do
+
+  resources :competitions do
     resources :games, only: [:new, :create]
   end
+
   resources :referees
 end

@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalMatch" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade text-center" id="<%= modal_id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog model-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,7 +7,8 @@
       </div>
       <div class="modal-body"  style= "color: black;">
         <%= competition.name %>
-        <%= competition.created_at.strftime('%d-%m-%Y') %>
+        <p></p>
+        <%#= competition.created_at.strftime('%d-%m-%Y') %>
 
         <%= link_to "Create a Match", new_competition_game_path(competition), class: "btn btn-primary mt-3" %>
       </div>

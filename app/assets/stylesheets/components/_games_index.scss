@@ -115,3 +115,14 @@ a.text-decoration-none > h3{
 .profile-default {
   width: 160px;
 }
+
+.list-group-item-action {
+  background-color:#00032c84;
+  color: #ffffff;
+  border-bottom: 1px white;
+
+  &:hover {
+    color: #5af7dc!important;
+    background-color:#00032c84!important;
+  }
+}

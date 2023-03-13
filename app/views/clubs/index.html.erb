@@ -6,7 +6,7 @@
 
     <% @clubs.each do |club| %>
       <%= link_to club_players_path(club), class: "referee-name" do %>
-        <div class="games-card py-3 mb-4 mt-4" style="height: 126px;">
+        <div class="games-card py-3 mb-2 mt-2" style="height: 126px;">
           <%# <div class="d-flex justify-content-between align-items-center mx-5"> %>
             <%#= cl_image_tag club.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 me-2 mr-1", style: "background-color: white;" %>
           <div class="d-flex justify-content-center align-bottom position-relative px-5 my-3 gap-3 position-relative">

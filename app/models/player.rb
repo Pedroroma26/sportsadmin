@@ -1,4 +1,6 @@
 class Player < ApplicationRecord
+  acts_as_paranoid
+  
   belongs_to :club
   has_many :report_instances
 

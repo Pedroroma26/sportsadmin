@@ -1,4 +1,6 @@
 class ReportInstance < ApplicationRecord
+  acts_as_paranoid
+  
   belongs_to :report
   belongs_to :player, optional: true
 

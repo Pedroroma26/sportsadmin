@@ -1,4 +1,6 @@
 class Club < ApplicationRecord
+  acts_as_paranoid
+
   has_many :players, dependent: :destroy
   has_one_attached :photo
 

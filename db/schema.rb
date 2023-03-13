@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_150739) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_13_134847) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,12 +51,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_150739) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_clubs_on_deleted_at"
   end
 
   create_table "competitions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_competitions_on_deleted_at"
   end
 
   create_table "games", force: :cascade do |t|
@@ -67,9 +71,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_150739) do
     t.datetime "game_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["club_away_id"], name: "index_games_on_club_away_id"
     t.index ["club_home_id"], name: "index_games_on_club_home_id"
     t.index ["competition_id"], name: "index_games_on_competition_id"
+    t.index ["deleted_at"], name: "index_games_on_deleted_at"
     t.index ["referee_id"], name: "index_games_on_referee_id"
   end
 
@@ -82,7 +88,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_150739) do
     t.bigint "club_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["club_id"], name: "index_players_on_club_id"
+    t.index ["deleted_at"], name: "index_players_on_deleted_at"
   end
 
   create_table "report_instances", force: :cascade do |t|
@@ -93,6 +101,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_150739) do
     t.bigint "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_report_instances_on_deleted_at"
     t.index ["player_id"], name: "index_report_instances_on_player_id"
     t.index ["report_id"], name: "index_report_instances_on_report_id"
   end
@@ -102,6 +112,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_150739) do
     t.bigint "game_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_reports_on_deleted_at"
     t.index ["game_id"], name: "index_reports_on_game_id"
   end
 
@@ -119,6 +131,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_150739) do
     t.string "city"
     t.string "phone_number"
     t.integer "role"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

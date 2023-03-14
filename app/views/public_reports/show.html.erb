@@ -8,7 +8,10 @@
     <%= render "shared/final_report_email", game: @game, report: @report, report_instance: @report_instance %>
   </div>
   <div class="">
-    <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name %> </td></p>
-    <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name %> </td></p>
+    <% if @club.access_token == @report.game.club_home.access_token %>
+      <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name %> </td></p>
+    <% elsif @club.access_token == @report.game.club_away.access_token %>
+      <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name %> </td></p>
+    <% end %>
   </div>
 </div>

@@ -7,11 +7,7 @@ class PublicReportsController < ApplicationController
     @report = Report.find(params[:id])
     @club = Club.find_by(access_token: params[:token])
 
-    if @club.nil?
-      redirect_to root_path
-    elsif @report.nil?
-      redirect_to root_path
-    elsif @report.include(@club)
+    if @club.nil? || @report.nil? || @report.exclude?(@club)
       redirect_to root_path
     end
   end

@@ -6,10 +6,10 @@
         <div class="games-card py-3 mb-2 mt-3">
           <span class="text-decoration-none"><p><%= report.game.competition.name %></p></span>
           <div class="d-flex justify-content-between align-bottom position-relative px-5 my-3 gap-3 position-relative">
-            <div class="rounded-top-4 left-club-logo" style="background-image: url('<%= cl_image_path report.game.club_home.photo.key %>')"></div>
+            <div class="left-club-logo" style="background-image: url('<%= cl_image_path report.game.club_home.photo.key %>')"></div>
             <p style="margin-left: 50px"><%= report.game.club_home.name %></p>
             <p class="game-date d-flex align-items-center"><%= report.game.game_date.strftime("%-d %b, %k:%M") %></p>
-            <div class="rounded-top-4 right-club-logo" style="background-image: url('<%= cl_image_path report.game.club_away.photo.key %>')"></div>
+            <div class="right-club-logo" style="background-image: url('<%= cl_image_path report.game.club_away.photo.key %>')"></div>
             <p style="margin-right: 50px"><%= report.game.club_away.name %></p>
           </div>
         </div>

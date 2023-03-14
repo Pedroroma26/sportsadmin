@@ -1,0 +1,14 @@
+<div class="teams">
+  <div class="team-names">
+    <%= @report.game.club_home.name %>
+    vs
+    <%= @report.game.club_away.name %>
+  </div>
+  <div class="report-container" data-controller="submit-form-reports">
+    <%= render "shared/final_report_email", game: @game, report: @report, report_instance: @report_instance %>
+  </div>
+  <div class="">
+    <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name %> </td></p>
+    <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name %> </td></p>
+  </div>
+</div>

@@ -3,8 +3,8 @@
       <span class="title-matches"><h1>Players List  - <%= cl_image_tag @club.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 me-2 mr-1", style: "background-color: white;" %><%= @club.name %></h1></span>
 
         <% @players.each do |player| %>
-          <%= link_to club_player_path(@club, player), class: "referee-name" do %>
-            <div class="games-card py-3 mb-2 mt-3">
+
+            <div class="games-card py-3 mb-2 mt-3"><%= link_to club_player_path(@club, player), class: "referee-name" do %>
               <div class="d-flex justify-content-between align-items-center mx-5">
                 <h6 class="referee-name mb-0">
                   <%= player.full_name %> - Number: <%= player.player_number %>

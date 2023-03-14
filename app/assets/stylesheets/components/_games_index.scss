@@ -55,14 +55,13 @@ a.text-decoration-none > h3{
   transform: translateX(-50%);
 }
 
-// RUI CARDS
+////////////////////////////////////////////////////////////////////////////////
 
 .test {
   background-color:rgb(210, 105, 30);
 }
 
 .show-container{
-
   margin: 20px 0 0 90px;
   padding: 0;
   width: 100vw;
@@ -83,12 +82,13 @@ a.text-decoration-none > h3{
 .simple-card {
   color:white;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
-  // text-align: center;
+  text-align: center;
   background-color:#00032c84;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
 }
+
 
 .simple-list {
   color:white;

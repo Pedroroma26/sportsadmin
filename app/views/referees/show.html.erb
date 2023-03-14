@@ -13,25 +13,25 @@
       <p class="p-highlight mt-4 mb-1">Phone No.</p>
       <h5><%= @referee.phone_number %></h5>
       <span class="btn btn-success mt-3 rounded-4 col-12"><%= link_to "Edit", edit_referee_path(@referee) %></span>
-      <span class="btn btn-danger mt-3 rounded-4 col-12"><%= link_to "Delete", referee_path(@referee), method: :delete, data: {turbo_confirm: "Are you sure?"} %></span>
+      <span class="btn btn-danger mt-3 rounded-4 col-12"><%= link_to "Delete", referees_path, method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></span>
     </div>
 
     <div class="simple-list d-flex align-items-start justify-content-start m-0 p-0 col-5">
 
       <div class="list-group rounded-4 col-12 mb-4">
         <button type="button" class="list-group-item list-group-item-action-none active" aria-current="true"><%= @referee.full_name %>'s Upcoming Matches</button>
-        <% @games.where("game_date >= ?", (DateTime.now + 1.day).all_day).each do |report| %>
+        <% @games.where("game_date >= ?", (DateTime.now + 1.day).all_day).each do |game| %>
           <%= link_to game_path(game), class: "list-group-item list-group-item-action" do %>
-            <%= "#{report.club_home.abbreviation} vs #{report.club_away.abbreviation} Report" %>
+            <%= "#{game.club_home.abbreviation} vs #{game.club_away.abbreviation} - #{game.game_date.strftime("%-d %b, %k:%M")}" %>
           <% end %>
         <% end %>
       </div>
 
       <div class="list-group rounded-4 col-12">
         <button type="button" class="list-group-item list-group-item-action-none active" aria-current="true"><%= @referee.full_name %>'s Reports</button>
-        <% @games.where("game_date < ?", DateTime.now.all_day).each do |report| %>
-          <%= link_to report_game_path(report), class: "list-group-item list-group-item-action" do %>
-            <%= "#{report.club_home.abbreviation} vs #{report.club_away.abbreviation} Report" %>
+        <% @games.where("game_date < ?", DateTime.now.all_day).each do |game| %>
+          <%= link_to report_game_path(game), class: "list-group-item list-group-item-action" do %>
+            <%= "#{game.club_home.abbreviation} vs #{game.club_away.abbreviation} - #{game.game_date.strftime("%-d %b, %k:%M")}" %>
           <% end %>
         <% end %>
       </div>

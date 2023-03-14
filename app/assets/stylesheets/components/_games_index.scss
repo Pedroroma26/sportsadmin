@@ -57,6 +57,35 @@ a.text-decoration-none > h3{
 
 ////////////////////////////////////////////////////////////////////////////////
 
+.left-club-logo-games-index{
+  position: absolute;
+  left: -95px;
+  width: 126px;
+  height: 126px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 50%;
+  top: -48px;
+}
+
+.right-club-logo-games-index{
+  position: absolute;
+  right: -95px;
+  width: 126px;
+  height: 126px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 50%;
+  top: -48px;
+
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 .test {
   background-color:rgb(210, 105, 30);
 }
@@ -110,6 +139,7 @@ a.text-decoration-none > h3{
 
 .p-highlight {
   color:#5af7dc;
+  font-size:smaller;
 }
 
 .profile-default {
@@ -127,37 +157,46 @@ a.text-decoration-none > h3{
   }
 }
 
-.left-club-logo-games-index{
-  position: absolute;
-  left: -95px;
-  width: 126px;
-  height: 126px;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: white;
-  border-radius: 50%;
-  top: -48px;
-}
-
-.right-club-logo-games-index{
-  position: absolute;
-  right: -95px;
-  width: 126px;
-  height: 126px;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: white;
-  border-radius: 50%;
-  top: -48px;
-
-}
-
 .dropdown-specs{
   width: 1085px;
   height: 40px;
   display: flex;
   justify-content: space-between;
   margin: 0;
+}
+
+.match-card {
+  color:white;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  background-color:#00032c84;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+}
+
+.left-logo {
+  // position: absolute;
+  left: 7px;
+  width: 68px;
+  height: 68px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 50%;
+  top: 6px;
+}
+
+.right-logo {
+  // position: absolute;
+  right: 7px;
+  width: 68px;
+  height: 68px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 50%;
+  top: 6px;
 }

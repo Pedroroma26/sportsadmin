@@ -7,13 +7,22 @@
   padding: 0;
 }
 
+.main-container-two{
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  width: 100vw;
+  margin: 20px 0 0 90px;
+  padding: 0;
+}
+
 .title-matches{
   color: white;
   font-weight: bold;
   text-align: start;
   width: 1000px;
-  border-radius: 7px;
-  border-bottom: 1px solid #ffffff42;
+  // border-radius: 7px;
+  border-bottom: 1px solid #ffffff;
   margin: 20px 0 40px 0;
 }
 
@@ -46,6 +55,77 @@ a.text-decoration-none > h3{
   transform: translateX(-50%);
 }
 
+// RUI CARDS
+
+.test {
+  background-color:rgb(210, 105, 30);
+}
+
+.show-container{
+
+  margin: 20px 0 0 90px;
+  padding: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.show-two-column-container {
+  // margin-top: 16vh;
+  display: flex;
+  flex-direction: row;
+  align-items:start;
+  justify-content: center;
+  // gap: 32px;
+}
+
+.simple-card {
+  color:white;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+  // text-align: center;
+  background-color:#00032c84;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.simple-list {
+  color:white;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-card {
+  margin-top: 16vh;
+  color: white;
+  font-weight: bold;
+  text-align: start;
+  // width: 1000px;
+  // border-radius: 7px;
+  border-bottom: 1px solid #5af7dc;
+  margin: 20px 0 30px 0;
+}
+
+.p-highlight {
+  color:#5af7dc;
+}
+
+.profile-default {
+  width: 160px;
+}
+
+.list-group-item-action {
+  background-color:#00032c84;
+  color: #ffffff;
+  border-bottom: 1px white;
+
+  &:hover {
+    color: #5af7dc!important;
+    background-color:#00032c84!important;
+  }
+  
 .left-club-logo-games-index{
   position: absolute;
   left: -95px;
@@ -70,4 +150,5 @@ a.text-decoration-none > h3{
   background-color: white;
   border-radius: 50%;
   top: -48px;
+
 }

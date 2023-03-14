@@ -6,6 +6,7 @@
     end
 
     def show
+      @games = Game.where(referee_id: params[:id])
     end
 
     def new

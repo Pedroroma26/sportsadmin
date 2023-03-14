@@ -125,4 +125,30 @@ a.text-decoration-none > h3{
     color: #5af7dc!important;
     background-color:#00032c84!important;
   }
+  
+.left-club-logo-games-index{
+  position: absolute;
+  left: -95px;
+  width: 126px;
+  height: 126px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 50%;
+  top: -48px;
+}
+
+.right-club-logo-games-index{
+  position: absolute;
+  right: -95px;
+  width: 126px;
+  height: 126px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 50%;
+  top: -48px;
+
 }

@@ -27,22 +27,32 @@
 <div class="games-container">
   <% @games.each do |game| %>
     <%= link_to game_path(game), class: "text-decoration-none" do %>
-      <div class="games-card py-2 my-2">
+      <div class="games-card py-2 my-2" style="height: 126px;">
         <p><%= game.competition.name %></p>
         <div class="d-flex justify-content-between position-relative mx-5">
-          <p class="d-flex align-items-center">
-            <%= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 me-2 mr-1", style: "background-color: white;" %>
+
+          <div class="rounded-top-4 left-club-logo-games-index" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></div>
+          <p class="d-flex align-items-center" style= "margin-left: 50px">
+            <%#= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 me-2 mr-1", style: "background-color: white;" %>
             <%= game.club_home.name %>
           </p>
+
           <p class="game-date d-flex align-items-center">
             <%= game.game_date.strftime("%-d %b, %k:%M") %>
           </p>
-          <p class="d-flex align-items-center">
+
+          <div class="rounded-top-4 right-club-logo-games-index" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></div>
+          <p class="d-flex align-items-center" style= "margin-right: 50px">
             <%= game.club_away.name %>
-            <%= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 ms-2 mr-1", style: "background-color: white;" %>
+            <%#= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 ms-2 mr-1", style: "background-color: white;" %>
           </p>
+
         </div>
-        <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
+          <% if game.referee.present?  %>
+            <p class="m-0"><%= game.referee.full_name%></p>
+          <% else %>
+            <p class="m-0">Not assigned</p>
+          <% end %>
       </div>
     <% end %>
   <% end %>

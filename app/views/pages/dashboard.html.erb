@@ -5,15 +5,19 @@
       <% @games.where(game_date: DateTime.now.all_day).each do |game| %>
         <h6 class="text-decoration-none mb-0"><%= link_to game_path(game), class: "referee-name" do %></h6>
           <div class="games-card py-3 mt-4">
-            <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: <%= game.referee.first_name %> <%= game.referee.last_name %> </p></span>
+             <% if game.referee.present? %>
+              <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: <%= game.referee.full_name %> </p></span>
+            <% else %>
+              <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: Not assigned</p></span>
+            <% end %>
             <div class="d-flex justify-content-center align-bottom position-relative px-5 my-3 gap-3 position-relative">
               <div class="rounded-top-4 left-club-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></div>
               <h3 class="mb-0"><%= game.club_home.abbreviation %></h3>
-        <% end %>
-        <%= link_to "Match Report", report_game_path(game), class: "btn btn-success rounded-5" %>
-        <h6 class="text-decoration-none mb-0"><%= link_to game_path(game), class: "referee-name" do %></h6>
-          <div class="rounded-top-4 right-club-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></div>
-            <h3 class="mb-0"><%= game.club_away.abbreviation %></h3>
+              <% end %>
+              <%= link_to "Match Report", report_game_path(game), class: "btn btn-success rounded-5" %>
+              <h6 class="text-decoration-none mb-0"><%= link_to game_path(game), class: "referee-name" do %></h6>
+              <div class="rounded-top-4 right-club-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></div>
+              <h3 class="mb-0"><%= game.club_away.abbreviation %></h3>
             </div>
           </div>
         <% end %>
@@ -27,7 +31,11 @@
       <% @games.where("game_date >= ?", (DateTime.now + 1.day).all_day).each do |game| %>
         <h6 class="text-decoration-none mb-0"><%= link_to game_path(game), class: "referee-name" do %></h6>
           <div class="games-card py-3 mt-4">
-            <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: <%= game.referee.first_name %> <%= game.referee.last_name %> </p></span>
+            <% if game.referee.present? %>
+              <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: <%= game.referee.full_name %> </p></span>
+            <% else %>
+              <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: Not assigned</p></span>
+            <% end %>
             <div class="d-flex justify-content-center align-bottom position-relative px-5 my-3 gap-3 position-relative">
               <div class="rounded-top-4 left-club-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></div>
               <h3 class="mb-0"><%= game.club_home.abbreviation %></h3>
@@ -48,7 +56,11 @@
       <% @games.where("game_date < ?", DateTime.now.all_day).each do |game| %>
       <h6 class="text-decoration-none mb-0"><%= link_to game_path(game), class: "referee-name" do %></h6>
         <div class="games-card py-3 mt-4">
-          <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: <%= game.referee.first_name %> <%= game.referee.last_name %> </p></span>
+                    <% if game.referee.present? %>
+              <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: <%= game.referee.full_name %> </p></span>
+            <% else %>
+              <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: Not assigned</p></span>
+            <% end %>
           <div class="d-flex justify-content-center align-bottom position-relative px-5 my-3 gap-3 position-relative">
             <div class="rounded-top-4 left-club-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></div>
               <h3 class="mb-0"><%= game.club_home.abbreviation %></h3>

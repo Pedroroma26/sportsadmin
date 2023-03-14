@@ -1,17 +1,19 @@
- <div class="main-container">
-
+<div class="main-container">
   <div class="games-container">
     <span class="title-matches"><h1>Reports List</h1></span>
-
-      <% @reports.each do |report| %>
+    <% @reports.each do |report| %>
+      <%= link_to report_game_path(report.game), class: "text-decoration-none" do %>
         <div class="games-card py-3 mb-2 mt-3">
-          <div class="d-flex justify-content-between align-itmes-center position-relative mx-5">
-          <%= link_to report_game_path(report.game), class: "text-decoration-none" do %>
-          <p style="color: white; margin-bottom:0;"><%= report.game.club_home.name %>|<%= report.game.game_date.strftime("%-d %b, %k:%M") %>|<%= report.game.club_away.name %></p>
-          <% end %>
+          <span class="text-decoration-none"><p><%= report.game.competition.name %></p></span>
+          <div class="d-flex justify-content-between align-bottom position-relative px-5 my-3 gap-3 position-relative">
+            <div class="rounded-top-4 left-club-logo" style="background-image: url('<%= cl_image_path report.game.club_home.photo.key %>')"></div>
+            <p style="margin-left: 50px"><%= report.game.club_home.name %></p>
+            <p class="game-date d-flex align-items-center"><%= report.game.game_date.strftime("%-d %b, %k:%M") %></p>
+            <div class="rounded-top-4 right-club-logo" style="background-image: url('<%= cl_image_path report.game.club_away.photo.key %>')"></div>
+            <p style="margin-right: 50px"><%= report.game.club_away.name %></p>
           </div>
         </div>
       <% end %>
-
+    <% end %>
   </div>
 </div>

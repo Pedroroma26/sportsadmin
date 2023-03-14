@@ -17,7 +17,11 @@
       <div>
         <p>Location: <%= @game.club_home.address %></p>
         <p>Date: <%= @game.game_date.strftime('%d-%m-%Y') %> | <%= @game.game_date.strftime('%H:%M') %></p>
-        <p>Referee: <%= @game.referee.full_name %></p>
+          <% if @game.referee.present? %>
+            <p>Referee: <%= @game.referee.full_name %></p>
+          <% else %>
+            <p>Referee: Not assigned </p>
+          <% end %>
       </div>
       <div>
         <div>

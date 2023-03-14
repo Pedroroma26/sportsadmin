@@ -9,9 +9,14 @@
   </div>
   <div class="">
     <% if @club.access_token == @report.game.club_home.access_token %>
-      <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name %> </td></p>
+      <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name, false, :disabled => false %></td></p>
+      <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_away.name, false, :disabled => true %></td></p>
     <% elsif @club.access_token == @report.game.club_away.access_token %>
-      <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name %> </td></p>
+      <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name, false, :disabled => true %></td></p>
+      <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_away.name, false, :disabled => false %></td></p>
+    <% else %>
+      <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name, false, :disabled => true %></td></p>
+      <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_away.name, false, :disabled => true %></td></p>
     <% end %>
   </div>
 </div>

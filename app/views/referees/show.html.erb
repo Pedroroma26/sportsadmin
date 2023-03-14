@@ -13,7 +13,7 @@
       <p class="p-highlight mt-4 mb-1">Phone No.</p>
       <h5><%= @referee.phone_number %></h5>
       <span class="btn btn-success mt-3 rounded-4 col-12"><%= link_to "Edit", edit_referee_path(@referee) %></span>
-      <span class="btn btn-danger mt-3 rounded-4 col-12"><%= link_to "Delete", referees_path, method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></span>
+      <span class="btn btn-danger mt-3 rounded-4 col-12"><%= link_to "Delete", referee_path(@referee), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></span>
     </div>
 
     <div class="simple-list d-flex align-items-start justify-content-start m-0 p-0 col-5">

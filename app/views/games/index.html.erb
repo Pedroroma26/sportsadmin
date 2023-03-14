@@ -48,7 +48,11 @@
           </p>
 
         </div>
-        <p class="m-0"><%= game.referee.first_name %> <%= game.referee.last_name %></p>
+          <% if game.referee.present?  %>
+            <p class="m-0"><%= game.referee.full_name%></p>
+          <% else %>
+            <p class="m-0">Not assigned</p>
+          <% end %>
       </div>
     <% end %>
   <% end %>

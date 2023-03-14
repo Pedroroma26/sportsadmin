@@ -122,22 +122,28 @@ puts 'Fake players better than Bernardo were created.'
 competition1 = Competition.create!(name: "Campeonato Nacional de Hóquei em Campo")
 puts "Competition created"
 
-game1 = Game.create!(competition: competition1, club_home: club1, club_away: club2, referee: user1, game_date: "09/03/2023")
-game2 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "09/03/2024")
-game3 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "09/03/2023")
-game4 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: "10/03/2023")
-game5 = Game.create!(competition: competition1, club_home: club3, club_away: club1, referee: user1, game_date: "11/03/2023")
+game1 = Game.create!(competition: competition1, club_home: club1, club_away: club2, referee: user1, game_date: DateTime.now + 3)
+game2 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: DateTime.now + 2.5)
+game3 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: DateTime.now + 2)
+game4 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: DateTime.now + 0.5)
+game5 = Game.create!(competition: competition1, club_home: club3, club_away: club1, referee: user1, game_date: DateTime.now + 1 )
 game6 = Game.create!(competition: competition1, club_home: club7, club_away: club4, referee: user1, game_date: DateTime.now)
 puts "Games created"
 
-report1 = Report.create!(game: game1, referee_validation: true)
-puts "Report1 created"
-report2 = Report.create!(game: game2, referee_validation: false)
-puts "Report2 created"
-report3 = Report.create!(game: game3, referee_validation: false)
-puts "Report3 created"
-report4 = Report.create!(game: game4, referee_validation: false)
-puts "Report4 created"
+# report1 = Report.create!(game: game1, referee_validation: true)
+# puts "Report1 created"
+#report2 = Report.create!(game: game2, referee_validation: false)
+# puts "Report2 created"
+# report3 = Report.create!(game: game3, referee_validation: false)
+# puts "Report3 created"
+# report4 = Report.create!(game: game4, referee_validation: false)
+# puts "Report4 created"
+
+# report5 = Report.create!(game: game5, referee_validation: false)
+# puts "Report5 created"
+
+# report6 = Report.create!(game: game6, referee_validation: false)
+# puts "Report6 created"
 
 # report_instance4_1 = ReportInstance.create!(category: "Own-Goal", minute: 15, motive: "", report: report4, player: player1)
 # report_instance4_2 = ReportInstance.create!(category: "Green-Card", minute: 17, motive: "", report: report4, player: player1)
@@ -148,13 +154,6 @@ puts "Report4 created"
 # report_instance4_7 = ReportInstance.create!(category: "Other", minute: 45, motive: "", report: report4, player: player1)
 # report_instance4_8 = ReportInstance.create!(category: "Other", minute: "", motive: "Claques andaram à porrada", report: report1, player: player1)
 
-report5 = Report.create!(game: game5, referee_validation: false)
-puts "Report5 created"
+#report_instance1_1 = ReportInstance.create!(category: "Goal", minute: 8, motive: "", report: report1, player: game1.club_home.players.last)
 
-report6 = Report.create!(game: game6, referee_validation: false)
-puts "Report6 created"
-
-report_instance1_1 = ReportInstance.create!(category: "Goal", minute: 8, motive: "", report: report1, player: game1.club_home.players.last)
-
-
-puts "Instances created"
+#puts "Instances created"

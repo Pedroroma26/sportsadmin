@@ -28,7 +28,7 @@
   <div class="mt-5">
     <span class="title-matches"><h1>Upcoming Matches</h1></span>
     <div class="games-container">
-      <% @games.where("game_date >= ?", (DateTime.now + 1.day).all_day).each do |game| %>
+      <% @games.where("game_date >= ?", (DateTime.now + 1.day).all_day).last(3).each do |game| %>
         <h6 class="text-decoration-none mb-0"><%= link_to game_path(game), class: "referee-name" do %></h6>
           <div class="games-card py-3 mt-4" style="height: 126px;">
             <% if game.referee.present? %>
@@ -53,7 +53,7 @@
   <div class="mt-5">
     <span class="title-matches"><h1>Last Matches</h1></span>
     <div class="games-container">
-      <% @games.where("game_date < ?", DateTime.now.all_day).each do |game| %>
+      <% @games.where("game_date < ?", DateTime.now.all_day).last(3).each do |game| %>
       <h6 class="text-decoration-none mb-0"><%= link_to game_path(game), class: "referee-name" do %></h6>
         <div class="games-card py-3 mt-4">
                     <% if game.referee.present? %>

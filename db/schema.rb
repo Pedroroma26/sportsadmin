@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2023_03_15_122124) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,6 +75,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_122124) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["club_away_id"], name: "index_games_on_club_away_id"
     t.index ["club_home_id"], name: "index_games_on_club_home_id"
     t.index ["competition_id"], name: "index_games_on_competition_id"

@@ -7,16 +7,31 @@
   <div class="report-container" data-controller="submit-form-reports">
     <%= render "shared/final_report_email", game: @game, report: @report, report_instance: @report_instance %>
   </div>
+
+
   <div class="">
-    <% if @club.access_token == @report.game.club_home.access_token %>
-      <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name, false, :disabled => false %></td></p>
-      <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_away.name, false, :disabled => true %></td></p>
-    <% elsif @club.access_token == @report.game.club_away.access_token %>
-      <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name, false, :disabled => true %></td></p>
-      <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_away.name, false, :disabled => false %></td></p>
-    <% else %>
-      <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name, false, :disabled => true %></td></p>
-      <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_away.name, false, :disabled => true %></td></p>
-    <% end %>
+    <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name, false, disabled: @club.access_token == @report.game.club_home.access_token %></td></p>
+    <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_away.name, false, disabled: @club.access_token == @report.game.club_away.access_token %></td></p>
   </div>
 </div>
+
+  <%= form_with model: @report, url: public_report_validation_path(@report), data: { turbo_method: "POST" } do |f| %>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Update Referee", class: "btn btn-primary" %>
+
+<!-- KWHBLBQRLADMQYYSWPYRTTJZRGOSEFDU
+CDZANZAQIZWMHPKPCVPSOOKLSAOASBPB -->

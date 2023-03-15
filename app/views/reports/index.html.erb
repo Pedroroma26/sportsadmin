@@ -8,7 +8,7 @@
         <button class="btn btn-success rounded-4 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Competitions
         </button>
-        <ul class="dropdown-menu" style="margin-right: 50px;">
+        <ul class="dropdown-menu dropdown-menu-end">
           <li><%= link_to "All Games", reports_path, class: "dropdown-item" %></li>
           <% @competitions.each do |competition| %>
             <li><%= link_to competition.name , reports_path(competition_id: competition.id), class: "dropdown-item" %></li>

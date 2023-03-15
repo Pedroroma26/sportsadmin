@@ -19,7 +19,7 @@
     <div class="simple-list d-flex align-items-start justify-content-start m-0 p-0 col-5">
 
       <div class="list-group rounded-4 col-12 mb-4">
-        <button type="button" class="list-group-item list-group-item-action-none active" aria-current="true"><%= @referee.full_name %>'s Upcoming Matches</button>
+        <button type="button" class="list-group-item list-group-item-action-none active mb-1" aria-current="true"><%= @referee.full_name %>'s Upcoming Matches</button>
         <% @games.where("game_date >= ?", (DateTime.now + 1.day).all_day).each do |game| %>
           <%= link_to game_path(game), class: "list-group-item list-group-item-action mb-1" do %>
             <%= "#{game.club_home.abbreviation} vs #{game.club_away.abbreviation} - #{game.game_date.strftime("%-d %b, %k:%M")}" %>
@@ -28,7 +28,7 @@
       </div>
 
       <div class="list-group rounded-4 col-12">
-        <button type="button" class="list-group-item list-group-item-action-none active" aria-current="true"><%= @referee.full_name %>'s Reports</button>
+        <button type="button" class="list-group-item list-group-item-action-none active mb-1" aria-current="true"><%= @referee.full_name %>'s Reports</button>
         <% @games.where("game_date < ?", DateTime.now.all_day).each do |game| %>
           <%= link_to report_game_path(game), class: "list-group-item list-group-item-action mb-1" do %>
             <%= "#{game.club_home.abbreviation} vs #{game.club_away.abbreviation} - #{game.game_date.strftime("%-d %b, %k:%M")}" %>

@@ -1,10 +1,11 @@
-<div class="teams">
-  <div class="team-names">
-    <%= @game.club_home.name %>
-    vs
-    <%= @game.club_away.name %>
+<div class="show-container">
+
+  <div class="col-8">
+    <div class="title-card col-12">
+      <h1>Matche No ??</h1>
+    </div>
+
+    
   </div>
-  <div class="report-container" data-controller="submit-form-reports">
-    <%= render "shared/final_report", game: @game, report: @report, report_instance: @report_instance %>
-  </div>
+
 </div>

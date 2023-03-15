@@ -29,7 +29,7 @@ class PublicReportsController < ApplicationController
         message = "Sorry, try again later!"
       end
     else
-      message = "Validate the checkbox"
+      message = "Please validate the report."
     end
 
     redirect_to({action: "show", id: params[:id], token: @token}, notice: message)

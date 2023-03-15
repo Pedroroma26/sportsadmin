@@ -1,0 +1,18 @@
+<div class="teams-report-container" data-submit-form-reports-target="report">
+  <div class="team-report">
+    <%= @report.game.club_home.abbreviation %>
+    <%= render "shared/final_report_clubs_email", report: report, players: report.game.club_home.players %>
+  </div>
+
+  <div class="team-report">
+    <%= @report.game.club_away.abbreviation %>
+    <%= render "shared/final_report_clubs_email", report: report, players: report.game.club_away.players %>
+  </div>
+</div>
+
+<div class="report-infos-container px-3">
+  <p>Match report</p>
+  <% @report.report_instances.where(category: "Other").each do |instance| %>
+    <p><%= instance.motive %></p>
+  <% end %>
+</div>

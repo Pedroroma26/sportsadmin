@@ -1,0 +1,29 @@
+<table class="teams-table w-100 rounded-5">
+  <% players.each do |player| %>
+    <tr class="">
+      <td class="border-right-table-row w-60px"><%= player.player_number %></td>
+      <td class="text-start px-2 player-names"><%= player.first_name %> <%= player.last_name %></td>
+      <td class="instances text-start gap-1">
+        <% player.report_instances.where(report: report).order(minute: :asc).each do |report_instance| %>
+          <p class="m-0"><%#= report_instance.category %></p>
+          <% case %>
+            <% when report_instance.category == "Own-Goal" %>
+            <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-regular fa-futbol" style="color: red;"></i></p>
+            <% when report_instance.category == "Goal" %>
+            <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-regular fa-futbol" style="color: green;"></i></p>
+            <% when report_instance.category == "Green-Card" %>
+            <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-play" style="color: green; transform: rotate(31deg); padding-top: 7px; padding-left: 3px;"></i></p>
+            <% when report_instance.category == "Yellow-Card" %>
+            <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-square" style="color: #ffed00;"></i></p>
+            <% when report_instance.category == "Red-Card" %>
+            <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-circle" style="color: #E73632;"></i></p>
+            <% when report_instance.category == "Sub-In" %>
+            <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-rotate" style="color: green;"></i></p>
+            <% when report_instance.category == "Sub-Out" %>
+            <p class="m-0" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= report_instance.minute %>' - <%= report_instance.category %>"><i class="fa-solid fa-rotate" style="color: #E73632;"></i></p>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

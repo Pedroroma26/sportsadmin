@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'public_reports/show'
   devise_for :users
   root to: "pages#dashboard"
 
@@ -23,4 +24,6 @@ Rails.application.routes.draw do
   end
 
   resources :referees
+
+  resources :public_reports, only: [:show]
 end

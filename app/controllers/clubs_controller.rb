@@ -46,7 +46,7 @@ class ClubsController < ApplicationController
   private
 
   def club_params
-    params.require(:club).permit(:name, :abbreviation, :address, :email, :phone_number, :photo)
+    params.require(:club).permit(:name, :abbreviation, :address, :email, :phone_number, :photo, :access_token)
   end
 
 end

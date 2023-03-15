@@ -45,9 +45,4 @@ class PublicReportsController < ApplicationController
   def set_report
     @report = Report.find(params[:id])
   end
-
-  def report_params
-    params.require(:report).permit(:start_time, :end_time, :pitch_id, :referee_validation, :club_home_validation, :club_away_validation)
-  end
-
 end

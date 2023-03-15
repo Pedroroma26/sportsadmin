@@ -86,7 +86,9 @@ club6.save
 puts "club6 created"
 
 # lisboncasuals
+
 club7 = Club.new(name: "Lisbon Casuals Hockey Club", abbreviation: "Lisbon Casuals HC", address: "Centro Desportivo Nacional do Jamor", email: "emasfafaail@email.lw", phone_number: "123456789", access_token: (0...32).map { (65 + rand(26)).chr }.join)
+
 # lisboncasuals image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678273994/Sports%20Admin/lisboncasuals_awq9sh.png")
 club7.photo.attach(io: file, filename: "lisboncasuals.png", content_type: "image/png")

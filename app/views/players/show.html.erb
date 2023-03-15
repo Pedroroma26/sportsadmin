@@ -6,7 +6,7 @@
   <p><strong>Gender</strong> <%= @player.gender %></p>
 
   <%= link_to "Edit", edit_club_player_path(@club, @player) %> |
-  <% if current_user.role =! "referee" %>
+  <% if current_user.role != "referee" %>
     <%= button_to "Delete", club_player_path(@club, @player), method: :delete, data: {turbo_confirm: "Are you sure?"} %>
   <% end %>
   <%= link_to 'Back', club_players_path, class: "btn btn-secondary mt-3" %>

@@ -1,26 +1,26 @@
-<div class="main-container">
-
-      <div class="games-container">
-      <span class="title-matches"><h1>Competitions List</h1></span>
-
-        <% @competitions.each do |competition| %>
-          <%= link_to games_path(competition_id: competition.id), class: "referee-name" do%>
-            <div class="games-card py-3 mb-2 mt-3">
-              <div class="d-flex justify-content-between align-items-center mx-5">
-                <h6 class="referee-name mb-0">
-                  <span style="color: white;"><%= competition.name %></span>
-                  <span class="mx-2" style="color: white;">|</span>
-                  <span style="color: white;"><%= competition.created_at.strftime('%d-%m-%Y') %></span>
-                </h6>
-                <div class="d-flex">
-                  <%= link_to "+ info", competition_path(competition), class: "btn btn-success rounded-4" %>
-                  <%#= link_to "Edit",  edit_competition_path(competition), class: "text-decoration-none btn btn-primary btn-sm rounded-4 mr-2" %>
-                  <%#= link_to "Delete", competition_path(competition), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none btn btn-outline-danger btn-sm rounded-4 mr-2" %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-      <p class="mt-4"><%= link_to "Add Competition", new_competition_path, class: "btn btn-success rounded-4" %></p>
+<div class="show-container">
+  <div class="col-8">
+    <div class="title-card col-12">
+      <h1>Competitions List</h1>
+    </div>
+  <div class="col-12">
+    <% @competitions.each do |competition| %>
+      <%= link_to games_path(competition_id: competition.id), class: "referee-name" do%>
+        <div class="match-card py-3 mb-2 mt-3">
+          <div class="d-flex justify-content-between align-items-center mx-5">
+            <h6 class="mb-0">
+              <span style="color: white;"><%= competition.name %></span>
+              <span style="color: white;">|</span>
+              <span style="color: white;"><%= competition.created_at.strftime('%d-%m-%Y') %></span>
+            </h6>
+            <%= link_to "+ info", competition_path(competition), class: "btn btn-success rounded-4" %>
+            <%#= link_to "Edit",  edit_competition_path(competition), class: "text-decoration-none btn btn-primary btn-sm rounded-4 mr-2" %>
+            <%#= link_to "Delete", competition_path(competition), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none btn btn-outline-danger btn-sm rounded-4 mr-2" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+    <p class="mt-4 col-12""><%= link_to "Add Competition", new_competition_path, class: "btn btn-success rounded-4 col-12" %></p>
+  </div>
 </div>

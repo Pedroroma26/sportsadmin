@@ -169,10 +169,11 @@ a.text-decoration-none > h3{
   color:white;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
   text-align: center;
+  justify-content: center;
   background-color:#00032c84;
   border-radius: 40px;
-  display: flex;
-  flex-direction: row;
+ // display: flex;
+  //flex-direction: row;
 }
 
 .left-logo {

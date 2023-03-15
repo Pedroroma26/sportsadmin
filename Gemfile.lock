@@ -124,6 +124,7 @@ GEM
     ffi (1.15.5)
     font-awesome-sass (6.3.0)
       sassc (~> 2.0)
+    geocoder (1.8.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
     http-accept (1.7.0)
@@ -147,8 +148,6 @@ GEM
       net-imap
       net-pop
       net-smtp
-    mailgun-ruby (1.2.8)
-      rest-client (>= 2.0.2)
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -291,9 +290,9 @@ DEPENDENCIES
   dotenv-rails
   faker
   font-awesome-sass (~> 6.1)
+  geocoder
   jbuilder
   jsbundling-rails
-  mailgun-ruby (~> 1.2.8)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)

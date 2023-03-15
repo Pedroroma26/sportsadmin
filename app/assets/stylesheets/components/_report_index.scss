@@ -21,3 +21,21 @@
   flex-direction: row;
   justify-content: center;
 }
+
+.search-bar{
+  width: 700px;
+  flex-direction: row;
+}
+
+.button-search{
+  height: fit-content;
+}
+
+.dropdown-report{
+  width: 1085px;
+  height: 40px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin: 0;
+}

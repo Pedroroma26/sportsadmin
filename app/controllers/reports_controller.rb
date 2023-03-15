@@ -2,6 +2,13 @@ class ReportsController < ApplicationController
 
   def index
     @reports = Report.all
+    @competitions = Competition.all
+    if params[:competition_id]
+      @competition = Competition.find(params[:competition_id])
+      @games = @competition.games.order(game_date: :desc)
+    else
+      @games = Game.order(game_date: :desc)
+    end
   end
 
   def show

@@ -1,16 +1,31 @@
 <div class="main-container">
+
+
   <div class="games-container">
     <span class="title-matches"><h1>Reports List</h1></span>
-    <% @reports.each do |report| %>
-      <%= link_to report_game_path(report.game), class: "text-decoration-none" do %>
+    <div class="dropdown-report">
+      <div class="dropdown">
+        <button class="btn btn-success rounded-4 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Competitions
+        </button>
+        <ul class="dropdown-menu" style="margin-right: 50px;">
+          <li><%= link_to "All Games", reports_path, class: "dropdown-item" %></li>
+          <% @competitions.each do |competition| %>
+            <li><%= link_to competition.name , reports_path(competition_id: competition.id), class: "dropdown-item" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <% @games.each do |game| %>
+    <%= link_to report_game_path(id: game.id, report: game.report), class: "text-decoration-none" do %>
         <div class="games-card py-3 mb-2 mt-3">
-          <span class="text-decoration-none"><p><%= report.game.competition.name %></p></span>
+          <span class="text-decoration-none"><p><%= game.competition.name %></p></span>
           <div class="d-flex justify-content-between align-bottom position-relative px-5 my-3 gap-3 position-relative">
-            <div class="left-club-logo" style="background-image: url('<%= cl_image_path report.game.club_home.photo.key %>')"></div>
-            <p style="margin-left: 50px"><%= report.game.club_home.name %></p>
-            <p class="game-date d-flex align-items-center"><%= report.game.game_date.strftime("%-d %b, %k:%M") %></p>
-            <div class="right-club-logo" style="background-image: url('<%= cl_image_path report.game.club_away.photo.key %>')"></div>
-            <p style="margin-right: 50px"><%= report.game.club_away.name %></p>
+            <div class="left-club-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></div>
+            <p style="margin-left: 50px"><%= game.club_home.name %></p>
+            <p class="game-date d-flex align-items-center"><%= game.game_date.strftime("%-d %b, %k:%M") %></p>
+            <div class="right-club-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></div>
+            <p style="margin-right: 50px"><%= game.club_away.name %></p>
           </div>
         </div>
       <% end %>

@@ -7,16 +7,17 @@
   <div class="report-container" data-controller="submit-form-reports">
     <%= render "shared/final_report_email", game: @game, report: @report, report_instance: @report_instance %>
   </div>
+
+  <%= form_with model: @report, url: public_report_path(@report, token: @token), data: { turbo_method: "PATCH" } do |f| %>
   <div class="">
-    <% if @club.access_token == @report.game.club_home.access_token %>
-      <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name, false, :disabled => false %></td></p>
-      <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_away.name, false, :disabled => true %></td></p>
-    <% elsif @club.access_token == @report.game.club_away.access_token %>
-      <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name, false, :disabled => true %></td></p>
-      <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_away.name, false, :disabled => false %></td></p>
-    <% else %>
-      <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name, false, :disabled => true %></td></p>
-      <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_away.name, false, :disabled => true %></td></p>
-    <% end %>
+    <%= f.label  @report.game.club_home.name %><td class="w-40px">
+    <%= f.check_box @report.game.club_home.name, checked: !!@report.club_home_validation, disabled: @club.access_token != @report.game.club_home.access_token, value: "1" %></td></p>
+    <%= f.label  @report.game.club_away.name %><td class="w-40px">
+    <%= f.check_box @report.game.club_away.name, checked: !!@report.club_away_validation, disabled: @club.access_token != @report.game.club_away.access_token, value: "1"  %></td></p>
   </div>
+    <%= f.submit "Validate Report", class: "btn btn-primary" %>
+  <% end %>
 </div>
+
+<!-- CBDVZNUTYOMQJMQFCZMQUHXIPAUBKAPP
+LAKFUORWYDFQTTGFOOPQPBOFLSJTHVTD -->

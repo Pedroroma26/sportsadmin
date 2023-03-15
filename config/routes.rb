@@ -25,5 +25,5 @@ Rails.application.routes.draw do
 
   resources :referees
 
-  resources :public_reports, only: [:show]
+  resources :public_reports, only: [:show, :update]
 end

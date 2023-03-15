@@ -1,24 +1,19 @@
-<div class="main-container">
+<div class="show-container">
 
-  <span class="title-matches"><h1>Clubs List</h1></span>
+  <div class="col-8">
+    <div class="title-card col-12">
+      <h1>Clubs List</h1>
+    </div>
 
-  <div class="games-container">
-
-    <% @clubs.each do |club| %>
-      <%= link_to club_players_path(club), class: "referee-name" do %>
-        <div class="games-card py-3 mb-2 mt-2" style="height: 126px;">
-          <%# <div class="d-flex justify-content-between align-items-center mx-5"> %>
-            <%#= cl_image_tag club.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 me-2 mr-1", style: "background-color: white;" %>
-          <div class="d-flex justify-content-center align-bottom position-relative px-5 my-3 gap-3 position-relative">
-            <div class="club-pic-position" style="background-image: url('<%= cl_image_path club.photo.key %>')"></div>
-            <h6 class="text-decoration-none mb-0" style="padding-top: 20px; font-size: 20px;"><%= club.name %></h6>
-            <%= link_to "+ info", club_path(club), class: "btn btn-success rounded-4", style: "position: absolute; right: 20px; top: -10px; margin-top: 20px" %>
-            <!--<p style="margin-bottom: 0"><%= club.address %> | <%= club.email %> | <%= club.phone_number %></p>-->
+    <div class="my-3 col-12">
+      <% @clubs.each do |club| %>
+        <%= link_to club_path(club), class: "referee-name" do %>
+          <div class="match-card d-flex align-items-center justify-content-start ml-3 mb-4 p-2 col-12">
+            <span class="left-logo" style="background-image: url('<%= cl_image_path club.photo.key %>')"></span>
+            <h4 class="d-flex justify-content-start m-0 ml-3 p-3"><%= club.name %></h4>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-
-    <p class="mt-4"><%= link_to "Add Club", new_club_path, class: "btn btn-success rounded-4" %></p>
+    </div>
   </div>
 </div>

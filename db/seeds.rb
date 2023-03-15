@@ -38,7 +38,7 @@ puts "Users created"
 # clubs seeds #################################################################
 
 #adlousada
-club1 = Club.new(name: "Associação Desportiva de Lousada", abbreviation: "AD Lousada", address: "Estádio Municipal de Lousada", email: "email@email.lw", phone_number:"123456789")
+club1 = Club.new(name: "Associação Desportiva de Lousada", abbreviation: "AD Lousada", address: "Estádio Municipal de Lousada", email: "email@email.lw", phone_number:"123456789", access_token: (0...32).map { (65 + rand(26)).chr }.join)
 #adlousada image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678274596/Sports%20Admin/adlousada_rnkmnx.png")
 club1.photo.attach(io: file, filename: "adlousada.png", content_type: "image/png")
@@ -46,7 +46,7 @@ club1.save!
 puts "club1 created"
 
 # acasapia
-club2 = Club.new(name: "Casa Pia Atlético Clube", abbreviation: "Casa Pia AC", address: "Estádio Pina Manique", email: "emaiadl@email.lw", phone_number:"828282928")
+club2 = Club.new(name: "Casa Pia Atlético Clube", abbreviation: "Casa Pia AC", address: "Estádio Pina Manique", email: "emaiadl@email.lw", phone_number:"828282928", access_token: (0...32).map { (65 + rand(26)).chr }.join)
 # acasapia image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678273993/Sports%20Admin/casapiaac_eadqir.png")
 club2.photo.attach(io: file, filename: "casapiaac.png", content_type: "image/png")
@@ -54,7 +54,7 @@ club2.save
 puts "club2 created"
 
 # cfbenfica
-club3 = Club.new(name: "Clube Futebol Benfica", abbreviation: "CF Benfica", address: "Estádio Francisco Lázaro", email: "emaiaaal@email.lw", phone_number: "928292829")
+club3 = Club.new(name: "Clube Futebol Benfica", abbreviation: "CF Benfica", address: "Estádio Francisco Lázaro", email: "emaiaaal@email.lw", phone_number: "928292829", access_token: (0...32).map { (65 + rand(26)).chr }.join)
 # cfbenfica image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678273994/Sports%20Admin/clubefutebolbenfica.svg_oe6s4v.png")
 club3.photo.attach(io: file, filename: "clubefutebolbenfica.svg.png", content_type: "image/png")
@@ -62,7 +62,7 @@ club3.save
 puts "club3 created"
 
 # cfuniaodelamas
-club4 = Club.new(name: "Clube Futebol União de Lamas", abbreviation: "CFU Lamas", address: "Estádio Comendador Henrique Amorim", email: "emaaaasdil@email.lw", phone_number: "928292890")
+club4 = Club.new(name: "Clube Futebol União de Lamas", abbreviation: "CFU Lamas", address: "Estádio Comendador Henrique Amorim", email: "emaaaasdil@email.lw", phone_number: "928292890", access_token: (0...32).map { (65 + rand(26)).chr }.join)
 # cfuniaodelamas image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678280744/Sports%20Admin/clubefuteboluniaodelamas_qljgcl.png")
 club4.photo.attach(io: file, filename: "clubefuteboluniaodelamas.png", content_type: "image/png")
@@ -70,7 +70,7 @@ club4.save
 puts "club4 created"
 
 # gdviso
-club5 = Club.new(name: "Grupo Desportivo do Viso", abbreviation: "GD Viso", address: "Pavilhão Grupo Desportivo Viso", email: "emafsafil@email.lw", phone_number: "123456789")
+club5 = Club.new(name: "Grupo Desportivo do Viso", abbreviation: "GD Viso", address: "Pavilhão Grupo Desportivo Viso", email: "emafsafil@email.lw", phone_number: "123456789", access_token: (0...32).map { (65 + rand(26)).chr }.join)
 # gdviso image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678273994/Sports%20Admin/grupodesportivodoviso_hprmsh.png")
 club5.photo.attach(io: file, filename: "grupodesportivodoviso.png", content_type: "image/png")
@@ -78,7 +78,7 @@ club5.save
 puts "club5 created"
 
 # juventudehoqueiclube
-club6 = Club.new(name: "Juventude Hóquei Clube", abbreviation: "Juventude HC", address: "Estádio Municipal de Hóquei em Campo", email: "emasfasfail@email.lw", phone_number: "123456789")
+club6 = Club.new(name: "Juventude Hóquei Clube", abbreviation: "Juventude HC", address: "Estádio Municipal de Hóquei em Campo", email: "emasfasfail@email.lw", phone_number: "123456789", access_token: (0...32).map { (65 + rand(26)).chr }.join)
 #juventudehoqueiclube image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678273994/Sports%20Admin/juventudehoqueiclube_tsneqp.png")
 club6.photo.attach(io: file, filename: "juventudehoqueiclube.png", content_type: "image/png")
@@ -86,7 +86,9 @@ club6.save
 puts "club6 created"
 
 # lisboncasuals
-club7 = Club.new(name: "Lisbon Casuals Hockey Club", abbreviation: "Lisbon Casuals HC", address: "Centro Desportivo Nacional do Jamor", email: "emasfafaail@email.lw", phone_number: "123456789")
+
+club7 = Club.new(name: "Lisbon Casuals Hockey Club", abbreviation: "Lisbon Casuals HC", address: "Centro Desportivo Nacional do Jamor", email: "emasfafaail@email.lw", phone_number: "123456789", access_token: (0...32).map { (65 + rand(26)).chr }.join)
+
 # lisboncasuals image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678273994/Sports%20Admin/lisboncasuals_awq9sh.png")
 club7.photo.attach(io: file, filename: "lisboncasuals.png", content_type: "image/png")

@@ -1,79 +1,93 @@
-<div class="main-container">
-  <div class="mt-5">
-    <span class="title-matches"><h1>Today's Matches</h1></span>
-    <div class="games-container" style="height: 126px;">
-      <% @games.where(game_date: DateTime.now.all_day).each do |game| %>
-        <h6 class="text-decoration-none mb-0"><%= link_to game_path(game), class: "referee-name" do %></h6>
-          <div class="games-card py-3 mt-4">
-            <% if game.referee.present? %>
-              <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: <%= game.referee.full_name %> </p></span>
-            <% else %>
-              <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: Not assigned</p></span>
-            <% end %>
-            <div class="d-flex justify-content-center align-bottom position-relative px-5 my-3 gap-3 position-relative">
-              <div class="left-club-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></div>
-              <h3 class="mb-0"><%= game.club_home.abbreviation %></h3>
-              <% end %>
-              <%= link_to "Match Report", report_game_path(game), class: "btn btn-success rounded-5" %>
-              <h6 class="text-decoration-none mb-0"><%= link_to game_path(game), class: "referee-name" do %></h6>
-              <div class="right-club-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></div>
-              <h3 class="mb-0"><%= game.club_away.abbreviation %></h3>
+<div class="show-container">
+
+  <div class="col-8">
+    <div class="title-card col-12">
+      <h1>Today's Matches</h1>
+    </div>
+
+    <div class="my-3">
+      <div class="position-relative mt-5">
+        <% @games.where(game_date: DateTime.now.all_day).each do |game| %>
+
+          <% if game.referee.present? %>
+            <h6><span class="badge rounded-pill text-bg-success position-absolute top-25 start-50 translate-middle"><%= game.competition.name %>  |  Referee: <%= game.referee.full_name %> </span></h6>
+          <% else %>
+            <h6><span class="badge rounded-pill text-bg-danger position-absolute top-25 start-50 translate-middle", style="color: white !important;"><%= game.competition.name %>  |  Referee: Not assigned </span></h6>
+          <% end %>
+          <%= link_to game_path(game) do %>
+            <div class="match-card d-flex align-items-center justify-content-between mb-4 p-2">
+              <span class="left-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></span>
+              <h3 class="d-flex justify-content-end m-0 p-3 col-4"><%= game.club_home.abbreviation %></h3>
+              <div class="">
+                <p class="p-highlight m-0"><%= game.game_date.strftime("%-d %b") %><br><%= game.game_date.strftime("%k:%M") %></p>
+              </div>
+              <h3 class="d-flex justify-content-start m-0 p-3 col-4"><%= game.club_away.abbreviation %></h3>
+              <span class="right-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></span>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 
-  <div class="mt-5">
-    <span class="title-matches"><h1>Upcoming Matches</h1></span>
-    <div class="games-container">
-      <% @games.where("game_date >= ?", (DateTime.now + 1.day).all_day).each do |game| %>
-        <h6 class="text-decoration-none mb-0"><%= link_to game_path(game), class: "referee-name" do %></h6>
-          <div class="games-card py-3 mt-4" style="height: 126px;">
-            <% if game.referee.present? %>
-              <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: <%= game.referee.full_name %> </p></span>
-            <% else %>
-              <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: Not assigned</p></span>
-            <% end %>
-            <div class="d-flex justify-content-center align-bottom position-relative px-5 my-3 gap-3 position-relative">
-              <div class="left-club-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></div>
-              <h3 class="mb-0"><%= game.club_home.abbreviation %></h3>
-              <h3 class="mb-0">VS</h3>
-              <div class="right-club-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></div>
-              <h3 class="mb-0"><%= game.club_away.abbreviation %></h3>
+  <div class="col-8">
+    <div class="title-card col-12">
+      <h1>Upcoming Matches</h1>
+    </div>
+
+    <div class="my-3">
+      <div class="position-relative mt-5">
+        <% @games.where("game_date >= ?", (DateTime.now + 1.day).all_day).last(3).each do |game| %>
+
+          <% if game.referee.present? %>
+            <h6><span class="badge rounded-pill text-bg-success position-absolute top-25 start-50 translate-middle"><%= game.competition.name %>  |  Referee: <%= game.referee.full_name %> </span></h6>
+          <% else %>
+            <h6><span class="badge rounded-pill text-bg-danger position-absolute top-25 start-50 translate-middle", style="color: white !important;"><%= game.competition.name %>  |  Referee: Not assigned </span></h6>
+          <% end %>
+          <%= link_to game_path(game) do %>
+            <div class="match-card d-flex align-items-center justify-content-between mb-4 p-2">
+              <span class="left-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></span>
+              <h3 class="d-flex justify-content-end m-0 p-3 col-4"><%= game.club_home.abbreviation %></h3>
+              <div class="">
+                <p class="p-highlight m-0"><%= game.game_date.strftime("%-d %b") %><br><%= game.game_date.strftime("%k:%M") %></p>
+              </div>
+              <h3 class="d-flex justify-content-start m-0 p-3 col-4"><%= game.club_away.abbreviation %></h3>
+              <span class="right-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></span>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 
+  <div class="col-8">
+    <div class="title-card col-12">
+      <h1>Last Matches</h1>
+    </div>
 
-  <div class="mt-5">
-    <span class="title-matches"><h1>Last Matches</h1></span>
-    <div class="games-container">
-      <% @games.where("game_date < ?", DateTime.now.all_day).each do |game| %>
-      <h6 class="text-decoration-none mb-0"><%= link_to game_path(game), class: "referee-name" do %></h6>
-        <div class="games-card py-3 mt-4">
-                    <% if game.referee.present? %>
-              <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: <%= game.referee.full_name %> </p></span>
-            <% else %>
-              <span class="text-decoration-none"><p><%= game.game_date.strftime("%-d %b, %k:%M") %> | <%= game.competition.name %> | Referee: Not assigned</p></span>
-            <% end %>
-          <div class="d-flex justify-content-center align-bottom position-relative px-5 my-3 gap-3 position-relative">
-            <div class="left-club-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></div>
-              <h3 class="mb-0"><%= game.club_home.abbreviation %></h3>
-      <% end %>
-      <%= link_to "Match Report", report_game_path(game), class: "btn btn-success rounded-5" %>
-            <h6 class="text-decoration-none mb-0"><%= link_to game_path(game), class: "referee-name" do %></h6>
-            <div class="right-club-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></div>
-              <h3 class="mb-0"><%= game.club_away.abbreviation %></h3>
-          </div>
-        </div>
+    <div class="my-3">
+      <div class="position-relative mt-5">
+        <% @games.where("game_date < ?", DateTime.now.all_day).last(3).each do |game| %>
+
+          <% if game.referee.present? %>
+            <h6><span class="badge rounded-pill text-bg-success position-absolute top-25 start-50 translate-middle"><%= game.competition.name %>  |  Referee: <%= game.referee.full_name %> </span></h6>
+          <% else %>
+            <h6><span class="badge rounded-pill text-bg-danger position-absolute top-25 start-50 translate-middle", style="color: white !important;"><%= game.competition.name %>  |  Referee: Not assigned </span></h6>
+          <% end %>
+          <%= link_to game_path(game) do %>
+            <div class="match-card d-flex align-items-center justify-content-between mb-4 p-2">
+              <span class="left-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></span>
+              <h3 class="d-flex justify-content-end m-0 p-3 col-4"><%= game.club_home.abbreviation %></h3>
+              <div class="">
+                <p class="p-highlight m-0 m-0"><%= rand(3)%>:<%= rand(3)%><br>Match Report</p>
+              </div>
+              <h3 class="d-flex justify-content-start m-0 p-3 col-4"><%= game.club_away.abbreviation %></h3>
+              <span class="right-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></span>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+       
+      </div>
     </div>
   </div>
-
 </div>

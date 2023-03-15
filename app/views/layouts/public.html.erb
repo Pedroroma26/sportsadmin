@@ -20,9 +20,8 @@
     <%= render "shared/flashes" %>
     <div class="d-flex">
 
-      <%= render "shared/navbar" unless @disable_nav if user_signed_in? %>
-
       <%= yield %>
+      
     </div>
   </body>
 </html>

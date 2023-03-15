@@ -12,7 +12,13 @@
       </p>
     </div>
     <%# ----------------trocar para geocode------------------ %>
-    <img class="geocode-field" src="https://alumniandfriends.tufts.edu/sites/default/files/2020-01/CAM_01_FIELDS_ZOOM%20%28FH%29.jpg" alt="">
+    <div class="geocode-field" style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+
+    <%# <img class="geocode-field" src="https://alumniandfriends.tufts.edu/sites/default/files/2020-01/CAM_01_FIELDS_ZOOM%20%28FH%29.jpg" alt=""> %>
     <div class="lower-div">
       <div>
         <p>Location: <%= @game.club_home.address %></p>

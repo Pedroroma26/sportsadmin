@@ -8,30 +8,16 @@
     <%= render "shared/final_report_email", game: @game, report: @report, report_instance: @report_instance %>
   </div>
 
-
+  <%= form_with model: @report, url: public_report_path(@report, token: @token), data: { turbo_method: "PATCH" } do |f| %>
   <div class="">
-    <p>Validation: <%= @report.game.club_home.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_home.name, false, disabled: @club.access_token == @report.game.club_home.access_token %></td></p>
-    <p>Validation: <%= @report.game.club_away.name %><td class="w-40px"> <%= check_box_tag "selected_club[]", @report.game.club_away.name, false, disabled: @club.access_token == @report.game.club_away.access_token %></td></p>
+    <%= f.label  @report.game.club_home.name %><td class="w-40px">
+    <%= f.check_box @report.game.club_home.name, checked: !!@report.club_home_validation, disabled: @club.access_token != @report.game.club_home.access_token, value: "1" %></td></p>
+    <%= f.label  @report.game.club_away.name %><td class="w-40px">
+    <%= f.check_box @report.game.club_away.name, checked: !!@report.club_away_validation, disabled: @club.access_token != @report.game.club_away.access_token, value: "1"  %></td></p>
   </div>
+    <%= f.submit "Validate Report", class: "btn btn-primary" %>
+  <% end %>
 </div>
 
-  <%= form_with model: @report, url: public_report_validation_path(@report), data: { turbo_method: "POST" } do |f| %>
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.text_field :email, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :city %>
-      <%= f.text_field :city, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :phone_number %>
-      <%= f.text_field :phone_number, class: "form-control" %>
-    </div>
-
-    <%= f.submit "Update Referee", class: "btn btn-primary" %>
-
-<!-- KWHBLBQRLADMQYYSWPYRTTJZRGOSEFDU
-CDZANZAQIZWMHPKPCVPSOOKLSAOASBPB -->
+<!-- CBDVZNUTYOMQJMQFCZMQUHXIPAUBKAPP
+LAKFUORWYDFQTTGFOOPQPBOFLSJTHVTD -->

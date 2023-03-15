@@ -25,6 +25,5 @@ Rails.application.routes.draw do
 
   resources :referees
 
-  resources :public_reports, only: [:show]
-  post '/public_report_valdation', to: 'public_reports#validation'
+  resources :public_reports, only: [:show, :update]
 end

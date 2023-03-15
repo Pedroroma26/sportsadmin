@@ -1,32 +1,25 @@
-<div class="show-container">
+ <div class="main-container">
+      <div class="games-container">
+      <span class="title-matches"><h1>Competitions List</h1></span>
 
-  <div class="col-8">
-    <div class="title-card col-12">
-      <h1>Today's Matches</h1>
-    </div>
-
-    <div class="my-3">
-      <div class="position-relative mt-5">
-        <% @games.where(game_date: DateTime.now.all_day).each do |game| %>
-
-          <% if game.referee.present? %>
-            <h6><span class="badge rounded-pill text-bg-success position-absolute top-25 start-50 translate-middle"><%= game.competition.name %>  |  Referee: <%= game.referee.full_name %> </span></h6>
-          <% else %>
-            <h6><span class="badge rounded-pill text-bg-danger position-absolute top-25 start-50 translate-middle", style="color: white !important;"><%= game.competition.name %>  |  Referee: Not assigned </span></h6>
-          <% end %>
-          <%= link_to game_path(game) do %>
-            <div class="match-card d-flex align-items-center justify-content-between mb-4 p-2">
-              <span class="left-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></span>
-              <h3 class="d-flex justify-content-end m-0 p-3 col-4"><%= game.club_home.abbreviation %></h3>
-              <div class="">
-                <p class="p-highlight m-0"><%= game.game_date.strftime("%-d %b") %><br><%= game.game_date.strftime("%k:%M") %></p>
+        <% @competitions.each do |competition| %>
+          <%= link_to games_path(competition_id: competition.id), class: "referee-name" do%>
+            <div class="games-card py-3 mb-2 mt-3">
+              <div class="d-flex justify-content-between align-items-center mx-5">
+                <h6 class="referee-name mb-0">
+                  <span style="color: white;"><%= competition.name %></span>
+                  <span class="mx-2" style="color: white;">|</span>
+                  <span style="color: white;"><%= competition.created_at.strftime('%d-%m-%Y') %></span>
+                </h6>
+                <div class="d-flex">
+                  <%= link_to "+ info", competition_path(competition), class: "btn btn-success rounded-4" %>
+                  <%#= link_to "Edit",  edit_competition_path(competition), class: "text-decoration-none btn btn-primary btn-sm rounded-4 mr-2" %>
+                  <%#= link_to "Delete", competition_path(competition), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none btn btn-outline-danger btn-sm rounded-4 mr-2" %>
+                </div>
               </div>
-              <h3 class="d-flex justify-content-start m-0 p-3 col-4"><%= game.club_away.abbreviation %></h3>
-              <span class="right-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></span>
             </div>
           <% end %>
         <% end %>
       </div>
-    </div>
-  </div>
+      <p class="mt-4"><%= link_to "Add Competition", new_competition_path, class: "btn btn-success rounded-4" %></p>
 </div>

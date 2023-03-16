@@ -213,3 +213,11 @@ a.text-decoration-none > h3{
   font-size: 14px;
   margin-bottom: 0;
 }
+
+.fa-circle-plus {
+  color:white;
+
+  &:hover {
+    color:#5af7dc;
+  }
+}

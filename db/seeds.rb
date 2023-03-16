@@ -9,15 +9,15 @@
 require 'open-uri'
 require 'faker'
 
-Report.destroy_all
-puts "All Reports destroyed"
 
 ReportInstance.destroy_all
 puts "All ReportIntances destroyed"
 
-
 Competition.destroy_all
 puts "All competitions destroyed"
+
+Report.destroy_all
+puts "All Reports destroyed"
 
 Club.destroy_all
 puts "All clubs destroyed"

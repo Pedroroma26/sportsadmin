@@ -9,7 +9,6 @@
 require 'open-uri'
 require 'faker'
 
-
 ReportInstance.destroy_all
 puts "All ReportIntances destroyed"
 

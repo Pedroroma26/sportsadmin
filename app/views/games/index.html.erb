@@ -15,8 +15,14 @@
         </ul>
       </div>
     </div>
+  </div>
 
 
+    <% if @competition.present?%>
+        <button type="button" class="text-decoration-none btn btn-success rounded-4 mb-0 col-8" data-bs-toggle="modal" data-bs-target="#modalMatch<%= @competition.id %>">Add Match</button>
+        <%= render "shared/form_modal_match", competition: @competition, modal_id: "modalMatch#{@competition.id}" %>
+    <% end %>
+    <div class="col-8">
     <div class="my-3">
       <div class="position-relative mt-5">
         <% @games.each do |game| %>

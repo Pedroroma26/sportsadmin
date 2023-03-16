@@ -10,27 +10,25 @@
 
     <div class="my-3">
       <div class="position-relative mt-5">
-
-          <% if @game.referee.present? %>
-            <h6><span class="badge rounded-pill text-bg-success position-absolute top-25 start-50 translate-middle"><%= @game.competition.name %>  |  Referee: <%= @game.referee.full_name %> </span></h6>
-          <% else %>
-            <h6><span class="badge rounded-pill text-bg-danger position-absolute top-25 start-50 translate-middle", style="color: white !important;"><%= @game.competition.name %>  |  Referee: Not assigned </span></h6>
-          <% end %>
-          <%= link_to game_path(@game) do %>
-            <div class="match-card d-flex align-items-center justify-content-between mb-4 p-2">
-              <span class="left-logo" style="background-image: url('<%= cl_image_path @game.club_home.photo.key %>')"></span>
-              <h3 class="d-flex justify-content-center m-0 p-3 col-4"><%= @game.club_home.abbreviation %></h3>
-              <div class="col-2">
-                <h1 class="m-0">0 - 0</h1>
-              </div>
-              <h3 class="d-flex justify-content-center m-0 p-3 col-4"><%= @game.club_away.abbreviation %></h3>
-              <span class="right-logo" style="background-image: url('<%= cl_image_path @game.club_away.photo.key %>')"></span>
+        <% if @game.referee.present? %>
+          <h6><span class="badge rounded-pill text-bg-success position-absolute top-25 start-50 translate-middle"><%= @game.competition.name %>  |  Referee: <%= @game.referee.full_name %> </span></h6>
+        <% else %>
+          <h6><span class="badge rounded-pill text-bg-danger position-absolute top-25 start-50 translate-middle", style="color: white !important;"><%= @game.competition.name %>  |  Referee: Not assigned </span></h6>
+        <% end %>
+        <%= link_to game_path(@game) do %>
+          <div class="match-card d-flex align-items-center justify-content-between mb-4 p-2">
+            <span class="left-logo" style="background-image: url('<%= cl_image_path @game.club_home.photo.key %>')"></span>
+            <h3 class="d-flex justify-content-center m-0 p-3 col-4"><%= @game.club_home.abbreviation %></h3>
+            <div class="col-2">
+              <h1 class="m-0">0 - 0</h1>
             </div>
-          <% end %>
+            <h3 class="d-flex justify-content-center m-0 p-3 col-4"><%= @game.club_away.abbreviation %></h3>
+            <span class="right-logo" style="background-image: url('<%= cl_image_path @game.club_away.photo.key %>')"></span>
+          </div>
+        <% end %>
       </div>
     </div>
 
-    <%# HEADER MATCH END %>
     <%# LINE UP  BEGIN %>
 
     <div class="simple-list-row d-flex align-items-start justify-content-around m-0 p-0 col-12">
@@ -80,7 +78,6 @@
         <div class="list-group rounded-4 col-12 mb-4">
           <button type="button" class="list-group-item list-group-item-action-none active d-flex justify-content-start mb-1" aria-current="true"><span class="text-danger ms-3 me-1"><%= @game.club_away.abbreviation %></span> Line-Up</button>
           <% @game.club_away.players.each do |player| %>
-
             <div class="list-group-item list-group-item-action d-flex align-items-center mb-1 col-12">
               <p class="col-1 mb-0 d-flex justify-content-end"><span class="text-danger"><%= player.player_number %></p></span>
               <p class="p-small col-7 text-nowrap m-0"><span class="mx-2"></span> <%= player.full_name %></p>
@@ -121,9 +118,7 @@
     <%# REPORT %>
 
     <div class="simple-list d-flex align-items-start justify-content-start m-0 p-0 col-12">
-
-    <div class="match-card col-12 m-0 p-0 rounded-4">
-
+      <div class="match-card col-12 m-0 p-0 rounded-4">
         <div class="list-group rounded-4 col-12 mb-0">
 
           <button type="button" class="list-group-item list-group-item-action-none active mb-1" aria-current="true">
@@ -132,8 +127,6 @@
             <span class="text-danger"><%= @game.club_away.abbreviation %></span>
             Report
           </button>
-
-
 
           <%@game.report.report_instances.where(category: "Other").each do |instance| %>
             <p><%= instance.motive %></p>
@@ -169,6 +162,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>

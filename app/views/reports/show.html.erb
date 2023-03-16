@@ -133,6 +133,8 @@
             Report
           </button>
 
+
+
           <%@game.report.report_instances.where(category: "Other").each do |instance| %>
             <p><%= instance.motive %></p>
           <% end %>

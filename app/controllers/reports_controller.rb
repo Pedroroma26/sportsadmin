@@ -39,6 +39,8 @@ class ReportsController < ApplicationController
   def update
     @report = Report.find(params[:id])
     if @report.update(report_params)
+      ReportMailer.ask_for_game_report_validation_email(@report, @report.game.club_home).deliver
+      ReportMailer.ask_for_game_report_validation_email(@report, @report.game.club_away).deliver
       respond_to do |format|
         format.html { redirect_to reports_path }
         format.text { render partial: "shared/final_report", locals: { report: @report, game: @report.game, report_instance: ReportInstance.new }, formats: [:html] }

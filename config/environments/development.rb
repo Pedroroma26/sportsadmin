@@ -76,6 +76,6 @@ Rails.application.configure do
     port: 587,
     domain: "***REMOVED***",
     user_name: "postmaster@***REMOVED***",
-    password: "***REMOVED***"
+    password: ENV['MAILGUN_PASSWORD']
   }
 end

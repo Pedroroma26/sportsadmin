@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Please follow the link to validate the report of the game between <strong><%= @report.game.club_home.name %> and <%= @report.game.club_away.name %></strong>.</p></p>
+    <p>Link: <%= link_to "Report", public_report_url(@report, token: @club.access_token) %><p>
+  </body>
+</html>

@@ -14,15 +14,13 @@ class GamesController < ApplicationController
   end
 
   def show
-    @games = Game.geocoded
-    @markers = @games.map do |game|
-      {
-        lat: game.latitude,
-        lng: game.longitude,
-        info_window_html: render_to_string(partial: "shared/info_window", locals: {game: game}),
-        marker_html: render_to_string(partial: "shared/marker", locals: {game: game})
-      }
-    end
+    @game = Game.find(params[:id])
+    @markers = [{
+      lat: @game.latitude,
+      lng: @game.longitude,
+      info_window_html: render_to_string(partial: "shared/info_window", locals: {game: @game}),
+      marker_html: render_to_string(partial: "shared/marker", locals: {game: @game})
+    }]
   end
 
   def new

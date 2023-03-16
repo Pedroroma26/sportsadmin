@@ -1,6 +1,10 @@
 <div class="show-container">
 
-  <span class="title-card col-8"><h1><%= @club.name %></h1></span>
+  <div class="title-card col-8">
+    <span class="d-flex justify-content-between align-items-center"><h1><%= @club.name %></h1>
+      <%= link_to 'Back', clubs_path, class: "btn btn-success rounded-pill mb-3 " %>
+    </span>
+  </div>
 
   <div class="show-two-column-container col-12 gap-3">
 

@@ -10,7 +10,7 @@ class PlayersController < ApplicationController
     @player = @club.players.build(player_params)
 
     if @player.save
-      redirect_to club_players_path, notice: 'Player created'
+      redirect_to club_path(@club), notice: 'Player created'
     else
       render :new, status: :unprocessable_entity
     end

@@ -31,7 +31,7 @@
           <% else %>
             <h6><span class="badge rounded-pill text-bg-danger position-absolute top-25 start-50 translate-middle", style="color: white !important;"><%= game.competition.name %>  |  Referee: Not assigned </span></h6>
           <% end %>
-          <%= link_to report_game_path(id: game.id, report: game.report), class: "text-decoration-none" do %>
+          <%= link_to game_path(game), class: "text-decoration-none" do %>
             <div class="match-card d-flex align-items-center justify-content-between mb-4 p-2">
               <span class="left-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></span>
               <h3 class="d-flex justify-content-end m-0 p-3 col-4"><%= game.club_home.abbreviation %></h3>

@@ -30,7 +30,7 @@ class ClubsController < ApplicationController
     @club = Club.find(params[:id])
 
     if @club.update(club_params)
-      redirect_to clubs_path, notice: "Club updated successfully"
+      redirect_to club_path(@club), notice: "Club updated successfully"
     else
       render :edit
     end

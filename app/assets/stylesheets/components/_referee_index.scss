@@ -47,18 +47,19 @@ form input[type="email"] {
 }
 
 form input[type="submit"] {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #5af7dc;
+  color: white;
   border: none;
   border-radius: 5px;
-  font-size: 1.2rem;
+  font-size: 1em;
   padding: 10px 20px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
 form input[type="submit"]:hover {
-  background-color: #0069d9;
+  background-color: #00032c;
+  color: #5af7dc;
 }
 
 form ul {

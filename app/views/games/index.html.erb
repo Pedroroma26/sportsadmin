@@ -1,57 +1,49 @@
-<div class="main-container">
-  <div class="title-matches">
-    <h1>Calendar - <%= @competition.present? ? @competition.name : "All Games" %></h1></div>
-    <div class="dropdown-specs">
-      <p>
-        <% if @competition.present?%>
-        <button type="button" class="text-decoration-none btn btn-success rounded-4 mb-0" data-bs-toggle="modal" data-bs-target="#modalMatch<%= @competition.id %>">Add Match</button>
-        <%= render "shared/form_modal_match", competition: @competition, modal_id: "modalMatch#{@competition.id}" %>
-        <% end %>
-      </p>
+<div class="show-container">
 
-      <div class="dropdown">
+  <div class="col-8">
+    <div class="title-card col-12 d-flex align-items-center justify-content-between">
+      <h1>Calendar - <%= @competition.present? ? @competition.name : "All Games" %></h1>
+      <div class="dropdown" style="margin-bottom: 20px;">
         <button class="btn btn-success rounded-4 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Competitions
+        Competitions
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
           <li><%= link_to "All Games", games_path, class: "dropdown-item" %></li>
           <% @competitions.each do |competition| %>
-            <li><%= link_to competition.name, games_path(competition_id: competition.id), class: "dropdown-item" %></li>
+            <li><%= link_to competition.name , games_path(competition_id: competition.id), class: "dropdown-item" %></li>
           <% end %>
         </ul>
       </div>
     </div>
+  </div>
 
-<div class="games-container mt-2">
-  <% @games.each do |game| %>
-    <%= link_to game_path(game), class: "text-decoration-none" do %>
-      <div class="games-card py-2 my-2" style="height: 126px;">
-        <p><%= game.competition.name %></p>
-        <div class="d-flex justify-content-between position-relative mx-5">
 
-          <div class="left-club-logo-games-index" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></div>
-          <p class="d-flex align-items-center" style= "margin-left: 50px">
-            <%#= cl_image_tag game.club_home.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 me-2 mr-1", style: "background-color: white;" %>
-            <%= game.club_home.name %>
-          </p>
-
-          <p class="game-date d-flex align-items-center">
-            <%= game.game_date.strftime("%-d %b, %k:%M") %>
-          </p>
-
-          <div class="right-club-logo-games-index" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></div>
-          <p class="d-flex align-items-center" style= "margin-right: 50px">
-            <%= game.club_away.name %>
-            <%#= cl_image_tag game.club_away.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-top-4 ms-2 mr-1", style: "background-color: white;" %>
-          </p>
-
-        </div>
-          <% if game.referee.present?  %>
-            <p class="m-0"><%= game.referee.full_name%></p>
-          <% else %>
-            <p class="m-0">Not assigned</p>
-          <% end %>
-      </div>
+    <% if @competition.present?%>
+        <button type="button" class="text-decoration-none btn btn-success rounded-4 mb-0 col-8" data-bs-toggle="modal" data-bs-target="#modalMatch<%= @competition.id %>">Add Match</button>
+        <%= render "shared/form_modal_match", competition: @competition, modal_id: "modalMatch#{@competition.id}" %>
     <% end %>
-  <% end %>
+    <div class="col-8">
+    <div class="my-3">
+      <div class="position-relative mt-5">
+        <% @games.each do |game| %>
+          <% if game.referee.present? %>
+            <h6><span class="badge rounded-pill text-bg-success position-absolute top-25 start-50 translate-middle"><%= game.competition.name %>  |  Referee: <%= game.referee.full_name %> </span></h6>
+          <% else %>
+            <h6><span class="badge rounded-pill text-bg-danger position-absolute top-25 start-50 translate-middle", style="color: white !important;"><%= game.competition.name %>  |  Referee: Not assigned </span></h6>
+          <% end %>
+          <%= link_to report_game_path(id: game.id, report: game.report), class: "text-decoration-none" do %>
+            <div class="match-card d-flex align-items-center justify-content-between mb-4 p-2">
+              <span class="left-logo" style="background-image: url('<%= cl_image_path game.club_home.photo.key %>')"></span>
+              <h3 class="d-flex justify-content-end m-0 p-3 col-4"><%= game.club_home.abbreviation %></h3>
+              <div class="">
+                <p class="p-highlight m-0"><%= game.game_date.strftime("%-d %b") %><br><%= game.game_date.strftime("%k:%M") %></p>
+              </div>
+              <h3 class="d-flex justify-content-start m-0 p-3 col-4"><%= game.club_away.abbreviation %></h3>
+              <span class="right-logo" style="background-image: url('<%= cl_image_path game.club_away.photo.key %>')"></span>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

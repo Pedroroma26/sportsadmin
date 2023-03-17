@@ -2,7 +2,7 @@
 
   <div class="col-8">
     <div class="title-card col-12 d-flex align-items-center justify-content-between">
-      <h1>All reports</h1>
+      <h1>Reports - <%= @competition.present? ? @competition.name : "All Games" %></h1>
       <div class="dropdown" style="margin-bottom: 20px;">
         <button class="btn btn-success rounded-4 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Competitions

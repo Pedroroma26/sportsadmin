@@ -1,15 +1,19 @@
-  <div class="container">
+<div class="show-container">
 
-  <%= simple_form_for @club do |f| %>
-    <%= f.input :name %>
-    <%= f.input :abbreviation %>
-    <%= f.input :address %>
-    <%= f.input :email %>
-    <%= f.input :phone_number %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit 'Create Club', class: "btn btn-success rounded-4" %></p>
-  <% end %>
+  <div class="form-group-container col-8 p-5">
 
-  <%= link_to 'Back', clubs_path, class: "btn btn-secondary mt-3" %>
+    <%= simple_form_for @club do |f| %>
+      <%= f.input :name %>
+      <%= f.input :abbreviation %>
+      <%= f.input :address %>
+      <%= f.input :email %>
+      <%= f.input :phone_number %>
+      <%= f.input :photo, as: :file %>
+      <%= f.submit 'Create Club', class: "btn btn-success rounded-5" %></p>
+    <% end %>
+
+    <span class="d-flex justify-content-center"></span><%= link_to 'Back', clubs_path, class: "btn btn-danger rounded-5 mt-3 col-4" %>
 
   </div>
+
+</div>

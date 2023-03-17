@@ -1,45 +1,61 @@
 <div class="show-container">
-  <div class="show-games">
-    <div class="game-teams">
-      <p>
-        <%= cl_image_tag @game.club_home.photo.key, height: 35, width: 35, crop: :fill, class: "rounded-4 me-2 mr-1", style: "background-color: white;" %>
-        <strong><%= @game.club_home.name %> (<%= @game.club_home.abbreviation %>)</strong>
-      </p>
-      <p class="vs-text">vs</p>
-      <p>
-        <strong><%= @game.club_away.name %> (<%= @game.club_away.abbreviation %>)</strong>
-        <%= cl_image_tag @game.club_away.photo.key, height: 35, width: 35, crop: :fill, class: "rounded-4 me-2 mr-1", style: "background-color: white;" %>
-      </p>
-    </div>
-    <%# ----------------trocar para geocode------------------ %>
-    <div class="geocode-field" style="width: 100%; height: 475px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="title-card col-8">
+    <div class="title-card col-12 d-flex justify-content-between align-items-center">
+      <h1>Match #<%= @game.id %></h1>
+      <h5><%= @game.game_date.strftime("%-d %b, %k:%M")%></h5>
     </div>
 
-    <%# <img class="geocode-field" src="https://alumniandfriends.tufts.edu/sites/default/files/2020-01/CAM_01_FIELDS_ZOOM%20%28FH%29.jpg" alt=""> %>
-    <div class="lower-div">
-      <div>
-        <p>Location: <%= @game.club_home.address %></p>
-        <p>Date: <%= @game.game_date.strftime('%d-%m-%Y') %> | <%= @game.game_date.strftime('%H:%M') %></p>
+    <div class="my-3">
+        <div class="position-relative mt-5">
           <% if @game.referee.present? %>
-            <p>Referee: <%= @game.referee.full_name %></p>
+            <h6><span class="badge rounded-pill text-bg-success position-absolute top-25 start-50 translate-middle"><%= @game.competition.name %>  |  Referee: <%= @game.referee.full_name %> </span></h6>
           <% else %>
-            <p>Referee: Not assigned </p>
+            <h6><span class="badge rounded-pill text-bg-danger position-absolute top-25 start-50 translate-middle", style="color: white !important;"><%= @game.competition.name %>  |  Referee: Not assigned </span></h6>
           <% end %>
+          <%= link_to game_path(@game) do %>
+            <div class="match-card d-flex align-items-center justify-content-between mb-4 p-2">
+              <span class="left-logo" style="background-image: url('<%= cl_image_path @game.club_home.photo.key %>')"></span>
+              <h3 class="d-flex justify-content-center m-0 p-3 col-4"><%= @game.club_home.abbreviation %></h3>
+              <div class="col-2">
+                <h1 class="m-0">0 - 0</h1>
+              </div>
+              <h3 class="d-flex justify-content-center m-0 p-3 col-4"><%= @game.club_away.abbreviation %></h3>
+              <span class="right-logo" style="background-image: url('<%= cl_image_path @game.club_away.photo.key %>')"></span>
+            </div>
+          <% end %>
+        </div>
       </div>
-      <div>
+
+      <%# ----------------trocar para geocode------------------ %>
+
+      <div class="match-card rounded-5">
+        <div class="geocode-field rounded-5" style="width: 100%; height: 475px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+
+      <%# <img class="geocode-field" src="https://alumniandfriends.tufts.edu/sites/default/files/2020-01/CAM_01_FIELDS_ZOOM%20%28FH%29.jpg" alt=""> %>
+      <div class="lower-div">
         <div>
-          <%= link_to "Report", report_game_path(@game), class: "btn btn-primary button-report" %>
+          <h6 class="p-highlight">Location:</h6>
+          <h4><%= @game.club_home.address %></h4>
         </div>
-        <div class="d-flex justify-content-around align-items-center my-3">
-          <%= link_to "Edit", edit_game_path(@game), class: "text-decoration-none btn btn-outline-success btn-sm rounded-4 mr-2"  %>
-          <% if current_user.role != "referee" %>
-            <%= link_to "Delete", game_path(@game), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none btn btn-outline-danger btn-sm rounded-4 mr-2" %>
-          <% end %>
-        </div>
-      <div>
+        <div class="d-flex align-items-center gap-3">
+          <div>
+            <%= link_to "Report", report_game_path(@game), class: "btn btn-primary rounded-5" %>
+          </div>
+          <div class="d-flex justify-content-around align-items-center my-3">
+            <%= link_to "Edit", edit_game_path(@game), class: "text-decoration-none btn btn-success btn-sm rounded-4 mr-2"  %>
+          </div>
+          <div>
+            <% if current_user.role != "referee" %>
+              <%= link_to "Delete", game_path(@game), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none btn btn-danger btn-sm rounded-4 mr-2" %>
+            <% end %>
+          </div>
+        <div>
+      </div>
     </div>
   </div>
 </div>

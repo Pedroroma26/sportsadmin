@@ -38,7 +38,7 @@ puts "Users created"
 # clubs seeds #################################################################
 
 #adlousada
-club1 = Club.new(name: "Associação Desportiva de Lousada", abbreviation: "AD Lousada", address: "4620-473 Lousada", email: "email@email.lw", phone_number:"123456789", access_token: (0...32).map { (65 + rand(26)).chr }.join)
+club1 = Club.new(name: "Associação Desportiva de Lousada", abbreviation: "AD Lousada", address: "4620-473 Lousada", email: "pedroromariz1@gmail.com", phone_number:"123456789", access_token: (0...32).map { (65 + rand(26)).chr }.join)
 #adlousada image
 file = URI.open("https://res.cloudinary.com/diey6169r/image/upload/v1678274596/Sports%20Admin/adlousada_rnkmnx.png")
 club1.photo.attach(io: file, filename: "adlousada.png", content_type: "image/png")
@@ -121,15 +121,48 @@ puts 'Fake players better than Bernardo were created.'
 # player3 = Player.create!(first_name: "José", last_name: "Silva", birth_date: "2001-03-23", player_number: 12, gender: "male", club: club3)
 # puts "Players created"
 
-competition1 = Competition.create!(name: "Campeonato Nacional de Hóquei em Campo")
+competition1 = Competition.create!(name: "Campeonato Nacional de Hóquei em Campo 2022/2023")
 puts "Competition created"
 
-game1 = Game.create!(competition: competition1, club_home: club1, club_away: club2, referee: user1, game_date: DateTime.now + 3)
-game2 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: DateTime.now + 2.5)
-game3 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: DateTime.now + 2)
-game4 = Game.create!(competition: competition1, club_home: club3, club_away: club2, referee: user3, game_date: DateTime.now + 0.5)
-game5 = Game.create!(competition: competition1, club_home: club3, club_away: club1, referee: user1, game_date: DateTime.now + 1 )
-game6 = Game.create!(competition: competition1, club_home: club7, club_away: club4, referee: user1, game_date: DateTime.now)
+competition2 = Competition.create!(name: "Super Taça 2022/2023")
+puts "Competition created"
+
+competition3 = Competition.create!(name: "Taça de Portugal 2022/2023")
+puts "Competition created"
+
+game1 = Game.create!(competition: competition1, club_home: club1, club_away: club2, referee: user1, game_date: DateTime.now)
+puts "Game 1"
+game2 = Game.create!(competition: competition1, club_home: club3, club_away: club4, referee: user3, game_date: "18/03/2023")
+puts "Game 2"
+game3 = Game.create!(competition: competition1, club_home: club5, club_away: club6, referee: user1, game_date: "10/03/2023")
+puts "Game 3"
+game4 = Game.create!(competition: competition1, club_home: club2, club_away: club3, referee: user3, game_date: "25/02/2023")
+puts "Game 4"
+game5 = Game.create!(competition: competition1, club_home: club4, club_away: club5, referee: user1, game_date: "18/02/2023")
+puts "Game 5"
+game6 = Game.create!(competition: competition1, club_home: club6, club_away: club1, referee: user3, game_date: "11/02/2023")
+puts "Game 6"
+game7 = Game.create!(competition: competition1, club_home: club1, club_away: club3, referee: user1, game_date: "05/02/2023")
+puts "Game 7"
+game8 = Game.create!(competition: competition1, club_home: club2, club_away: club4, referee: user1, game_date: "31/01/2023")
+puts "Game 8"
+game9 = Game.create!(competition: competition1, club_home: club5, club_away: club7, referee: user3, game_date: "24/01/2023")
+puts "Game 9"
+game10 = Game.create!(competition: competition1, club_home: club7, club_away: club1, referee: user3, game_date: "17/01/2023")
+puts "Game 10"
+game11 = Game.create!(competition: competition1, club_home: club6, club_away: club4, referee: user1, game_date: "25/03/2023")
+puts "Game 11"
+game12 = Game.create!(competition: competition1, club_home: club7, club_away: club2, referee: user1, game_date: "01/04/2023")
+puts "Game 12"
+game13 = Game.create!(competition: competition2, club_home: club1, club_away: club2, referee: user3, game_date: "08/09/2022")
+puts "Game 13"
+game14 = Game.create!(competition: competition3, club_home: club1, club_away: club2, referee: user1, game_date: "15/04/2023")
+puts "Game 14"
+game15 = Game.create!(competition: competition3, club_home: club3, club_away: club4, referee: user2, game_date: "01/03/2023")
+puts "Game 15"
+game16 = Game.create!(competition: competition3, club_home: club5, club_away: club6, referee: user1, game_date: "15/02/2023")
+puts "Game 16"
+
 puts "Games created"
 
 # report1 = Report.create!(game: game1, referee_validation: true)

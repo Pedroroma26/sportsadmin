@@ -13,7 +13,7 @@
               <span style="color: white;">|</span>
               <span style="color: white;"><%= competition.created_at.strftime('%d-%m-%Y') %></span>
             </h6>
-            <%= link_to "+ info", competition_path(competition), class: "btn btn-success rounded-4" %>
+            <%= link_to "+ info", competition_path(competition), class: "btn btn-success rounded-5" %>
             <%#= link_to "Edit",  edit_competition_path(competition), class: "text-decoration-none btn btn-primary btn-sm rounded-4 mr-2" %>
             <%#= link_to "Delete", competition_path(competition), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none btn btn-outline-danger btn-sm rounded-4 mr-2" %>
           </div>
@@ -21,6 +21,6 @@
       <% end %>
     <% end %>
   </div>
-    <p class="mt-4 col-12""><%= link_to "Add Competition", new_competition_path, class: "btn btn-success rounded-4 col-12" %></p>
+    <p class="mt-4 col-12"><%= link_to "Add Competition", new_competition_path, class: "btn btn-success rounded-4 col-12" %></p>
   </div>
 </div>

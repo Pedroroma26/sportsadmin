@@ -1,10 +1,12 @@
-  <div class="container">
+<div class="show-container d-flex align-item-middle justify-content-center">
+  <div class="form-group-container col-8 px-5">
 
-  <%= simple_form_for @competition do |f| %>
-      <%= f.input :name %>
-      <%= f.submit 'Create Competititon', class: "btn btn-success rounded-4" %></p>
-  <% end %>
+    <%= simple_form_for @competition do |f| %>
+        <%= f.input :name %>
+        <%= f.submit 'Create Competititon', class: "btn btn-success rounded-5" %></p>
+    <% end %>
 
-  <%= link_to 'Back', competitions_path, class: "btn btn-secondary mt-3" %>
+    <%= link_to 'Back', competitions_path, class: "btn btn-danger rounded-5 mt-3" %>
 
   </div>
+</div>

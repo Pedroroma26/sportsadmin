@@ -15,12 +15,18 @@
   <% report.report_instances.where(category: "Other").each do |instance| %>
     <p><%= instance.motive %></p>
   <% end %>
+
   <%= simple_form_for [report, report_instance],
                       data: { submit_form_reports_target: "instanceForm" },
                       html: { class: "report-form #{"d-none" if report.referee_validation}" } do |f| %>
     <%= f.input :category, as: :hidden, input_html: { value: "Other" } %>
-    <%= f.input :motive %>
+
+    <%# CAIXA TEXTO %>
+    <%= f.input :motive, label: false, input_html: { class: "m-0 p-2 rounded-4", placeholder: "Enter your observations here" }%>
   <% end %>
+</div>
+
+
 
   <%= simple_form_for [game, report],
                       data: {
@@ -29,6 +35,8 @@
                       },
                       html: { class: "report-form #{"d-none" if report.referee_validation}" } do |f| %>
     <%= f.input :referee_validation %>
-    <span class="d-display justify-content-centered"><%= f.submit "Generate Report", class:"btn btn-success rounded-4 col-12 mx-1" %></span>
+    <span class="d-display justify-content-centered">
+      <%= f.submit "Generate Report", class:"btn btn-success rounded-4 col-12 mx-1" %>
+    </span>
   <% end %>
 </div>

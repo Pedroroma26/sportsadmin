@@ -1,60 +1,63 @@
-<div class="container">
-  <h1>New Referee</h1>
+<div class="show-container">
 
-  <%= form_with model: @referee, url: referees_path, data: { turbo_method: "POST" } do |f| %>
-    <div class="form-group">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, class: 'form-control' %>
-    </div>
+  <div class="form-group-container col-8 p-5">
+    <h1>New Referee</h1>
 
-    <div class="form-group">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name, class: 'form-control' %>
-    </div>
+    <%= form_with model: @referee, url: referees_path, data: { turbo_method: "POST" } do |f| %>
+      <div class="form-group">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :birth_date %>
-      <%= f.date_field :birth_date, class: 'form-control' %>
-    </div>
+      <div class="form-group">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.text_field :email, class: 'form-control' %>
-    </div>
+      <div class="form-group">
+        <%= f.label :birth_date %>
+        <%= f.date_field :birth_date, class: 'form-control' %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :city %>
-      <%= f.text_field :city, class: 'form-control' %>
-    </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :phone_number %>
-      <%= f.text_field :phone_number, class: 'form-control' %>
-    </div>
+      <div class="form-group">
+        <%= f.label :city %>
+        <%= f.text_field :city, class: 'form-control' %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-    </div>
+      <div class="form-group">
+        <%= f.label :phone_number %>
+        <%= f.text_field :phone_number, class: 'form-control' %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-    </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
 
-    <%= f.submit 'Create Referee', class: 'btn btn-primary' %>
-  <% end %>
+      <div class="form-group">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
 
-  <% if @referee.errors.any? %>
-    <div class="alert alert-danger mt-3">
-      <h4 class="alert-heading">There were some errors with your submission:</h4>
-      <ul>
-        <% @referee.errors.full_messages.each do |error| %>
-          <li><%= error %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <%= f.submit 'Create Referee', class: 'btn btn-primary' %>
+    <% end %>
 
-  <%= link_to 'Back', referees_path, class: "btn btn-secondary mt-3" %>
+    <% if @referee.errors.any? %>
+      <div class="alert alert-danger mt-3">
+        <h4 class="alert-heading">There were some errors with your submission:</h4>
+        <ul>
+          <% @referee.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= link_to 'Back', referees_path, class: "btn btn-danger mt-3 rounded-4" %>
+  </div>
 </div>
